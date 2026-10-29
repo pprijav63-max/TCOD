@@ -1,6 +1,11 @@
 name: TCOD SIMAP Radar - Daily Switzerland
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/simap-daily.yml'
   schedule:
     - cron: '20 6 * * *'
     - cron: '20 7 * * *'
@@ -28,7 +33,7 @@ jobs:
           now=datetime.now(ZoneInfo("Europe/Zurich"))
           hour=int(now.utcoffset().total_seconds()/3600)
           cron=os.environ.get("CRON","")
-          ok=os.environ.get("EVENT")=="workflow_dispatch" or (hour==2 and cron=="20 6 * * *") or (hour==1 and cron=="20 7 * * *")
+          ok=os.environ.get("EVENT") in ("workflow_dispatch","push") or (hour==2 and cron=="20 6 * * *") or (hour==1 and cron=="20 7 * * *")
           print("run="+str(ok).lower())
           print("Local time:",now.isoformat())
           PY
