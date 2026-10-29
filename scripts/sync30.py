@@ -12,6 +12,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from heritage_insights import determine, summarize, verified_facts
 
 TZ=ZoneInfo("Europe/Zurich")
 API="https://www.simap.ch/api"
@@ -252,9 +253,17 @@ def main():
   if len(projects)>=30 and not out:raise RuntimeError("Suspicious zero future deadlines, check API schema")
   translate(out)
   for t in out:
-   t["summary_hr"]=report_hr(t)
-   t["summary_sentence_minimum"]=14
-   t["summary_kind"]="HR istraživački sažetak (14+ rečenica, uključene obvezne provjere)"
+   t["source"]="SIMAP"
+   t["country"]="Švicarska"
+   t["description_source"]="Službeni SIMAP oglas — izvorni opis predmeta nabave"
+   t["description_level"]="full_notice" if len(t.get("description_original") or "")>35 else "title_only"
+   t.update(determine(t))
+   t["confirmed_facts_hr"]=verified_facts(t)
+   t["unesco_status"]="not_verified"
+   t["summary_hr"]=summarize(t)
+   t["summary_sentence_minimum"]=None
+   t["summary_kind"]="HR tumačenje vrste intervencije iz službenog SIMAP opisa"
+   t["summary_evidence_level"]=t["description_level"]
   out.sort(key=lambda t:(t["deadline"],-t["score"]))
   result={"schema_version":6,"status":"live" if complete and failed==0 and not capped else "partial",
     "source":"official simap.ch public API","last_success":now.isoformat(timespec="seconds"),
