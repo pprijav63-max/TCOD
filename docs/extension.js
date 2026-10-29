@@ -69,11 +69,11 @@ try{checked=JSON.parse(localStorage.getItem('tcod-checks-v1')||'{}');notes=JSON.
 function projLink(id,tab){let u=new URL(root);u.searchParams.set('tab',tab||'swiss');if(id)u.searchParams.set('project',id);return u.href}
 async function copy(text,msg){try{await navigator.clipboard.writeText(text);showMessage(msg||'Poveznica kopirana.')}catch(e){const tmp=document.createElement('textarea');tmp.value=text;document.body.appendChild(tmp);tmp.select();let copied=false;try{copied=document.execCommand('copy')}catch(_){ }tmp.remove();showMessage(copied?'Kopirano.':'Kopiraj ovu adresu: '+text)}}
 function showMessage(message){let out=$('tcodActionStatus');if(out){out.textContent=message;out.scrollIntoView({block:'nearest',behavior:'smooth'})}else alert(message)}
-function showTab(tab,save){tab=['swiss','world','docs','share'].includes(tab)?tab:'swiss';activeTab=tab;
-for(let name of ['swiss','world','docs','share'])$(name+'View').hidden=tab!==name;
+function showTab(tab,save){tab=['swiss','world','heritage','docs','share'].includes(tab)?tab:'swiss';activeTab=tab;
+for(let name of ['swiss','world','heritage','docs','share'])$(name+'View').hidden=tab!==name;
 document.querySelectorAll('#tcodTabs [data-switch]').forEach(b=>{b.classList.toggle('active',b.dataset.switch===tab);b.setAttribute('aria-current',b.dataset.switch===tab?'page':'false')});
-if(save!==false){let u=new URL(location.href);u.searchParams.set('tab',tab);if(tab==='world'||tab==='share')u.searchParams.delete('project');history.replaceState({},'',u)}
-if(tab==='world')renderWorld();if(tab==='docs')renderDocs();if(tab==='share')renderShare();}
+if(save!==false){let u=new URL(location.href);u.searchParams.set('tab',tab);if(tab==='world'||tab==='share'||tab==='heritage')u.searchParams.delete('project');history.replaceState({},'',u)}
+if(tab==='world')renderWorld();if(tab==='heritage'&&window.TCODHeritage)window.TCODHeritage.render();if(tab==='docs')renderDocs();if(tab==='share')renderShare();}
 function getProject(){const list=window.TCODRadar?window.TCODRadar.list():[];return list.find(t=>t.id===activeDoc)||list[0]||null}
 function allProjects(){return window.TCODRadar?window.TCODRadar.list():[]}
 function ten(t){
