@@ -157,7 +157,7 @@ def short_uk_title(title:str)->str:
   (r"реставрац.{0,10}та.{0,15}пристосуван","restauracija i prilagodba za novu namjenu"),
   (r"реставрац|реставрацi","restauracija"),
   (r"консервац","konzervacija"),
-  (r"попередн|першочергов|протиаварійн","prvi hitni protuhavarijski radovi"),
+  (r"протиаварійн","hitni protuhavarijski radovi"),
   (r"проєктн.{0,25}документац|проектн.{0,25}документац","izrada projektne dokumentacije"),
   (r"історико.архітектурн","povijesno-arhitektonsko istraživanje"),
   (r"археологічн.{0,20}дослідженн","arheološka istraživanja"),
@@ -180,7 +180,7 @@ def determine(record:dict)->dict:
  works=str(record.get("procurement_nature") or "").lower()
  if "equipment" in codes and works not in ("works","services"):proc_kind="Nabava opreme / robe"
  elif works=="works":proc_kind="Izvođenje radova"
- elif works=="services":proc_kind="Usluge / projektiranje ili istraživanje"
+ elif works=="services":proc_kind="Usluge (vrsta usluge navedena u predmetu ugovora)"
  elif works=="goods":proc_kind="Nabava robe / opreme"
  elif re.search(r"\bwork[s]?\b|radovi|робот[иі]|travaux|bauarbeiten",title,re.I):proc_kind="Mogući radovi — provjeriti ugovor"
  elif re.search(r"design|stud|research|project|проєктн|проектн|planung|services",title,re.I):proc_kind="Moguće stručne usluge — potvrditi"
@@ -214,12 +214,16 @@ def fetch_unesco_names()->list[dict]:
  """The actual UNESCO inscription list is ground truth, not the procuring agency."""
  sites=[]
  try:
-  first=get_json(UNESCO_API+"?limit=100&offset=0")
+  first=get_json(UNESCO_API+"?limit=50&offset=0")
   count=min(1500,int(first.get("total_count",0)))
   sites.extend(first.get("results",[]))
-  for offset in range(100,count,100):
-   next_page=get_json(UNESCO_API+"?limit=100&offset="+str(offset))
-   sites.extend(next_page.get("results",[]))
+  offsets=list(range(50,count,50))
+  def page(offset):
+   try:return get_json(UNESCO_API+"?limit=50&offset="+str(offset)).get("results",[])
+   except Exception:return []
+  with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+   for results in pool.map(page,offsets):
+    sites.extend(results)
  except Exception:return []
  return sites
 def unesco_match(record:dict,sites:list[dict])->dict:
