@@ -1,0 +1,25 @@
+name: TCOD Review Copy UI Test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/index.html'
+      - 'docs/review-copy.js'
+      - 'tests/review_copy_smoke.cjs'
+      - '.github/workflows/review-copy-test.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test DOM
+        run: npm install --no-save --no-package-lock jsdom@25
+      - name: Check copy actions for all TCOD public procurement sections
+        run: node tests/review_copy_smoke.cjs
