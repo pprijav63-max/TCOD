@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'scripts/world_sync.py'
+      - 'scripts/world_v2.py'
       - '.github/workflows/world-daily.yml'
   schedule:
     - cron: '45 7 * * *'
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - name: Check Python
@@ -31,5 +31,6 @@ jobs:
           git add docs/data/world.json
           if ! git diff --cached --quiet; then
             git commit -m "Update international tenders"
+            git pull --rebase
             git push
           fi
