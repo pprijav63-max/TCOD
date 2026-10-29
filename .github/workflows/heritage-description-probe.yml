@@ -1,0 +1,64 @@
+name: TCOD Tender Description API Probe
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/heritage-description-probe.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check descriptions for Prozorro and TED from official APIs
+        run: |
+          python3 - <<'PY'
+          import json,urllib.request,urllib.error,xml.etree.ElementTree as ET
+          def get(url,timeout=22):
+           req=urllib.request.Request(url,headers={'Accept':'application/json, application/xml, text/xml;q=0.9, */*;q=0.2','User-Agent':'TCOD-Radar/1.0'})
+           with urllib.request.urlopen(req,timeout=timeout) as r:
+            raw=r.read(1300000);return (r.status,r.url,r.headers.get('Content-Type'),raw)
+          ua_list=['https://prozorro.gov.ua/api/search/tenders','https://prozorro.gov.ua/api/tenders/UA-2026-10-14-013312-a',
+            'https://public-api.prozorro.gov.ua/api/2.5/tenders/UA-2026-10-14-013312-a']
+          import urllib.request
+          post=urllib.request.Request(ua_list[0],json.dumps({'text':'реставрація будівлі','page':1,'status':['active.tendering']}).encode(),headers={'Accept':'application/json','Content-Type':'application/json','User-Agent':'TCOD-Radar/1.0'},method='POST')
+          try:
+           with urllib.request.urlopen(post,timeout=24) as r:doc=json.load(r)
+           samples=doc.get('data') or []
+           print('PROZORRO_LIST_COUNT',len(samples),flush=True)
+           if samples:
+            z=samples[0]
+            print('PROZORRO_KEYS',list(z.keys()),flush=True)
+            print('FIRST_ID',z.get('id'),z.get('tenderID'),flush=True)
+            for k in ('description','items','title','value','documents','lots','tenderPeriod','procuringEntity'):
+             print('SAMPLE_FIELD',k,str(z.get(k))[:800],flush=True)
+            if z.get('id'):ua_list.append('https://public-api.prozorro.gov.ua/api/2.5/tenders/'+z['id'])
+          except Exception as e:print('SEARCH_ERROR',type(e).__name__,str(e)[:250],flush=True)
+          for url in ua_list[1:]:
+           try:
+            status,url2,ct,data=get(url)
+            print('UA_DETAIL',status,url2,ct,'BYTES',len(data),flush=True)
+            j=json.loads(data)
+            print('UA_DETAIL_KEYS',list(j)[:20],flush=True)
+            z=j.get('data',j)
+            for k in ('title','description','items','documents','tenderPeriod','procuringEntity'):
+             print('UA_DETAIL_FIELD',k,str(z.get(k))[:900],flush=True)
+           except Exception as e:print('UA_DETAIL_ERROR',url,type(e).__name__,str(e)[:200],flush=True)
+          for url in ('https://ted.europa.eu/en/notice/701863-2026/xml','https://ted.europa.eu/en/notice/-/detail/701863-2026'):
+           try:
+            status,url2,ct,data=get(url)
+            print('TED_NOTICE',status,url2,ct,'BYTES',len(data),flush=True)
+            if b'<' in data[:30] and 'xml' in ct.lower():
+             root=ET.fromstring(data)
+             print('TED_XML_TAG',root.tag,flush=True)
+             desc=[]
+             for x in root.iter():
+              tag=x.tag.split('}')[-1]
+              if tag in ('Description','DescriptionOfProcurement','MainNature','AdditionalInformation','ProcurementObject'):
+               t=' '.join(''.join(x.itertext()).split())[:650]
+               if len(t)>30:desc.append((tag,t))
+             print('TED_DESCRIPTION_EXCERPTS',desc[:7],flush=True)
+            else:print('TED_BODY',data[:260].decode('utf-8','replace'),flush=True)
+           except Exception as e:print('TED_ERROR',type(e).__name__,str(e)[:240],flush=True)
+          PY
