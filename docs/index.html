@@ -91,6 +91,16 @@
 #tcodReviewFallback::backdrop{background:#000b}
 #tcodReviewFallback textarea{width:100%;height:min(56vh,600px);padding:13px;border:1px solid #6a8b6d;border-radius:7px;background:#0e1a11;color:#f8fff4;font:13px/1.5 monospace}
 @media(max-width:660px){.tcod-reviewButton{font-size:11px!important}.tcod-reviewNotice{right:12px;bottom:12px}}
+</style><style>/* EVIDENCE-BASED HERITAGE ANALYSIS */
+.tcod-heritageFilters select{flex:1 1 225px;min-width:200px}
+.tcod-intervention{padding:10px 12px;border-left:3px solid #b8e5a1;background:#1b3120;border-radius:4px;font-size:13px;line-height:1.55;margin:10px 0}
+.tcod-intervention strong{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#d0f1b5;margin-bottom:4px}
+.tcod-unesco{padding:5px 9px;display:inline-flex;gap:5px;align-items:center;border:1px solid #6e8a63;border-radius:18px;font-size:11px;color:#d4ecae}
+.tcod-note-source{padding:9px 10px;color:var(--muted);font-size:11px;line-height:1.5}
+.tcod-evidence{border-left:3px solid #819c86;background:#102017;padding:12px 15px;line-height:1.6;color:#d8e6d4;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.tcod-documentNames{margin:8px 0;padding-left:20px;font-size:12px;line-height:1.55}
+.tcod-priority{font-size:11px;padding:4px 8px;border:1px solid #73956e;border-radius:20px;color:#d7e7ca;display:inline-block}
+.tcod-priority.low{border-color:#ae8567;color:#ecd1b5}
 </style></head><body><header><div class="top"><div><div class="brand">TCOD <b>/</b> SIMAP RADAR</div><div class="micro">ŠVICARSKA · 26 KANTONA · HRVATSKI SAŽECI</div></div><div class="links"><a href="https://tcod-simap-tender-manager.yapp.page/" target="_blank" rel="noopener">Priprema ponuda ↗</a><a href="https://www.simap.ch/en/vendor/project-manager?page=published" target="_blank" rel="noopener">Službeni SIMAP ↗</a></div></div></header>
 <main><nav id="tcodTabs" class="tcod-tabs" aria-label="Odjeli aplikacije"><button type="button" data-switch="swiss">Švicarska / SIMAP</button><button type="button" data-switch="world">Svijet / međunarodni pozivi</button><button type="button" data-switch="heritage">Kulturna baština · svijet</button><button type="button" data-switch="docs">Dokumentacija i ponuda</button><button type="button" data-switch="share">Dijeljenje i istraživanje</button></nav><section id="swissView"><div class="eyebrow">THE CODE ARCHITECTURE / CODELING d.o.o. ZAGREB</div><h1>Javni natječaji cijele Švicarske.</h1><p class="muted lead">Objave iz posljednjih 30 kalendarskih dana s još važećim rokom. Arhitektura, konzervacija, restauracija, lasersko skeniranje, BIM/HBIM, grafički/web dizajn, video i animacija. Za svaki projekt prikazuje se neslužbeni sažetak na hrvatskom.</p>
 <div id="status" class="notice" role="status">Provjeravam dnevni izvor iz GitHuba…</div><div class="statbar"><div class="stat"><b id="total">—</b><small>Natječaji u izvoru s rokom</small></div><div class="stat"><b id="relevant">—</b><small>Relevantni za Codeling</small></div><div class="stat"><b id="soon">—</b><small>Rok u sljedećih 7 dana</small></div><div class="stat"><b id="date">—</b><small>Posljednji uspješni dohvat</small></div></div>
@@ -110,6 +120,28 @@
 <div class="tcod-heritageFilters">
  <input id="heritageSearch" type="search" placeholder="Pretraži naziv, državu, naručitelja, hrvatski sažetak…">
  <select id="heritageCountry"><option value="">Sve države</option></select>
+ <select id="heritagePriority" aria-label="Relevantnost za projektantski ured">
+  <option value="all">Sve intervencije kulturne baštine</option>
+  <option value="direct">Projektiranje, istraživanje i 3D dokumentacija</option>
+  <option value="relevant">Prioritetno za Codeling</option>
+  <option value="works">Restauratorski radovi i izvedba</option>
+ </select>
+ <select id="heritageUNESCO" aria-label="UNESCO status">
+  <option value="all">UNESCO i druga kulturna dobra</option>
+  <option value="confirmed">Samo potvrđena UNESCO dobra</option>
+  <option value="unverified">UNESCO status nije potvrđen</option>
+ </select>
+ <select id="heritageSpecial" aria-label="Specijalističke usluge">
+  <option value="">Sve specijalističke usluge</option>
+  <option value="heritage_design">Projektiranje kulturne baštine</option>
+  <option value="investigation">Istraživanje / tehničke studije</option>
+  <option value="laser_scanning">3D lasersko skeniranje</option>
+  <option value="point_cloud">Point cloud / oblak točaka</option>
+  <option value="photogrammetry">Fotogrametrija</option>
+  <option value="hbim">HBIM modeliranje</option>
+  <option value="survey">Arhitektonska snimka / izmjera</option>
+  <option value="digital_inventory">Digitalna dokumentacija i inventarizacija</option>
+ </select>
  <button id="heritageReload">↻ Provjeri feed</button>
 </div>
 <div class="tcod-heritageChips" id="heritageSources"></div>
