@@ -107,14 +107,56 @@ worldView.innerHTML='<p class="eyebrow">NEOVISNO OD ŠVICARSKE</p><h1>Svjetske j
 worldView.insertAdjacentHTML('beforeend','<div class="tcod-box" id="worldShared"><h2>Favoriti · zajednički pregled</h2><p class="tcod-note">Označi zvjezdicom natječaje. Zatim klikni „Provjeri sve favorite” za usporedbu s posljednjim službenim TED podacima i „Proslijedi favorite” za zajednički link. Oznake se pohranjuju lokalno. Link prenosi odabrane brojeve TED objava, bez privatnih bilježaka.</p><div class="tcod-row"><label for="worldCountry">Država</label><select id="worldCountry"><option value="">Sve države</option><option value="HRV">Hrvatska</option><option value="OTHER">Druge države</option></select><label><input id="worldFavOnly" type="checkbox"> Samo favoriti</label></div><div class="tcod-row" style="margin-top:12px"><button id="worldVerifyAll">↻ Provjeri sve favorite</button><button id="worldShareFavorites">↗ Proslijedi favorite</button><button id="worldCsvFavorites">↓ Izvezi favorite</button><button id="worldImport" hidden>Spremi primljene favorite</button></div><p class="tcod-note" id="worldFavStatus"></p></div>');
 docsView.innerHTML='<p class="eyebrow">ISTRAŽIVANJE NATJEČAJA I PRIPREMA PONUDE</p><h1>Dokumentacija projekta.</h1><p class="muted">Opširan kontrolni pregled dokumenata, sposobnosti i predaje za Codeling. Stavke su preporučena provjera, a ne tvrdnja da ih svaki naručitelj obvezno traži.</p><div class="notice">Službeni SIMAP: prijava ponuditelja → odabir organizacije Codeling → otvaranje projekta → Register interest → Documentation. Natječajne priloge često nije moguće preuzeti anonimno.</div><div class="tcod-box"><label for="docSelect">Odaberi projekt</label><div class="tcod-row"><select id="docSelect"></select><a id="docOfficial" class="tcod-action" target="_blank" rel="noopener">Otvori SIMAP projekt ↗</a><button id="docShare">Podijeli ovu provjeru</button></div><p id="docHeadline" class="tcod-note"></p><p id="docProgress" class="tcod-note"></p></div><div id="docChecklists"></div><div class="tcod-box"><h2>Bilješke i primljeni prilozi</h2><p class="tcod-note">Bilješke i oznake pohranjuju se samo u tvom pregledniku i nisu zajednički sinkronizirane.</p><textarea id="docNotes" class="tcod-textarea" placeholder="Npr. pitanja naručitelju, analiza natječajne dokumentacije, tko priprema koji prilog…"></textarea><p><input id="docFiles" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.zip"></p><p class="tcod-note" id="docFilesInfo">Odabrane datoteke ostaju na tvom uređaju; ne prenose se na poslužitelj i ne čitaju se automatski.</p><div class="tcod-row"><button id="docExport">Preuzmi analizu / checklist</button><button id="docCopy">Kopiraj kontrolnu listu</button></div></div>';
 shareView.innerHTML='<p class="eyebrow">ZAJEDNIČKO ISTRAŽIVANJE</p><h1>Pošalji javne nabave kolegama.</h1><p class="muted">Cijeli Radar i svaki projekt imaju adresu koju možeš poslati e-mailom, WhatsAppom ili Slackom. Prijatelji i kolege mogu otvoriti iste javno dostupne podatke i službeni SIMAP oglas.</p><div class="tcod-box"><h2>Zajednički link aplikacije</h2><div class="tcod-row"><input class="tcod-copy" value="'+root+'" readonly><button id="shareApp">Kopiraj link</button></div></div><div class="tcod-box"><h2>Izravni link na pojedini projekt</h2><div class="tcod-row"><select id="shareSelect"></select><button id="shareSelected">Kopiraj projekt</button></div><p class="tcod-note">Link otvara projekt i njegov hrvatski sažetak. Lokalni favoriti, označeni dokumenti, bilješke i odabrane datoteke ne dijele se automatski.</p></div><div class="tcod-box"><h2>Zaštita podataka i rad u timu</h2><p class="tcod-note">Ne dijeli povjerljive cijene, osobne isprave ni privatnu natječajnu dokumentaciju kroz javnu poveznicu. Za zajedničko uređivanje kontrolnih lista treba zasebna autentificirana baza i korisnička prava; ova verzija dijeli javne projekte i dopušta izvoz vlastitih bilježaka.</p></div><p id="tcodActionStatus" role="status" class="tcod-note"></p>';
+
+let worldFav={},worldCache={},sharedIds=(q.get('favorites')||'').split(',').filter(x=>/^\d{4,8}-20\d\d$/.test(x)).slice(0,80),shareMode=sharedIds.length>0;
+try{worldFav=JSON.parse(localStorage.getItem('tcod-world-favs-v2')||'{}');worldCache=JSON.parse(localStorage.getItem('tcod-world-cache-v2')||'{}')}catch(e){}
+const dateCH=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Zurich',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+const worldOpen=t=>String(t.deadline||'').slice(0,10)>=dateCH();
+function favSet(){return shareMode?sharedIds:Object.keys(worldFav).filter(id=>worldFav[id])}
+function storeWorld(){try{localStorage.setItem('tcod-world-favs-v2',JSON.stringify(worldFav));localStorage.setItem('tcod-world-cache-v2',JSON.stringify(worldCache))}catch(e){}}
+function worldLink(ids){let x=new URL(root);x.searchParams.set('tab','world');x.searchParams.set('favorites',ids.join(','));return x.href}
+function worldFavStatus(){let ids=favSet(),list=world.tenders||[],matched=ids.map(id=>list.find(t=>String(t.id)===id)),fresh=world.last_success&&Date.now()-Date.parse(world.last_success)<36*3600*1000,active=matched.filter(t=>t&&worldOpen(t)).length,expired=matched.filter(t=>t&&!worldOpen(t)).length,missing=matched.filter(t=>!t).length;
+let txt=ids.length+' spremljenih ili podijeljenih favorita · '+active+' s budućim rokom u zadnjem feedu · '+expired+' isteklih · '+missing+' nije prisutno u zadnjem feedu. ';
+txt+=fresh?'Zadnji izvor ažuriran '+world.last_success+'.':'Izvor je nedostupan ili stariji od 36 sati; status oglasa nije svježe provjeren.';
+if(shareMode)txt+=' Prikazuje se POPIS primljen preko poveznice; možeš ga spremiti u svoje favorite.';
+$('worldFavStatus').textContent=txt;
+$('worldImport').hidden=!shareMode;
+}
 function renderWorld(){
  const portals=$('worldPortals');portals.innerHTML=PORTALS.map(p=>'<article class="tcod-portal"><div class="eyebrow">'+esc(p[1])+'</div><h3>'+esc(p[0])+'</h3><p class="muted">'+esc(p[3])+'</p><a class="tcod-action" href="'+esc(p[2])+'" target="_blank" rel="noopener">Otvori službeni portal ↗</a></article>').join('');
- const n=world.tenders||[],search=($('worldSearch')?.value||'').toLowerCase();
- $('worldNotice').className='notice'+(world.status==='partial'||world.status==='live'?' good':'');
- $('worldNotice').textContent=world.last_success?'Posljednje izvršavanje EU/TED izvora: '+world.last_success+'; status '+world.status+'. Ovo nije globalna potpuna baza.':'Svjetski izvor još nije potvrđeno ažuriran. Za aktualne pozive otvorite službene portale.';
- const a=n.filter(x=>!search||[x.title_original,x.authority,x.country,x.summary_hr].join(' ').toLowerCase().includes(search)).slice(0,120);
- $('worldResults').innerHTML=a.length?a.map(t=>'<article class="tcod-worldCard"><div class="eyebrow">'+esc(t.country||'Međunarodno')+' · '+esc(t.source||'TED')+'</div><h3>'+esc(t.title_hr||t.title_original)+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Nema dostupnog sažetka').slice(0,330))+'</p><p class="tcod-note">Rok: '+esc(t.deadline||'provjeriti')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><a class="tcod-action" href="'+esc(t.url||'https://ted.europa.eu/en/')+'" target="_blank" rel="noopener">Izvorni oglas ↗</a></div></article>').join(''):'<div class="tcod-box"><p>Trenutačno nema potvrđenih otvorenih oglasa u automatskom međunarodnom feedu. Za pretragu svijeta koristi službene portale iznad.</p></div>';
+ const n=(world.tenders||[]).filter(x=>x&&x.id);
+ const t0=$('worldCountry'),country=t0?t0.value:'';
+ const search=($('worldSearch')?.value||'').trim().toLowerCase();
+ const only=$('worldFavOnly')&&$('worldFavOnly').checked;
+ const ids=favSet();
+ const countedHR=n.filter(t=>t.country==='HRV'&&worldOpen(t)).length;
+ const countedOTHER=n.filter(t=>t.country!=='HRV'&&worldOpen(t)).length;
+ $('worldNotice').className='notice'+(world.last_success&&world.status!=='degraded'?' good':'');
+ $('worldNotice').textContent=world.last_success
+  ?'TED: '+countedHR+' otvorenih relevantnih oglasa iz Hrvatske i '+countedOTHER+' iz drugih država u dohvaćenom uzorku. Provjera '+world.last_success+'. Status '+world.status+'. '+(world.source_status?.HRV?.complete?'Hrvatski TED rezultat potpuno paginiran.':'Hrvatski TED rezultat još nije potpuno potvrđen.')+' Nacionalni EOJN oglasi koji nisu u TED-u otvaraju se na zasebnom portalu.'
+  :'Međunarodni izvor još nije potvrđeno ažuriran. Provjeri hrvatski EOJN i ostale službene portale.';
+ const candidates=n.filter(worldOpen);
+ let shown=candidates.filter(t=>(!country||country==='OTHER'&&t.country!=='HRV'||t.country===country)&&(!search||[t.title_original,t.title_hr,t.authority,t.country,t.summary_hr,t.id].join(' ').toLowerCase().includes(search))&&(!only||ids.includes(String(t.id))));
+ if(only){
+  for(const id of ids){if(!n.some(t=>String(t.id)===id)){
+   const p=worldCache[id]||{title_original:'TED objava '+id,country:'',url:'https://ted.europa.eu/en/notice/-/detail/'+id,deadline:'',authority:''};
+   if((!country||country==='OTHER'&&p.country!=='HRV'||p.country===country)&&(!search||[p.title_original,p.authority,id].join(' ').toLowerCase().includes(search)))shown.push({...p,id,not_in_feed:true});
+  }}
+ }
+ shown.sort((a,b)=>(a.country==='HRV'?0:1)-(b.country==='HRV'?0:1)||String(a.deadline||'9999').localeCompare(String(b.deadline||'9999')));
+ const isCurrent=!!world.last_success&&Date.now()-Date.parse(world.last_success)<36*3600*1000;
+ $('worldResults').innerHTML=shown.length?shown.slice(0,300).map(t=>{
+  const favorite=!!worldFav[t.id],shared=shareMode&&sharedIds.includes(String(t.id));
+  const unavailable=!!t.not_in_feed,expiry=!unavailable&&!worldOpen(t);
+  const title=esc(t.title_original||t.title_hr||'Naziv nije potvrđen');
+  const label=t.country==='HRV'?'Hrvatska':esc(t.country||'Međunarodno');
+  const url=/^https:\/\/ted\.europa\.eu\//.test(t.url||'')?t.url:'https://ted.europa.eu/en/notice/-/detail/'+encodeURIComponent(t.id);
+  return '<article class="tcod-worldCard"><div class="eyebrow">'+label+' · TED '+esc(t.id)+'</div><h3>'+title+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
+ }).join(''):'<div class="tcod-box"><p>Nema otvorenih oglasa prema filtrima ili izvor nije dostupno ažuriran. Za hrvatske postupke pogledaj službeni EOJN RH.</p></div>';
  document.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>worldDetails(b.dataset.world));
+ document.querySelectorAll('[data-favorite]').forEach(b=>b.onclick=()=>{let id=b.dataset.favorite;if(worldFav[id])delete worldFav[id];else{worldFav[id]=true;let item=n.find(t=>String(t.id)===id);if(item)worldCache[id]={title_original:item.title_original,authority:item.authority,country:item.country,deadline:item.deadline,url:item.url}}storeWorld();renderWorld()});
+ document.querySelectorAll('[data-world-share]').forEach(b=>b.onclick=()=>copy(worldLink([b.dataset.world]),'Kopirana poveznica na ovaj međunarodni natječaj.'));
+ worldFavStatus();
 }
 async function fetchWorld(){try{let r=await fetch(feed+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let j=await r.json();if(!Array.isArray(j.tenders))throw Error('Neispravan format');world=j}catch(e){world={status:'not_connected',tenders:[],error:String(e)}}renderWorld()}
 function worldDetails(id){let t=(world.tenders||[]).find(x=>x.id===id);if(!t)return;
