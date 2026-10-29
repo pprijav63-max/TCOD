@@ -42,13 +42,89 @@
 .tcod-swissArea summary b{color:var(--lime)}
 .tcod-swissCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:14px;border-top:1px solid var(--line)}
 @media(max-width:740px){.tcod-swissCards{grid-template-columns:1fr}.tcod-swissCanton{padding:12px}.tcod-swissCanton h3{font-size:18px}.tcod-areaGroup summary{font-size:13px}}
+</style><style>/* GLOBAL HERITAGE VIEW */
+.tcod-heritageStats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}
+.tcod-heritageStats div{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:10px}
+.tcod-heritageStats b{display:block;font-size:28px}
+.tcod-heritageStats small{display:block;color:var(--muted);font-size:11px;margin-top:6px}
+.tcod-heritageFilters{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+.tcod-heritageFilters input{flex:3;min-width:240px}
+.tcod-heritageFilters select{flex:1;min-width:150px}
+.tcod-heritageChips{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 22px}
+.tcod-heritageChips button{border-radius:22px;font-size:12px;display:inline-flex;align-items:center;gap:8px;min-height:38px}
+.tcod-heritageChips button b{color:var(--lime);font-size:11px}
+.tcod-heritageChips button.active{background:var(--lime);color:#132111;font-weight:700;border-color:var(--lime)}
+.tcod-heritageChips button.active b{color:#132111}
+.tcod-heritageTools{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin:12px 0}
+.tcod-heritageTools>div{display:flex;gap:7px;flex-wrap:wrap}
+.tcod-heritageTools label{font-size:13px}
+.tcod-heritageCountry{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:13px 0;background:var(--panel)}
+.tcod-heritageCountry>summary{font-size:18px;font-weight:700;cursor:pointer;padding:18px;display:flex;gap:10px;justify-content:space-between;align-items:center}
+.tcod-heritageCountry>summary b{font-size:12px;font-weight:500;color:var(--lime)}
+.tcod-heritageCountry[open]{border-color:#678467}
+.tcod-heritageArea{border:1px solid var(--line);border-radius:9px;margin:10px 15px;background:#111e16;overflow:hidden}
+.tcod-heritageArea summary{padding:13px 16px;font-size:13px;font-weight:700;display:flex;justify-content:space-between;cursor:pointer}
+.tcod-heritageArea summary b{color:var(--lime)}
+.tcod-heritageCards{padding:13px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tcod-heritageCard{background:var(--raised);border:1px solid var(--line);border-radius:9px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tcod-heritageCard h3{margin:8px 0 3px;overflow-wrap:anywhere}
+.tcod-heritageCard p{margin:5px 0;font-size:13px}
+.tcod-heritageMeta{font-size:11px!important;color:var(--muted);line-height:1.5}
+.tcod-heritageActions{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:auto;padding-top:15px}
+.tcod-heritageActions button,.tcod-heritageActions a{font-size:12px}
+.tcod-heritageSourceGroup{border:1px solid var(--line);border-radius:9px;background:#17231a;margin:11px 0;overflow:hidden}
+.tcod-heritageSourceGroup>summary{font-weight:700;font-size:16px;padding:17px;cursor:pointer}
+.tcod-heritageSourceGroup>summary b{color:var(--lime);font-size:11px;margin-left:10px}
+.tcod-heritageSource{padding:19px;border:1px solid var(--line);border-radius:9px;background:var(--raised)}
+.tcod-heritageSource h3{margin:4px 0 10px}
+.tcod-heritageSource p{font-size:13px}
+.tcod-heritageSourceGroup>.tcod-heritageCards{padding:14px}
+@media(max-width:850px){.tcod-heritageStats{grid-template-columns:repeat(2,minmax(0,1fr))}.tcod-heritageCards{grid-template-columns:1fr}}
+@media(max-width:550px){.tcod-heritageStats b{font-size:23px}.tcod-heritageCountry>summary{font-size:16px}.tcod-heritageArea{margin:9px}.tcod-heritageChips button{font-size:11px}}
 </style></head><body><header><div class="top"><div><div class="brand">TCOD <b>/</b> SIMAP RADAR</div><div class="micro">ŠVICARSKA · 26 KANTONA · HRVATSKI SAŽECI</div></div><div class="links"><a href="https://tcod-simap-tender-manager.yapp.page/" target="_blank" rel="noopener">Priprema ponuda ↗</a><a href="https://www.simap.ch/en/vendor/project-manager?page=published" target="_blank" rel="noopener">Službeni SIMAP ↗</a></div></div></header>
-<main><nav id="tcodTabs" class="tcod-tabs" aria-label="Odjeli aplikacije"><button type="button" data-switch="swiss">Švicarska / SIMAP</button><button type="button" data-switch="world">Svijet / međunarodni pozivi</button><button type="button" data-switch="docs">Dokumentacija i ponuda</button><button type="button" data-switch="share">Dijeljenje i istraživanje</button></nav><section id="swissView"><div class="eyebrow">THE CODE ARCHITECTURE / CODELING d.o.o. ZAGREB</div><h1>Javni natječaji cijele Švicarske.</h1><p class="muted lead">Objave iz posljednjih 30 kalendarskih dana s još važećim rokom. Arhitektura, konzervacija, restauracija, lasersko skeniranje, BIM/HBIM, grafički/web dizajn, video i animacija. Za svaki projekt prikazuje se neslužbeni sažetak na hrvatskom.</p>
+<main><nav id="tcodTabs" class="tcod-tabs" aria-label="Odjeli aplikacije"><button type="button" data-switch="swiss">Švicarska / SIMAP</button><button type="button" data-switch="world">Svijet / međunarodni pozivi</button><button type="button" data-switch="heritage">Kulturna baština · svijet</button><button type="button" data-switch="docs">Dokumentacija i ponuda</button><button type="button" data-switch="share">Dijeljenje i istraživanje</button></nav><section id="swissView"><div class="eyebrow">THE CODE ARCHITECTURE / CODELING d.o.o. ZAGREB</div><h1>Javni natječaji cijele Švicarske.</h1><p class="muted lead">Objave iz posljednjih 30 kalendarskih dana s još važećim rokom. Arhitektura, konzervacija, restauracija, lasersko skeniranje, BIM/HBIM, grafički/web dizajn, video i animacija. Za svaki projekt prikazuje se neslužbeni sažetak na hrvatskom.</p>
 <div id="status" class="notice" role="status">Provjeravam dnevni izvor iz GitHuba…</div><div class="statbar"><div class="stat"><b id="total">—</b><small>Natječaji u izvoru s rokom</small></div><div class="stat"><b id="relevant">—</b><small>Relevantni za Codeling</small></div><div class="stat"><b id="soon">—</b><small>Rok u sljedećih 7 dana</small></div><div class="stat"><b id="date">—</b><small>Posljednji uspješni dohvat</small></div></div>
 <div class="filter"><div><label for="query">Pretraži</label><input id="query" type="search" placeholder="Naziv, naručitelj, hrvatski sažetak…"></div><div><label for="canton">Kanton</label><select id="canton"></select></div><div><label for="elig">Codeling — pristup postupku</label><select id="elig"><option value="potential">Potencijalno / provjeriti</option><option value="all">Svi otvoreni oglasi</option><option value="nacelno_moguce">Načelno moguće (provjeriti)</option><option value="provjeriti">Potrebna provjera</option><option value="otezano">Otežano / pozivni postupak</option></select></div><div><label for="sort">Poredak</label><select id="sort"><option value="deadline">Najbliži rok</option><option value="recent">Nove objave</option><option value="score">Najrelevantnije</option></select></div></div>
 <div class="chips" id="chips"></div><div class="controls"><label><input type="checkbox" id="only" checked> Samo djelatnosti Codelinga</label><div><button id="saved">☆ Favoriti</button> <button id="csv">↓ Izvezi CSV</button> <button id="refresh">↻ Dohvati podatke</button></div></div><p id="count" class="small muted"></p><div id="cards" class="cards"></div><div id="pages" class="paging"></div>
 <div class="panel"><h2>Automatski izvor podataka</h2><p class="muted">GitHub repozitorij <a href="https://github.com/pprijav63-max/TCOD" target="_blank" rel="noopener">pprijav63-max/TCOD</a> sadrži uvoznik koji se rasporedom pokušava pokretati svaki dan oko 08:20 prema švicarskom vremenu. Ova Yapp stranica provjerava javni JSON pri otvaranju i svakih 30 minuta. Ako je posljednji uspješni dohvat stariji od 36 sati, pojavljuje se upozorenje.</p><details><summary style="cursor:pointer;color:var(--lime)">Podesi izvor (napredno)</summary><div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><input id="feed" style="flex:1;min-width:220px" placeholder="Javna HTTPS URL JSON datoteke"><button id="savefeed">Spremi</button></div></details></div>
-<div class="panel"><h2>Može li se Codeling iz Hrvatske prijaviti?</h2><p class="muted">Hrvatska tvrtka nije automatski isključena iz švicarskih natječaja, ali pravo sudjelovanja ovisi o obuhvatu konkretnog postupka, zahtjevima za stručne potpise, referencama, osiguranju i eventualnim lokalnim kvalifikacijama. Oznake u aplikaciji predstavljaju preliminarnu procjenu, a ne potvrdu naručitelja.</p></div></section><section id="worldView" hidden></section><section id="docsView" hidden></section><section id="shareView" hidden></section></main>
+<div class="panel"><h2>Može li se Codeling iz Hrvatske prijaviti?</h2><p class="muted">Hrvatska tvrtka nije automatski isključena iz švicarskih natječaja, ali pravo sudjelovanja ovisi o obuhvatu konkretnog postupka, zahtjevima za stručne potpise, referencama, osiguranju i eventualnim lokalnim kvalifikacijama. Oznake u aplikaciji predstavljaju preliminarnu procjenu, a ne potvrdu naručitelja.</p></div></section><section id="worldView" hidden></section><section id="heritageView" hidden><p class="eyebrow">THE CODE · ZAŠTITA I OBNOVA KULTURNE BAŠTINE</p>
+<h1>Kulturna baština. Cijeli svijet.</h1>
+<p class="muted lead">Restauracija spomenika, povijesne građevine, arheološka nalazišta, muzeji, digitalna dokumentacija, lasersko 3D skeniranje, fotogrametrija i HBIM. Ukrajina, UNESCO, UNGM, UNDP, UNOPS, NATO, TED i razvojne banke — svaki izvor označen prema stvarnoj pokrivenosti.</p>
+<div id="heritageStatus" class="notice">Učitavam potvrđene međunarodne oglase i službene izvore…</div>
+<div class="tcod-heritageStats">
+ <div><b id="heritageTotal">—</b><small>Otvoreni u pregledanom izvoru</small></div>
+ <div><b id="heritageUkraine">—</b><small>Ukrajina / Prozorro i UNESCO</small></div>
+ <div><b id="heritageUN">—</b><small>UNGM (UNESCO / UNDP / UNOPS)</small></div>
+ <div><b id="heritageTED">—</b><small>TED baština / Europa</small></div>
+</div>
+<div class="tcod-heritageFilters">
+ <input id="heritageSearch" type="search" placeholder="Pretraži naziv, državu, naručitelja, hrvatski sažetak…">
+ <select id="heritageCountry"><option value="">Sve države</option></select>
+ <button id="heritageReload">↻ Provjeri feed</button>
+</div>
+<div class="tcod-heritageChips" id="heritageSources"></div>
+<p class="eyebrow">Države</p>
+<div class="tcod-heritageChips" id="heritageCountries"></div>
+<p class="eyebrow">Područja kulturne baštine</p>
+<div class="tcod-heritageChips" id="heritageAreas"></div>
+<div class="tcod-heritageTools">
+ <label><input id="heritageFavOnly" type="checkbox"> Samo favoriti</label>
+ <div>
+  <button id="heritageReview">↻ Provjeri favorite</button>
+  <button id="heritageShare">↗ Proslijedi favorite</button>
+  <button id="heritageExport">↓ CSV</button>
+  <button id="heritageImport" hidden>Spremi primljene favorite</button>
+ </div>
+</div>
+<p id="heritageFavStatus" class="tcod-note"></p>
+<p id="heritageFeedback" class="tcod-note" role="status"></p>
+<p id="heritageCount" class="tcod-note"></p>
+<div id="heritageResults"></div>
+<div class="tcod-box">
+<h2>Odvojeni službeni izvori — nisu svi automatski povezani</h2>
+<p class="tcod-note">UNGM javni API zahtijeva autorizaciju agencije, pa su prikazani UNGM projekti pojedinačno provjereni. Za NATO nema potvrđenog otvorenog natječaja vezanog uz kulturna dobra u prikupljenom uzorku. Svi službeni portali ostaju dostupni za ručno istraživanje i registraciju.</p>
+<div id="heritageDirectory"></div>
+</div></section><section id="docsView" hidden></section><section id="shareView" hidden></section></main>
 <div id="modal" class="modal"><div class="drawer"><button id="close">✕ Zatvori</button><div id="details"></div></div></div>
 <footer>Dies ist keine amtliche Veröffentlichung. Massgebend sind die auf der Plattform www.simap.ch veröffentlichten Daten.<p>Hrvatski sažeci nisu službeni prijevodi. Za prijavu i rokove uvijek je mjerodavan izvorni oglas.</p></footer>
 <script>/* TCOD SUBJECT CLASSIFICATION */
