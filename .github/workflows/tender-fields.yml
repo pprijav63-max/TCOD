@@ -1,0 +1,37 @@
+name: SIMAP Tender Field Test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/tender-fields.yml']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.parse,json,collections
+          b="https://www.simap.ch/api"
+          base={"newestPublicationFrom":"2026-10-20","newestPublicationUntil":"2026-10-29","lang":"de"}
+          cursor=None;types=collections.Counter()
+          for page in range(12):
+            p=dict(base)
+            if cursor:p["lastItem"]=cursor
+            q=b+"/publications/v2/project/project-search?"+urllib.parse.urlencode(p)
+            with urllib.request.urlopen(q,timeout=25) as r:payload=json.load(r)
+            for item in payload.get("projects",[]):
+              ty=item.get("pubType","?");types[ty]+=1
+              if ty in ("call_for_bids","tender","competition","participant_selection"):
+                u=b+"/publications/v1/project/"+item["id"]+"/publication-details/"+item["publicationId"]
+                with urllib.request.urlopen(u,timeout=25) as r:d=json.load(r)
+                print("TYPE",ty,"ROOT",list(d))
+                for key,v in d.items():
+                  if isinstance(v,dict):print("SECTION",key,list(v))
+                print("DATES",d.get("dates"))
+                print("PROCUREMENT",str(d.get("procurement"))[:2200])
+                raise SystemExit(0)
+            cursor=payload.get("pagination",{}).get("lastItem")
+            if not cursor:break
+          print("PUB_TYPES",dict(types))
+          PY
