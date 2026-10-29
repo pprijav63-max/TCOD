@@ -267,7 +267,7 @@ const worldResultsBox=$('worldResults').closest('.tcod-box');
 worldResultsBox.querySelector('h2').textContent='Otvoreni natječaji po državama';
 const worldCountryIndex=document.createElement('div');worldCountryIndex.id='worldCountryIndex';worldCountryIndex.className='tcod-countryIndex';worldResultsBox.insertBefore(worldCountryIndex,$('worldResults'));
 $('worldResults').classList.remove('tcod-grid');$('worldResults').classList.add('tcod-countryList');
-if(linkedCountry)$('worldCountry').value=linkedCountry;
+if(linkedCountry){const opt=document.createElement('option');opt.value=linkedCountry;opt.textContent=countryFlag(linkedCountry)+' '+countryName(linkedCountry);$('worldCountry').appendChild(opt);$('worldCountry').value=linkedCountry;}
 worldResultsBox.before($('worldShared'));
 const officialPortals=$('worldPortals');
 const portalHeading=document.createElement('h2');
