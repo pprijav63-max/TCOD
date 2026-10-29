@@ -14,7 +14,7 @@ START=(NOW.date()-dt.timedelta(days=29)).strftime("%Y%m%d")
 OUT=Path(__file__).resolve().parents[1]/"docs/data/world.json"
 ENDPOINT="https://api.ted.europa.eu/v3/notices/search"
 RELEVANT_CPV=("712","714","925","921","7993","798225","71354","71355","71356","72413","72212","454541")
-TOPIC=re.compile(r"arhitekt|architect|projektir|projektan|project design|generalplan|studie|studija|urbanis|prostornog plana|prostorn|glavnog projekta|izvedbenog projekta|idejnog projekta|dokumentacij|konzerv|conserv|restaur|restor|heritage|denkmal|spomenik|baštin|bastin|museum|muzej|fotogram|photogram|lasersk|laser.scann|scan 3d|3d.sk|bim|hbim|grafič|grafic|graphic.design|vizual|visual|animaci|animation|video|film|web.stran|web.site|website|corporate.identity|identitet|dizajn|design services|geodetsk|geodesy|rekonstrukc|renovation|sanacija|obnova|bauleit|building design",re.I)
+TOPIC=re.compile(r"arhitekt|architect|projektir|projektan|projektne dokumentacije|izrada (?:idejnog|glavnog|izvedbenog) projekta|project design|generalplan|urbanis|prostornog plana|studija prostora|konzerv|conserv|restaur|restor|heritage|denkmal|spomenik|baštin|bastin|museum|muzej|fotogram|photogram|lasersk|laser.scann|3d.skenir|bim|hbim|grafički dizajn|grafic design|graphic design|vizualni identitet|visual identity|vizualizacij|visualization|animacij|animation|video produkc|film produkc|videoproduc|web.stranic|web.site|website design|corporate.identity|multimedijsk(?:a|o) rješen|multimedia production|geodetsk|geodesy|bauleit|building design",re.I)
 NOT_RELEVANT=re.compile(r"excavat|trailer|vehicle|tipper lorry|welfare van|truck|tires|goriv|materijal|office.suppl|computer equipment|printer cartridge|kupnja vozila|nabava goriva",re.I)
 CPV_NAMES={"712":"arhitektonske usluge i projektiranje","714":"urbanizam i krajobrazno planiranje","925":"kulturna baština, muzeji ili kulturne usluge","921":"filmska, video i audiovizualna produkcija","7993":"specijalizirane dizajnerske usluge","798225":"grafički dizajn","71354":"geodetske i kartografske usluge","71355":"fotogrametrija i mjerenja","71356":"tehničko savjetovanje","72413":"izrada web stranica","72212":"razvoj specijalizirane programske podrške","454541":"restauratorski radovi"}
 FIELDS=["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline","deadline-receipt-tender-date-lot","classification-cpv","notice-type","contract-nature"]
@@ -72,6 +72,8 @@ def match(title,cpv):
  has_topic=bool(TOPIC.search(title))
  relevant_cpv=any(any(code.startswith(prefix) for prefix in RELEVANT_CPV) for code in cpv)
  if NOT_RELEVANT.search(title):return False
+ # Avoid generic construction and unrelated supplies solely mentioning renovations.
+ if re.search(r"nabava i ugradnja .*opreme|nabava multimedijalne opreme|opremanje .* opremom",title,re.I) and not relevant_cpv:return False
  return has_topic or relevant_cpv
 def description(title,cpv):
  chunks=[]
@@ -112,7 +114,7 @@ def convert(row):
  title=pick(row.get("notice-title"))
  if not rid or not title:return None
  deadline_items=strings(row.get("deadline-receipt-tender-date-lot")) or strings(row.get("deadline"))
- dd=[z for z in (day(x) for x in deadline_items) if z and z>=NOW.date()]
+ dd=[z for z in (day(x) for x in deadline_items) if z and z>NOW.date()]
  if not dd:return None
  cpv=list(dict.fromkeys(strings(row.get("classification-cpv"))))
  if not match(title,cpv):return None
@@ -155,6 +157,13 @@ def main():
  if not completeness:
   data["status"]="degraded";data["error"]="; ".join(errors)[:800]
  else:
+  # Collapse repeated TED publication notices with the same buyer, contract title and deadline.
+  unique={}
+  for row in records:
+   key=(re.sub(r"\W+"," ",row["title_original"].casefold()).strip(),row["authority"].casefold(),row["deadline"])
+   previous=unique.get(key)
+   if previous is None or row.get("published","")>previous.get("published",""):unique[key]=row
+  records=list(unique.values())
   data.update({"status":"live" if len(completeness)==3 and all(v["complete"] for v in completeness.values()) and not errors else "partial",
     "last_success":NOW.isoformat(timespec="seconds"),"tenders":sorted(records,key=lambda t:(t["deadline"],t["country"])),
     "source_status":completeness,"errors":errors,
