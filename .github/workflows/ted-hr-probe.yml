@@ -1,0 +1,29 @@
+name: TED Croatia contract probe
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ted-hr-probe.yml']
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Sample live Croatia TED public notices
+        run: |
+          python3 - <<'PY'
+          import json,urllib.request,datetime
+          today=datetime.datetime.now(datetime.timezone.utc)
+          date=(today-datetime.timedelta(days=30)).strftime("%Y%m%d")
+          q="buyer-country=HRV AND PD>="+date+" SORT BY publication-date DESC"
+          body={"query":q,"fields":["publication-number","notice-title","buyer-name","buyer-country","publication-date","deadline","deadline-receipt-tender-date-lot","classification-cpv","notice-type"],"limit":8,"scope":"ACTIVE","paginationMode":"PAGE_NUMBER","page":1}
+          request=urllib.request.Request("https://api.ted.europa.eu/v3/notices/search",data=json.dumps(body).encode(),method="POST",headers={"Content-Type":"application/json"})
+          with urllib.request.urlopen(request,timeout=60) as response:raw=json.load(response)
+          print("QUERY",q)
+          print("RESPONSE_KEYS",list(raw))
+          print("TOTAL",raw.get("totalNoticeCount"),raw.get("total"),raw.get("total_count"))
+          rows=raw.get("notices") or raw.get("results") or []
+          print("COUNT",len(rows))
+          for i,x in enumerate(rows):
+            print("ITEM",i,json.dumps(x,ensure_ascii=False)[:2000])
+          PY
