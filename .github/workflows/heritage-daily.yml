@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/heritage_sync.py'
+      - 'scripts/heritage_insights.py'
       - '.github/workflows/heritage-daily.yml'
   schedule:
     - cron: '35 6 * * *'
