@@ -64,7 +64,7 @@ async function main(){
   assert(copied.includes('PREDMET: Molba za stručnu provjeru'),'subject exists '+kind);
   assert(copied.includes('Codeling d.o.o.'),'Croatian company included');
   assert(copied.includes(link),'trusted official source included '+kind);
-  assert(copied.includes('HRVATSKI ISTRAŽIVAČKI SAŽETAK'),'summary included '+kind);
+  assert(copied.includes('HRVATSKI PREGLED STVARNE INTERVENCIJE'),'summary included '+kind);
   assert(copied.includes('Može li se ponuditi samo određeni LOT'),'question list included');
   assert(copied.includes('SAMOSTALNO')&&copied.includes('UZ PARTNERA'),'reviewer decision request included');
   assert(d.getElementById('tcodReviewNotice').textContent.includes('Kopirano'),'feedback exists');
