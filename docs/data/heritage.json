@@ -2,8 +2,8 @@
   "schema_version": 2,
   "status": "partial",
   "source": "TED ograničena pretraga + Prozorro javni API + provjerene službene UNGM objave",
-  "last_attempt": "2026-10-29T19:29:54+01:00",
-  "last_success": "2026-10-29T19:29:54+01:00",
+  "last_attempt": "2026-10-29T19:33:40+01:00",
+  "last_success": "2026-10-29T19:33:40+01:00",
   "heritage_only": true,
   "coverage_complete": false,
   "coverage_warning_hr": "Ovo nije cjelovit popis natječaja cijelog svijeta. TED i Prozorro obuhvaćeni su ograničenim pretragama. UNGM/UNESCO/UNDP/UNOPS i NATO imaju vlastite portale; UNESCO/UNGM primjeri provjereni su 29.10.2026., a ne automatski s UNGM API-ja.",
@@ -36,7 +36,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Irska – Usluge projektiranja u arhitekturi – The Fort Museum and Event Centre, Cultural Quarter, Portlaoise, Co. Laois.”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Laois County Council; država/lokacija navedena u pregledu: Irska. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Irska – Usluge projektiranja u arhitekturi – The Fort Museum and Event Centre, Cultural Quarter, Portlaoise, Co. Laois.”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Laois County Council; država/lokacija navedena u pregledu: Irska. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "IRL",
       "areas": [
@@ -46,9 +46,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "high",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "This tender relates to a competition for the appointment of a suitably qualified and experienced architectural led design team for this heritage led urban regeneration project.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "eng"
+      ],
+      "source_excerpts_original": [
+        "This tender relates to a competition for the appointment of a suitably qualified and experienced architectural led design team for this heritage led urban regeneration project."
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "heritage_design"
       ],
@@ -62,7 +69,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "707107-2026",
@@ -104,26 +111,41 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Njemačka – Arhitektonske, građevne, tehničke i inspekcije usluge – Planungsleistung für die Sanierung, Restaurierung und Erweiterung des denkmalgeschützten \"Alten Gärtnerhauses\" in Nennhausen”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Konzervacija / restauracija, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Landkreis Havelland - Der Landrat -; država/lokacija navedena u pregledu: Njemačka. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Njemačka – Arhitektonske, građevne, tehničke i inspekcije usluge – Planungsleistung für die Sanierung, Restaurierung und Erweiterung des denkmalgeschützten \"Alten Gärtnerhauses\" in Nennhausen”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Arhitektonska snimka / geodetsko ili izmjerno snimanje, Konzervacija / restauracija, Arheološko istraživanje / dokumentiranje, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Landkreis Havelland - Der Landrat -; država/lokacija navedena u pregledu: Njemačka. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "DEU",
       "areas": [
         "architecture",
+        "documentation",
+        "archaeology",
         "restoration"
       ],
       "verification": "live_ted_subset",
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "high",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Die Gemeinde Nennhausen beabsichtigt die umfassende denkmalgerechte Sanierung, Restaurierung und funktionale Erweiterung des historischen Gärtnerhauses am Fouqué-Platz 2 in Nennhausen. Ziel der Maßnahme ist die Erhaltung und langfristige Sicherung der ortsbildprägenden Bausubstanz sowie die Entwicklung eines multifunktionalen Kultur-, Ausstellungs- und Begegnungsortes für Bürgerinnen und Bürger, Vereine sowie Besucher der Region. Durch die bauliche und funktionale Aufwertung sollen öffentliche Nutzungen wie Ausstellungen, Lesungen, kulturelle Veranstaltungen, Bildungsangebote und Vereinsaktivitäten ermöglicht werden. Gleichzeitig sind die Anforderungen an Barrierefreiheit, Brandschutz, Energieeffizienz und zeitgemäße Gebäudetechnik zu erfüllen. Das Vergabeverfahren wird auf Grundlage einer öffentlich-rechtlichen Vereinbarung durch die Zentrale Vergabestelle des Landkreises Havelland durchgeführt. Auftraggeber und Vertragspartner wird die Gemeinde Nennhausen. Das gegenständliche Vorhaben wird mit ELER-Mitteln im Rahmen des GAP-Strategieplans für die Bundesrepublik Deutschland für die Förderperiode 2023 bis 2027 - Intervention EL-0703 (LEADER) finanziert und ein entsprechender Bewilligungsbescheid liegt bereits vor. Objektplanung, Leistungsbild Gebäude+Inneräume nach § 33 ff. HOAI 2021 - Honorarzone IV - Honorarsatz: Mittelsatz Grundleistungen: - LPH 4, 5, 6+7 (je teilweise), 8+9 Besondere Leistungen: - Brandschutz - Baugrundgutachten - Holzschutzgutachten - Bauphysik - Denkmalpflegerische Gutachten - Archäologische Untersuchung - Grenzvermessung - Gebäudevermessung / Bestandsaufmaß - Mitwirkung bei der Nachweisführung des Verwendungsnachweises für die Fördermittel Umbau-/Modernisierungszuschlag: 33 % Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten _________________________________________ Objektplanung, Leistungsbild Freianlagen nach § 38 ff. HOAI - Honorarzone III, - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-5, 6+7 (je teilweise), 8+9 Besondere Leistungen: - keine Umbau-/Modernisierungszuschlag: keinen Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten. Fachplanung, Leistungsbild Tragwerksplanung nach § 49 ff. HOAI - Honorarzone IV - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-6 Besondere Leistungen: keine Umbau-/Modernisierungszuschlag: 33 % Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten. Fachplanung, Leistungsbild Technische Ausrüstung - Heizung, Lüftung, Sanitär nach § 53 ff. HOAI - KG 410, 420, 430 - Honorarzone II, - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-3,4 (teilweise), 5, 6+7 (je teilweise), 8+9 Besondere Leistungen: keine Umbau-/Modernisierungszuschlag: 20% Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten. Fachplanung, Leistungsbild Technische Ausrüstung - Elektro nach § 53 ff. HOAI - KG 440, 450, 460, 470 - Honorarzone II, - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-3,4 (teilweise), 5, 6+7 (je teilweise), 8+9 Besondere Leistungen: keine Umbau-/Modernisierungszuschlag: 20% Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "deu"
+      ],
+      "source_excerpts_original": [
+        "Die Gemeinde Nennhausen beabsichtigt die umfassende denkmalgerechte Sanierung, Restaurierung und funktionale Erweiterung des historischen Gärtnerhauses am Fouqué-Platz 2 in Nennhausen. Ziel der Maßnahme ist die Erhaltung und langfristige Sicherung der ortsbildprägenden Bausubstanz sowie die Entwicklung eines multifunktionalen Kultur-, Ausstellungs- und Begegnungsortes für Bürgerinnen und Bürger, Vereine sowie Besucher der Region. Durch die bauliche und funktionale Aufwertung sollen öffentliche Nutzungen wie Ausstellungen, Lesungen, kulturelle Veranstaltungen, Bildungsangebote und Vereinsaktivitäten ermöglicht werden. Gleichzeitig sind die Anforderungen an Barrierefreiheit, Brandschutz, Energieeffizienz und zeitgemäße Gebäudetechnik zu erfüllen. Das Vergabeverfahren wird auf Grundlage einer öffentlich-rechtlichen Vereinbarung durch die Zentrale Vergabestelle des Landkreises Havelland durchgeführt. Auftraggeber und Vertragspartner wird die Gemeinde Nennhausen. Das gegenständliche Vorhaben wird mit ELER-Mitteln im Rahmen des GAP-Strategieplans für die Bundesrepublik Deutschland für die Förderperiode 2023 bis 2027 - Intervention EL-0703 (LEADER) finanziert und ein entsprechender Bewilligungsbescheid liegt bereits vor.",
+        "Objektplanung, Leistungsbild Gebäude+Inneräume nach § 33 ff. HOAI 2021 - Honorarzone IV - Honorarsatz: Mittelsatz Grundleistungen: - LPH 4, 5, 6+7 (je teilweise), 8+9 Besondere Leistungen: - Brandschutz - Baugrundgutachten - Holzschutzgutachten - Bauphysik - Denkmalpflegerische Gutachten - Archäologische Untersuchung - Grenzvermessung - Gebäudevermessung / Bestandsaufmaß - Mitwirkung bei der Nachweisführung des Verwendungsnachweises für die Fördermittel Umbau-/Modernisierungszuschlag: 33 % Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten _________________________________________ Objektplanung, Leistungsbild Freianlagen nach § 38 ff. HOAI - Honorarzone III, - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-5, 6+7 (je teilweise), 8+9 Besondere Leistungen: - keine Umbau-/Modernisierungszuschlag: keinen Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten.",
+        "Fachplanung, Leistungsbild Tragwerksplanung nach § 49 ff. HOAI - Honorarzone IV - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-6 Besondere Leistungen: keine Umbau-/Modernisierungszuschlag: 33 % Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten.",
+        "Fachplanung, Leistungsbild Technische Ausrüstung - Heizung, Lüftung, Sanitär nach § 53 ff. HOAI - KG 410, 420, 430 - Honorarzone II, - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-3,4 (teilweise), 5, 6+7 (je teilweise), 8+9 Besondere Leistungen: keine Umbau-/Modernisierungszuschlag: 20% Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten.",
+        "Fachplanung, Leistungsbild Technische Ausrüstung - Elektro nach § 53 ff. HOAI - KG 440, 450, 460, 470 - Honorarzone II, - Honorarsatz: Mittelsatz Grundleistungen: - LPH 1-3,4 (teilweise), 5, 6+7 (je teilweise), 8+9 Besondere Leistungen: keine Umbau-/Modernisierungszuschlag: 20% Nebenkosten: max. 5% pauschal, ggf. weitere Nebenkosten Die genauen Angaben zur ausgeschriebenen Leistung entnehmen Sie dem Dok. 4.01 Leistungsbeschreibung und den Begleitdokumenten."
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "heritage_design",
+        "survey",
         "conservation",
+        "archaeology",
         "rehabilitation"
       ],
-      "intervention_hr": "Projektiranje i konzervatorska projektna dokumentacija, Konzervacija / restauracija, Sanacija / rehabilitacija postojećeg objekta",
+      "intervention_hr": "Projektiranje i konzervatorska projektna dokumentacija, Arhitektonska snimka / geodetsko ili izmjerno snimanje, Konzervacija / restauracija, Arheološko istraživanje / dokumentiranje, Sanacija / rehabilitacija postojećeg objekta",
       "subject_explanation_hr": "",
       "procurement_type_hr": "Moguće stručne usluge — potvrditi",
       "tcod_priority": "visoko",
@@ -133,7 +155,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-21-005664-a",
@@ -153,10 +175,10 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Послуги щодо дослідження решток життєдіяльності людини на території Новобогородицької фортеці”. Vrsta zahvata: Istraživanje kulturne baštine i tehničke studije. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. U izvornom zapisu navedena je procijenjena vrijednost 485096.26 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je УПРАВЛІННЯ З ПИТАНЬ ОХОРОНИ КУЛЬТУРНОЇ СПАДЩИНИ ДНІПРОВСЬКОЇ МІСЬКОЇ РАДИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Послуги щодо дослідження решток життєдіяльності людини на території Новобогородицької фортеці”. Vrsta zahvata: Istraživanje kulturne baštine i tehničke studije. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. U izvornom zapisu navedena je procijenjena vrijednost 485096.26 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je УПРАВЛІННЯ З ПИТАНЬ ОХОРОНИ КУЛЬТУРНОЇ СПАДЩИНИ ДНІПРОВСЬКОЇ МІСЬКОЇ РАДИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Послуги щодо дослідження решток життєдіяльності людини на території Новобогородицької фортеці",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -182,7 +204,7 @@
       ],
       "intervention_hr": "Istraživanje kulturne baštine i tehničke studije",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "visoko",
       "tcod_priority_rank": 3,
       "heritage_evidence": false,
@@ -193,6 +215,69 @@
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "summary_evidence_level": "item_descriptions",
       "summary_sentence_minimum": null
+    },
+    {
+      "id": "719482-2026",
+      "source": "TED",
+      "title_original": "Njemačka – Arhitektonske, građevne, tehničke i inspekcije usluge – Denkmalgerechte Sanierung der Löwenapotheke - Generalplanung",
+      "title_hr": "",
+      "authority": "Gemeinnützige Gesellschaft zum Erhalt der historischen Altstadt von Hameln gGmbH",
+      "country": "Njemačka",
+      "canton": "",
+      "published": "2026-10-19",
+      "deadline": "2026-11-09",
+      "deadline_kind": "Rok ponude ili sudjelovanja; vrijeme provjeriti u TED-u",
+      "deadline_precision": "date",
+      "notice_type": "cn-standard",
+      "cpv": [
+        "71000000",
+        "71221000"
+      ],
+      "categories": [
+        "architecture"
+      ],
+      "url": "https://ted.europa.eu/en/notice/-/detail/719482-2026",
+      "codeling_status": "provjeriti",
+      "summary_sentence_minimum": null,
+      "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
+      "open_checked_at": "2026-10-29T18:06:29+01:00",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Njemačka – Arhitektonske, građevne, tehničke i inspekcije usluge – Denkmalgerechte Sanierung der Löwenapotheke - Generalplanung”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Gemeinnützige Gesellschaft zum Erhalt der historischen Altstadt von Hameln gGmbH; država/lokacija navedena u pregledu: Njemačka. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "agency": "TED / naručitelj",
+      "country_code": "DEU",
+      "areas": [
+        "architecture",
+        "restoration"
+      ],
+      "verification": "live_ted_subset",
+      "verified_at": "2026-10-29T18:06:29+01:00",
+      "fit": "high",
+      "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
+      "description_original": "Die Gemeinnützige Gesellschaft zum Erhalt der historischen Altstadt von Hameln gGmbH beabsichtigt die Immobilie Bäckerstraße 12 in Hameln denkmalgerecht zu sanieren bzw. ggf. um einen Teilneubau zu ergänzen. Bereits 2020 wurde eine Voruntersuchung der Liegenschaft angestellt und die Belange und Möglichkeiten des Denkmalschutzes erörtert. Anschließend wurde ein erster Vorentwurf auf Grundlage eines Grobaufmaßes und der Bestandspläne erstellt, welcher zur Definition der Nutzungen als Grundlage für die vorläufige Kostenschätzung diente. Die Unterlagen der Voruntersuchungen, der Vorbefassung und des Bestands wurden als Teil der Vergabeunterlagen zur Verfügung gestellt und sind ausschließlich zum Zwecke dieses Vergabeverfahrens zu verwenden. Folgende Planungsleistungen sind als Generalplanung zu erbringen: - Objektplanung Gebäude/Innenraum gem. § 34 HOAI, LPH 1-9 - Fachplanung Tragwerksplanung § 51 HPAI, LPH 1-6 - Fachplanung Technische Gebäudeausrüstung AG 1-8 § 55 HOAI, LPH 1-9 - Fachplanung Bauphysik gem. Anlage 1.2.2 HOAI (Wärmeschutz und Energiebilanzierung, Bauakustik und Raumakustik), LPH 1-9 sowie Besondere Leistungen.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "deu"
+      ],
+      "source_excerpts_original": [
+        "Die Gemeinnützige Gesellschaft zum Erhalt der historischen Altstadt von Hameln gGmbH beabsichtigt die Immobilie Bäckerstraße 12 in Hameln denkmalgerecht zu sanieren bzw. ggf. um einen Teilneubau zu ergänzen. Bereits 2020 wurde eine Voruntersuchung der Liegenschaft angestellt und die Belange und Möglichkeiten des Denkmalschutzes erörtert. Anschließend wurde ein erster Vorentwurf auf Grundlage eines Grobaufmaßes und der Bestandspläne erstellt, welcher zur Definition der Nutzungen als Grundlage für die vorläufige Kostenschätzung diente. Die Unterlagen der Voruntersuchungen, der Vorbefassung und des Bestands wurden als Teil der Vergabeunterlagen zur Verfügung gestellt und sind ausschließlich zum Zwecke dieses Vergabeverfahrens zu verwenden.",
+        "Folgende Planungsleistungen sind als Generalplanung zu erbringen: - Objektplanung Gebäude/Innenraum gem. § 34 HOAI, LPH 1-9 - Fachplanung Tragwerksplanung § 51 HPAI, LPH 1-6 - Fachplanung Technische Gebäudeausrüstung AG 1-8 § 55 HOAI, LPH 1-9 - Fachplanung Bauphysik gem. Anlage 1.2.2 HOAI (Wärmeschutz und Energiebilanzierung, Bauakustik und Raumakustik), LPH 1-9 sowie Besondere Leistungen."
+      ],
+      "documents_titles": [],
+      "intervention_codes": [
+        "heritage_design",
+        "rehabilitation"
+      ],
+      "intervention_hr": "Projektiranje i konzervatorska projektna dokumentacija, Sanacija / rehabilitacija postojećeg objekta",
+      "subject_explanation_hr": "",
+      "procurement_type_hr": "Moguće stručne usluge — potvrditi",
+      "tcod_priority": "visoko",
+      "tcod_priority_rank": 3,
+      "heritage_evidence": true,
+      "unesco_status": "not_verified",
+      "unesco_site": "",
+      "unesco_url": "",
+      "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-23-007597-a",
@@ -212,10 +297,10 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Технічне обстеження 5-го під'їзду пам'ятки архітектури, містобудування національного значення \"Будинок держпромисловисті (ДЕРЖПРОМ)\" охоронний номер 200031 пошкоджений в результаті воєнних дій за адресою: пл.Свободи, 5 в м. Харкові.”. Vrsta zahvata: Istraživanje kulturne baštine i tehničke studije. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. U izvornom zapisu navedena je procijenjena vrijednost 590689.51 UAH. U javnom zapisu evidentirano je 7 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je ОБЛАСНЕ КОМУНАЛЬНЕ ВИРОБНИЧО-ЕКСПЛУАТАЦІЙНЕ ПІДПРИЄМСТВО \"ДЕРЖПРОМ\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Технічне обстеження 5-го під'їзду пам'ятки архітектури, містобудування національного значення \"Будинок держпромисловисті (ДЕРЖПРОМ)\" охоронний номер 200031 пошкоджений в результаті воєнних дій за адресою: пл.Свободи, 5 в м. Харкові.”. Vrsta zahvata: Istraživanje kulturne baštine i tehničke studije. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. U izvornom zapisu navedena je procijenjena vrijednost 590689.51 UAH. U javnom zapisu evidentirano je 7 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je ОБЛАСНЕ КОМУНАЛЬНЕ ВИРОБНИЧО-ЕКСПЛУАТАЦІЙНЕ ПІДПРИЄМСТВО \"ДЕРЖПРОМ\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Код ДК 021:2015: 71630000-3 — Послуги з технічного огляду та випробувань Технічне обстеження 5-го під'їзду пам'ятки архітектури, містобудування національного значення \"Будинок держпромисловисті (ДЕРЖПРОМ)\" охоронний номер 200031 пошкоджений в результаті воєнних дій за адресою: пл.Свободи, 5 в м. Харкові.",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -245,7 +330,7 @@
       ],
       "intervention_hr": "Istraživanje kulturne baštine i tehničke studije",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "visoko",
       "tcod_priority_rank": 3,
       "heritage_evidence": true,
@@ -275,10 +360,10 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: prvi hitni protuhavarijski radovi. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 90353.17 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 42 +++ родовища на території Роменського району Сумської області.”. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 90353.17 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Звертаємо вашу увагу та додатково уточнюємо, що при заповненні розділу \"Підстави для відмови в участі у процедурі закупівлі\" учасник процедури закупівлі підтверджує відсутність підстав, шляхом самостійного декларування відсутності таких підстав в електронній системі закупівель під час подання тендерної пропозиції, а Переможець процедури закупівлі у строк, що не перевищує чотири дні з дати оприлюднення в електронній системі закупівель повідомлення про намір укласти договір про закупівлю, повинен надати замовнику шляхом оприлюднення в електронній системі закупівель документів, що підтверджують відсутність підстав, зазначених у підпунктах 3, 5, 6 і 12 пункту 47 Особливостей (детально описано у додатку 2 та 4 до ТД). Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 42 +++ родовища на території Роменського району Сумської області.",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -303,8 +388,8 @@
         "archaeology"
       ],
       "intervention_hr": "Arheološko istraživanje / dokumentiranje",
-      "subject_explanation_hr": "prvi hitni protuhavarijski radovi",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "subject_explanation_hr": "",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "visoko",
       "tcod_priority_rank": 3,
       "heritage_evidence": true,
@@ -334,10 +419,10 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: prvi hitni protuhavarijski radovi. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 95207.31 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 173 +++ родовища на території Роменського району Сумської області.”. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 95207.31 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Звертаємо вашу увагу та додатково уточнюємо, що при заповненні розділу \"Підстави для відмови в участі у процедурі закупівлі\" учасник процедури закупівлі підтверджує відсутність підстав, шляхом самостійного декларування відсутності таких підстав в електронній системі закупівель під час подання тендерної пропозиції, а Переможець процедури закупівлі у строк, що не перевищує чотири дні з дати оприлюднення в електронній системі закупівель повідомлення про намір укласти договір про закупівлю, повинен надати замовнику шляхом оприлюднення в електронній системі закупівель документів, що підтверджують відсутність підстав, зазначених у підпунктах 3, 5, 6 і 12 пункту 47 Особливостей (детально описано у додатку 2 та 4 до ТД). Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 173 +++ родовища на території Роменського району Сумської області.",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -362,8 +447,8 @@
         "archaeology"
       ],
       "intervention_hr": "Arheološko istraživanje / dokumentiranje",
-      "subject_explanation_hr": "prvi hitni protuhavarijski radovi",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "subject_explanation_hr": "",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "visoko",
       "tcod_priority_rank": 3,
       "heritage_evidence": true,
@@ -393,10 +478,10 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: prvi hitni protuhavarijski radovi. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 68280.65 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 177 +++ родовища на території Роменського району Сумської області”. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 68280.65 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Звертаємо вашу увагу та додатково уточнюємо, що при заповненні розділу \"Підстави для відмови в участі у процедурі закупівлі\" учасник процедури закупівлі підтверджує відсутність підстав, шляхом самостійного декларування відсутності таких підстав в електронній системі закупівель під час подання тендерної пропозиції, а Переможець процедури закупівлі у строк, що не перевищує чотири дні з дати оприлюднення в електронній системі закупівель повідомлення про намір укласти договір про закупівлю, повинен надати замовнику шляхом оприлюднення в електронній системі закупівель документів, що підтверджують відсутність підстав, зазначених у підпунктах 3, 5, 6 і 12 пункту 47 Особливостей (детально описано у додатку 4 до ТД). Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 177 +++ родовища на території Роменського району Сумської області.",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -421,8 +506,8 @@
         "archaeology"
       ],
       "intervention_hr": "Arheološko istraživanje / dokumentiranje",
-      "subject_explanation_hr": "prvi hitni protuhavarijski radovi",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "subject_explanation_hr": "",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "visoko",
       "tcod_priority_rank": 3,
       "heritage_evidence": true,
@@ -462,7 +547,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Italija – Usluge tehničkog projektiranja u građevinarstvu za objekte niskogradnje – AFFIDAMENTO DEI SERVIZI DI INGEGNERIA E ARCHITETTURA PER LA REDAZIONE DEL PROGETTO DI FATTIBILIT TECNICO-ECONOMICA E DELLE RELAZIONE GEOLOGICA, IL COORDINAMENTO DELLA SICUREZZA IN FASE DI PROGETTAZIONE, I RILIEVI, GLI ACCERTAMENTI E LE INDAGINI CON RISERVA DI AFFIDAMENTO DEI SERVIZI OPZIONALI DI PROGETTAZIONE ESECUTIVA, REDAZIONE DEL PIANO PARTICELLARE DI ESPROPRIO E DELLA RELAZIONE ARCHEOLOGICA,”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Comune di Triggiano; država/lokacija navedena u pregledu: Italija. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Italija – Usluge tehničkog projektiranja u građevinarstvu za objekte niskogradnje – AFFIDAMENTO DEI SERVIZI DI INGEGNERIA E ARCHITETTURA PER LA REDAZIONE DEL PROGETTO DI FATTIBILIT TECNICO-ECONOMICA E DELLE RELAZIONE GEOLOGICA, IL COORDINAMENTO DELLA SICUREZZA IN FASE DI PROGETTAZIONE, I RILIEVI, GLI ACCERTAMENTI E LE INDAGINI CON RISERVA DI AFFIDAMENTO DEI SERVIZI OPZIONALI DI PROGETTAZIONE ESECUTIVA, REDAZIONE DEL PIANO PARTICELLARE DI ESPROPRIO E DELLA RELAZIONE ARCHEOLOGICA,”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Comune di Triggiano; država/lokacija navedena u pregledu: Italija. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "ITA",
       "areas": [
@@ -473,9 +558,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "high",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "AFFIDAMENTO DEI SERVIZI DI INGEGNERIA E ARCHITETTURA PER LA REDAZIONE DEL PROGETTO DI FATTIBILIT TECNICO-ECONOMICA E DELLE RELAZIONE GEOLOGICA, IL COORDINAMENTO DELLA SICUREZZA IN FASE DI PROGETTAZIONE, I RILIEVI, GLI ACCERTAMENTI E LE INDAGINI CON RISERVA DI AFFIDAMENTO DEI SERVIZI OPZIONALI DI PROGETTAZIONE ESECUTIVA, REDAZIONE DEL PIANO PARTICELLARE DI ESPROPRIO E DELLA RELAZIONE ARCHEOLOGICA, DIREZIONE LAVORI E COORDINAMENTO DELLA SICUREZZA IN FASE DI ESECUZIONE, RELATIVI ALL INTERVENTO DENOMINATO: L.19/2024 - INTERVENTI PER LA RESILIENZA, LA VALORIZZAZIONE DEL TERRITORIO E LEFFICIENZA ENERGETICA DEI COMUNI. INTERVENTI DI RIDUZIONE DELLA PERICOLOSIT IDRAULICA NELLABITATO DI TRIGGIANO. CUP: J47H22000560001",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "ita"
+      ],
+      "source_excerpts_original": [
+        "AFFIDAMENTO DEI SERVIZI DI INGEGNERIA E ARCHITETTURA PER LA REDAZIONE DEL PROGETTO DI FATTIBILIT TECNICO-ECONOMICA E DELLE RELAZIONE GEOLOGICA, IL COORDINAMENTO DELLA SICUREZZA IN FASE DI PROGETTAZIONE, I RILIEVI, GLI ACCERTAMENTI E LE INDAGINI CON RISERVA DI AFFIDAMENTO DEI SERVIZI OPZIONALI DI PROGETTAZIONE ESECUTIVA, REDAZIONE DEL PIANO PARTICELLARE DI ESPROPRIO E DELLA RELAZIONE ARCHEOLOGICA, DIREZIONE LAVORI E COORDINAMENTO DELLA SICUREZZA IN FASE DI ESECUZIONE, RELATIVI ALL INTERVENTO DENOMINATO: L.19/2024 - INTERVENTI PER LA RESILIENZA, LA VALORIZZAZIONE DEL TERRITORIO E LEFFICIENZA ENERGETICA DEI COMUNI. INTERVENTI DI RIDUZIONE DELLA PERICOLOSIT IDRAULICA NELLABITATO DI TRIGGIANO. CUP: J47H22000560001"
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "heritage_design",
         "archaeology"
@@ -490,7 +582,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-28-015258-a",
@@ -512,7 +604,7 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
       "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija; izrada projektne dokumentacije. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Istraživanje kulturne baštine i tehničke studije, Konzervacija / restauracija, Prilagodba i prenamjena povijesne građevine. Uloga iz ugovora: Izvođenje radova. Spominje se prilagodba ili prenamjena postojećeg povijesnog objekta. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. U izvornom zapisu navedena je procijenjena vrijednost 3393687.5 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je НАЦІОНАЛЬНИЙ МУЗЕЙ \"ЧОРНОБИЛЬ\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
@@ -575,10 +667,10 @@
       ],
       "fit": "high",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: prvi hitni protuhavarijski radovi. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 52605.81 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 156 +++ родовища на території Роменського району Сумської області”. Vrsta zahvata: Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 52605.81 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je АКЦІОНЕРНЕ ТОВАРИСТВО \"УКPНAФТА\"; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Звертаємо вашу увагу та додатково уточнюємо, що при заповненні розділу \"Підстави для відмови в участі у процедурі закупівлі\" учасник процедури закупівлі підтверджує відсутність підстав, шляхом самостійного декларування відсутності таких підстав в електронній системі закупівель під час подання тендерної пропозиції, а Переможець процедури закупівлі у строк, що не перевищує чотири дні з дати оприлюднення в електронній системі закупівель повідомлення про намір укласти договір про закупівлю, повинен надати замовнику шляхом оприлюднення в електронній системі закупівель документів, що підтверджують відсутність підстав, зазначених у підпунктах 3, 5, 6 і 12 пункту 47 Особливостей (детально описано у додатку 2 та 4 до ТД) Археологічна розвідка (попередні археологічні роботи) в зоні розміщення +++ № 156 +++ родовища на території Роменського району Сумської області",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -603,8 +695,8 @@
         "archaeology"
       ],
       "intervention_hr": "Arheološko istraživanje / dokumentiranje",
-      "subject_explanation_hr": "prvi hitni protuhavarijski radovi",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "subject_explanation_hr": "",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "visoko",
       "tcod_priority_rank": 3,
       "heritage_evidence": true,
@@ -641,7 +733,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Francuska – Arhitektonske, građevne, tehničke i inspekcije usluge – Mission de maîtrise d'œuvre relative à la sécurisation et à la restauration du square Louise Michel, Site du Sacré Cœur, Paris 18ème”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Konzervacija / restauracija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Ville de Paris - DFA- SDA; država/lokacija navedena u pregledu: Francuska. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Francuska – Arhitektonske, građevne, tehničke i inspekcije usluge – Mission de maîtrise d'œuvre relative à la sécurisation et à la restauration du square Louise Michel, Site du Sacré Cœur, Paris 18ème”. Vrsta zahvata: Projektiranje i konzervatorska projektna dokumentacija, Konzervacija / restauracija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Tekst upućuje na projektantske usluge ili pripremu projektne dokumentacije. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je Ville de Paris - DFA- SDA; država/lokacija navedena u pregledu: Francuska. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "FRA",
       "areas": [
@@ -652,9 +744,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "high",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Mission de maîtrise d'œuvre relative à la sécurisation et à la restauration du square Louise Michel, Site du Sacré Cœur, Paris 18ème",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "fra"
+      ],
+      "source_excerpts_original": [
+        "Mission de maîtrise d'œuvre relative à la sécurisation et à la restauration du square Louise Michel, Site du Sacré Cœur, Paris 18ème"
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "heritage_design",
         "conservation"
@@ -669,7 +768,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UNGM-319525",
@@ -699,7 +798,7 @@
         "Traže se istraživanja, tehničke studije i predložene konzervatorske intervencije.",
         "Lokalitet je upisan na UNESCO Popis svjetske baštine."
       ],
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Research, Technical Studies and Proposed Conservation Interventions for the World Heritage property ‘Archaeological Ruins at Moenjodaro’”. Vrsta zahvata: Istraživanje kulturne baštine i tehničke studije, Konzervacija / restauracija, Arheološko istraživanje / dokumentiranje. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. UNESCO status je provjeren: Archaeological Ruins at Moenjodaro nalazi se na Popisu svjetske baštine. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je UNESCO; država/lokacija navedena u pregledu: Pakistan. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Research, Technical Studies and Proposed Conservation Interventions for the World Heritage property ‘Archaeological Ruins at Moenjodaro’”. Vrsta zahvata: Istraživanje kulturne baštine i tehničke studije, Konzervacija / restauracija, Arheološko istraživanje / dokumentiranje. Predmet je svjetsko arheološko dobro Moenjodaro u Pakistanu. Traže se istraživanja, tehničke studije i predložene konzervatorske intervencije. Lokalitet je upisan na UNESCO Popis svjetske baštine. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Tekst upućuje na istraživanje, dijagnostiku ili stručne studije. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. UNESCO status je provjeren: Archaeological Ruins at Moenjodaro nalazi se na Popisu svjetske baštine. Oglas je snažno povezan s projektiranjem, istraživanjem ili dokumentacijom kulturne baštine; uvjete natječaja ipak treba pročitati. Naručitelj je UNESCO; država/lokacija navedena u pregledu: Pakistan. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_source": "Provjereni naslov i dostupni metapodaci izvornog oglasa",
       "description_level": "title_only",
       "intervention_codes": [
@@ -740,10 +839,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija i prilagodba za novu namjenu; restauracija; prvi hitni protuhavarijski radovi. Vrsta zahvata: Konzervacija / restauracija, Hitni protuhavarijski i stabilizacijski radovi, Prilagodba i prenamjena povijesne građevine. Uloga iz ugovora: Izvođenje radova. Izričito su prepoznati hitni radovi stabilizacije ili zaštite objekta; to je drukčije od samog projektiranja. Spominje se prilagodba ili prenamjena postojećeg povijesnog objekta. U izvornom zapisu navedena je procijenjena vrijednost 4134153.0 UAH. U javnom zapisu evidentirano je 8 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Господарський суд міста Києва; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija i prilagodba za novu namjenu; restauracija; hitni protuhavarijski radovi. Vrsta zahvata: Konzervacija / restauracija, Hitni protuhavarijski i stabilizacijski radovi, Prilagodba i prenamjena povijesne građevine. Uloga iz ugovora: Izvođenje radova. Izričito su prepoznati hitni radovi stabilizacije ili zaštite objekta; to je drukčije od samog projektiranja. Spominje se prilagodba ili prenamjena postojećeg povijesnog objekta. U izvornom zapisu navedena je procijenjena vrijednost 4134153.0 UAH. U javnom zapisu evidentirano je 8 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Господарський суд міста Києва; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Реставрація та пристосування щойно виявленого об'єкта культурної спадщини - Флігель, 1897 року, по вулиці Б. Хмельницького, 44-в у Шевченківському районі м. Києва. Попередні, першочергові, протиаварійні роботи",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -775,7 +874,7 @@
         "adaptive_reuse"
       ],
       "intervention_hr": "Konzervacija / restauracija, Hitni protuhavarijski i stabilizacijski radovi, Prilagodba i prenamjena povijesne građevine",
-      "subject_explanation_hr": "restauracija i prilagodba za novu namjenu; restauracija; prvi hitni protuhavarijski radovi",
+      "subject_explanation_hr": "restauracija i prilagodba za novu namjenu; restauracija; hitni protuhavarijski radovi",
       "procurement_type_hr": "Izvođenje radova",
       "tcod_priority": "srednje",
       "tcod_priority_rank": 2,
@@ -807,7 +906,7 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
       "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija. Vrsta zahvata: Konzervacija / restauracija, Prilagodba i prenamjena povijesne građevine. Uloga iz ugovora: Izvođenje radova. Spominje se prilagodba ili prenamjena postojećeg povijesnog objekta. U izvornom zapisu navedena je procijenjena vrijednost 16215095.83 UAH. U javnom zapisu evidentirano je 21 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Музей видатних діячів української культури Лесі Українки,Миколи Лисенка,Панаса Саксаганського,Михайла Старицького; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
@@ -890,7 +989,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Francuska – Arhitektonske usluge za zgrade – Maîtrise d'oeuvre pour la réhabilitation de deux anciennes maisons en équipement collectif d'accueil et d'hébergement de cyclotouristes, de restauration pour le grand public et de location d'équipements sportifs.”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Commune d'Aire sur la Lys; država/lokacija navedena u pregledu: Francuska. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Francuska – Arhitektonske usluge za zgrade – Maîtrise d'oeuvre pour la réhabilitation de deux anciennes maisons en équipement collectif d'accueil et d'hébergement de cyclotouristes, de restauration pour le grand public et de location d'équipements sportifs.”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Commune d'Aire sur la Lys; država/lokacija navedena u pregledu: Francuska. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "FRA",
       "areas": [
@@ -900,9 +999,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Maîtrise d'oeuvre pour la réhabilitation de deux anciennes maisons en équipement collectif d'accueil et d'hébergement de cyclotouristes, de restauration pour le grand public et de location d'équipements sportifs.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "fra"
+      ],
+      "source_excerpts_original": [
+        "Maîtrise d'oeuvre pour la réhabilitation de deux anciennes maisons en équipement collectif d'accueil et d'hébergement de cyclotouristes, de restauration pour le grand public et de location d'équipements sportifs."
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "conservation"
       ],
@@ -916,7 +1022,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UNGM-318907",
@@ -945,7 +1051,7 @@
         "Naručitelj je UNOPS za jordanski Odjel za starine.",
         "Ovo nije arhitektonsko projektiranje ni restauratorska usluga."
       ],
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „RFQ Goods — Supply & Commissioning of Conservation/Restoration Tools to the Department of General Antiquities — Amman, Jordan”. Vrsta zahvata: Konzervacija / restauracija, Nabava opreme za konzervaciju. Uloga iz ugovora: Nabava opreme / robe. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je UNOPS; država/lokacija navedena u pregledu: Jordan. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „RFQ Goods — Supply & Commissioning of Conservation/Restoration Tools to the Department of General Antiquities — Amman, Jordan”. Vrsta zahvata: Konzervacija / restauracija, Nabava opreme za konzervaciju. Nabava se odnosi na isporuku i puštanje u rad opreme za konzerviranje i restauriranje kulturnih predmeta. Naručitelj je UNOPS za jordanski Odjel za starine. Ovo nije arhitektonsko projektiranje ni restauratorska usluga. Uloga iz ugovora: Nabava opreme / robe. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je UNOPS; država/lokacija navedena u pregledu: Jordan. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_source": "Provjereni naslov i dostupni metapodaci izvornog oglasa",
       "description_level": "title_only",
       "intervention_codes": [
@@ -985,7 +1091,7 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
       "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija. Vrsta zahvata: Konzervacija / restauracija, Prilagodba i prenamjena povijesne građevine. Uloga iz ugovora: Izvođenje radova. Spominje se prilagodba ili prenamjena postojećeg povijesnog objekta. U izvornom zapisu navedena je procijenjena vrijednost 92158260.0 UAH. U javnom zapisu evidentirano je 17 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕРЖАВНИЙ БІОТЕХНОЛОГІЧНИЙ УНІВЕРСИТЕТ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
@@ -1056,7 +1162,7 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
       "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija; opsežna sanacija krova. Vrsta zahvata: Konzervacija / restauracija, Sanacija / rehabilitacija postojećeg objekta, Sanacija krovišta ili pokrova. Uloga iz ugovora: Izvođenje radova. U izvornom zapisu navedena je procijenjena vrijednost 5463083.0 UAH. U javnom zapisu evidentirano je 11 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ЗАХІДНЕ КВАРТИРНО-ЕКСПЛУАТАЦІЙНЕ УПРАВЛІННЯ СИЛ ЛОГІСТИКИ ЗБРОЙНИХ СИЛ УКРАЇНИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
@@ -1132,7 +1238,7 @@
         "Naručitelj je UNDP.",
         "Ponude se predaju putem sustava Quantum."
       ],
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Conservation Works at Agios Demetrios Church”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Mogući radovi — provjeriti ugovor. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je UNDP; država/lokacija navedena u pregledu: Cipar. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Conservation Works at Agios Demetrios Church”. Vrsta zahvata: Konzervacija / restauracija. Predmet su konzervatorski radovi na crkvi Agios Demetrios na Cipru. Naručitelj je UNDP. Ponude se predaju putem sustava Quantum. Uloga iz ugovora: Mogući radovi — provjeriti ugovor. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je UNDP; država/lokacija navedena u pregledu: Cipar. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_source": "Provjereni naslov i dostupni metapodaci izvornog oglasa",
       "description_level": "title_only",
       "intervention_codes": [
@@ -1176,7 +1282,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Francuska – Arhitektonske usluge za zgrade – Mission de maîtrise d'oeuvre pour la programmation de travaux de restauration de la Collégiale Programme 2027-2033 - relance”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Mogući radovi — provjeriti ugovor. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Ville de Guerande; država/lokacija navedena u pregledu: Francuska. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Francuska – Arhitektonske usluge za zgrade – Mission de maîtrise d'oeuvre pour la programmation de travaux de restauration de la Collégiale Programme 2027-2033 - relance”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Mogući radovi — provjeriti ugovor. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Ville de Guerande; država/lokacija navedena u pregledu: Francuska. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "FRA",
       "areas": [
@@ -1186,9 +1292,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Le contrat comporte des tranches optionnelles définies au cahier des charges. Le détail des missions confiées au titulaire figure au cahier des charges. Les prestations sont réglées par des prix forfaitaires",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "fra"
+      ],
+      "source_excerpts_original": [
+        "Le contrat comporte des tranches optionnelles définies au cahier des charges. Le détail des missions confiées au titulaire figure au cahier des charges. Les prestations sont réglées par des prix forfaitaires"
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "conservation"
       ],
@@ -1202,7 +1315,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-27-003527-a",
@@ -1222,7 +1335,7 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
       "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija. Vrsta zahvata: Konzervacija / restauracija, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Izvođenje radova. U izvornom zapisu navedena je procijenjena vrijednost 3624940.0 UAH. U javnom zapisu evidentirano je 8 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je УПРАВЛІННЯ СЛУЖБИ БЕЗПЕКИ УКРАЇНИ У ВОЛИНСЬКІЙ ОБЛАСТІ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
@@ -1287,7 +1400,7 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
       "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija. Vrsta zahvata: Konzervacija / restauracija, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Izvođenje radova. U izvornom zapisu navedena je procijenjena vrijednost 41027730.0 UAH. U javnom zapisu evidentirano je 13 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Сумський державний університет; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
@@ -1357,10 +1470,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija; konzervacija; prvi hitni protuhavarijski radovi. Vrsta zahvata: Konzervacija / restauracija, Hitni protuhavarijski i stabilizacijski radovi, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Izvođenje radova. Izričito su prepoznati hitni radovi stabilizacije ili zaštite objekta; to je drukčije od samog projektiranja. U izvornom zapisu navedena je procijenjena vrijednost 7013446.0 UAH. U javnom zapisu evidentirano je 9 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕПАРТАМЕНТ З БЛАГОУСТРОЮ, ВІДБУДОВИ ТА РЕКОНСТРУКЦІЇ ХАРКІВСЬКОЇ МІСЬКОЇ РАДИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet intervencije prema izvornom naslovu: restauracija; konzervacija; hitni protuhavarijski radovi. Vrsta zahvata: Konzervacija / restauracija, Hitni protuhavarijski i stabilizacijski radovi, Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Izvođenje radova. Izričito su prepoznati hitni radovi stabilizacije ili zaštite objekta; to je drukčije od samog projektiranja. U izvornom zapisu navedena je procijenjena vrijednost 7013446.0 UAH. U javnom zapisu evidentirano je 9 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕПАРТАМЕНТ З БЛАГОУСТРОЮ, ВІДБУДОВИ ТА РЕКОНСТРУКЦІЇ ХАРКІВСЬКОЇ МІСЬКОЇ РАДИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Ремонт (реставраційний) в багатоквартирному житловому будинку-пам’ятки архітектури- виконання протиаварійних та консерваційних робіт, частини пам’ятки містобудування та архітектури місцевого значення об’єкту «не визначено назву пам’ятки» (охорон.№7262-Ха), а саме 1-го під’їзду пошкодженого внаслідок бойових дій, за адресою: місто Харків, проспект Незалежності, 1 (проспект Правди, 1) Коригування (45453000-7 – капітальний ремонт і реставрація)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -1393,7 +1506,7 @@
         "rehabilitation"
       ],
       "intervention_hr": "Konzervacija / restauracija, Hitni protuhavarijski i stabilizacijski radovi, Sanacija / rehabilitacija postojećeg objekta",
-      "subject_explanation_hr": "restauracija; konzervacija; prvi hitni protuhavarijski radovi",
+      "subject_explanation_hr": "restauracija; konzervacija; hitni protuhavarijski radovi",
       "procurement_type_hr": "Izvođenje radova",
       "tcod_priority": "srednje",
       "tcod_priority_rank": 2,
@@ -1433,7 +1546,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Belgija – Arhitektonske usluge za zgrade – Het ontwerpen van restauratie- en premiedossier(s) en het opvolgen van de werken voor de Pastorie Sint-Lambertusparochie te Kessel (Nijlen)”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Stichting Kempens Landschap; država/lokacija navedena u pregledu: Belgija. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Belgija – Arhitektonske usluge za zgrade – Het ontwerpen van restauratie- en premiedossier(s) en het opvolgen van de werken voor de Pastorie Sint-Lambertusparochie te Kessel (Nijlen)”. Vrsta zahvata: Konzervacija / restauracija. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Stichting Kempens Landschap; država/lokacija navedena u pregledu: Belgija. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "BEL",
       "areas": [
@@ -1443,9 +1556,17 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "De gemeente Nijlen wenst, in samenwerking met Stichting Kempens Landschap, de als monument beschermde pastorie Sint-Lambertusparochie te Kessel te restaureren en te voorzien van een nieuwe functie door middel van een herbestemming. De verdere uitwerking van het project gebeurt in functie van de actuele noden, de visie van de gemeente Nijlen en het beschikbare budget. De pastorie bevindt zich in Kessel-Dorp, deelgemeente van de gemeente Nijlen. De pastorie maakt deel uit van het historische ensemble rond de Sint-Lambertuskerk en vormt samen met de kerk, het gemeentehuis, de kerktuin en het openbaar domein het ruimtelijke en erfgoedkundige hart van Kessel-Dorp.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "nld"
+      ],
+      "source_excerpts_original": [
+        "De gemeente Nijlen wenst, in samenwerking met Stichting Kempens Landschap, de als monument beschermde pastorie Sint-Lambertusparochie te Kessel te restaureren en te voorzien van een nieuwe functie door middel van een herbestemming. De verdere uitwerking van het project gebeurt in functie van de actuele noden, de visie van de gemeente Nijlen en het beschikbare budget.",
+        "De pastorie bevindt zich in Kessel-Dorp, deelgemeente van de gemeente Nijlen. De pastorie maakt deel uit van het historische ensemble rond de Sint-Lambertuskerk en vormt samen met de kerk, het gemeentehuis, de kerktuin en het openbaar domein het ruimtelijke en erfgoedkundige hart van Kessel-Dorp."
+      ],
+      "documents_titles": [],
       "intervention_codes": [
         "conservation"
       ],
@@ -1459,7 +1580,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-14-014569-a",
@@ -1479,10 +1600,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet intervencije prema izvornom naslovu: izrada zaštitnih natpisnih ploča. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 91666.67 UAH. U javnom zapisu evidentirano je 7 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Управління містобудування та архітектури Чернігівської обласної державної адміністрації; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet intervencije prema izvornom naslovu: izrada zaštitnih natpisnih ploča. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 91666.67 UAH. U javnom zapisu evidentirano je 7 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Управління містобудування та архітектури Чернігівської обласної державної адміністрації; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Послуги з виготовлення охоронних дощок на пам’ятках архітектури, містобудування та садово-паркового мистецтва",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -1510,7 +1631,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "izrada zaštitnih natpisnih ploča",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -1520,51 +1641,6 @@
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "summary_evidence_level": "item_descriptions",
-      "summary_sentence_minimum": null
-    },
-    {
-      "id": "UNGM-317513",
-      "title_original": "Final evaluation of the third project “Support to Education, Culture and Media in Ukraine through UNESCO”",
-      "title_hr": "",
-      "source": "UNGM",
-      "agency": "UNESCO",
-      "authority": "UNESCO",
-      "country": "Ukrajina",
-      "country_code": "UKR",
-      "deadline": "2026-10-30T14:00:00+03:00",
-      "published": "2026-10-09",
-      "url": "https://www.ungm.org/Public/Notice/317513",
-      "reference": "RFP-UA-26-09",
-      "areas": [
-        "research",
-        "documentation"
-      ],
-      "fit": "medium",
-      "access": "službena UNGM objava; dokumenti često zahtijevaju registraciju",
-      "verified_at": "2026-10-29T18:00:00+01:00",
-      "verification": "manual_official_2026_10_29",
-      "details_hr": "Provjeriti konačni rok iz oglasa i obvezne reference za evaluacije programa; izvorni opis sadrži i raniji datum predaje.",
-      "facts_hr": [
-        "Predmet je završna evaluacija UNESCO-ova projekta potpore obrazovanju, kulturi i medijima u Ukrajini.",
-        "Nije riječ o projektiranju ili fizičkoj restauraciji kulturnog dobra.",
-        "U oglasu je objavljen kontakt UNESCO-ova ureda u Ukrajini."
-      ],
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Final evaluation of the third project “Support to Education, Culture and Media in Ukraine through UNESCO””. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je UNESCO; država/lokacija navedena u pregledu: Ukrajina. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
-      "description_source": "Provjereni naslov i dostupni metapodaci izvornog oglasa",
-      "description_level": "title_only",
-      "intervention_codes": [],
-      "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
-      "subject_explanation_hr": "",
-      "procurement_type_hr": "Moguće stručne usluge — potvrditi",
-      "tcod_priority": "provjeriti",
-      "tcod_priority_rank": 1,
-      "heritage_evidence": false,
-      "unesco_status": "not_verified",
-      "unesco_site": "",
-      "unesco_url": "",
-      "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
-      "summary_evidence_level": "title_only",
       "summary_sentence_minimum": null
     },
     {
@@ -1585,10 +1661,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „«Поточний ремонт приміщень в навчальному корпусі ЛНУ ім. Івана Франка на вул. Менцинського, 8 у м. Львові (пам’ятка архітектури, ох. № 4944-Лв) за кодом ДК 021:2015 - 45450000-6 - Інші завершальні будівельні роботи»”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 3751233.33 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Львівський національний університет імені Івана Франка; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „«Поточний ремонт приміщень в навчальному корпусі ЛНУ ім. Івана Франка на вул. Менцинського, 8 у м. Львові (пам’ятка архітектури, ох. № 4944-Лв) за кодом ДК 021:2015 - 45450000-6 - Інші завершальні будівельні роботи»”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 3751233.33 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Львівський національний університет імені Івана Франка; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Поточний ремонт приміщень в навчальному корпусі ЛНУ ім. Івана Франка на вул. Менцинського, 8 у м. Львові (пам’ятка архітектури, ох. № 4944-Лв)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -1613,7 +1689,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -1643,10 +1719,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „«Поточний ремонт приміщень вбиралень в навчальному корпусі ЛНУ ім. Івана Франка на вул. Чупринки, 49 у м. Львові (пам’ятка архітектури, ох. № 5662-Лв) ДК 021:2015 - 45450000-6 - Інші завершальні будівельні роботи»”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 1627951.67 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Львівський національний університет імені Івана Франка; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „«Поточний ремонт приміщень вбиралень в навчальному корпусі ЛНУ ім. Івана Франка на вул. Чупринки, 49 у м. Львові (пам’ятка архітектури, ох. № 5662-Лв) ДК 021:2015 - 45450000-6 - Інші завершальні будівельні роботи»”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 1627951.67 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Львівський національний університет імені Івана Франка; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Поточний ремонт приміщень вбиралень в навчальному корпусі ЛНУ ім. Івана Франка на вул. Чупринки, 49 у м. Львові (пам’ятка архітектури, ох. № 5662-Лв)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -1671,7 +1747,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -1701,10 +1777,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „«Поточний ремонт авдиторії № 311 в навчальному корпусі ЛНУ ім. Івана Франка на вул. Університетській, 1 у м. Львові (пам’ятка архітектури, ох. № 5511-Лв) за кодом ДК 021:2015 - 45450000-6 - Інші завершальні будівельні роботи»”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 2295646.67 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Львівський національний університет імені Івана Франка; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „«Поточний ремонт авдиторії № 311 в навчальному корпусі ЛНУ ім. Івана Франка на вул. Університетській, 1 у м. Львові (пам’ятка архітектури, ох. № 5511-Лв) за кодом ДК 021:2015 - 45450000-6 - Інші завершальні будівельні роботи»”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 2295646.67 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Львівський національний університет імені Івана Франка; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Поточний ремонт авдиторії № 311 в навчальному корпусі ЛНУ ім. Івана Франка на вул. Університетській, 1 у м. Львові (пам’ятка архітектури, ох. № 5511-Лв)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -1729,7 +1805,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -1759,10 +1835,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „ДК 021:2015 (CPV): 79997000-9 Послуги з організації відряджень (послуги з організації відрядження стейкхолдерів для участі у воркшопі в межах реалізації Проєкту “Розумний туризм - розумні дестинації: доступність, сталість, диджиталізація, культурна спадщина та креативність (Smart Tour)”, що реалізується в рамках програми Interreg Europe (номер проєкту 03C0938)”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 150000.0 UAH. U javnom zapisu evidentirano je 9 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕПАРТАМЕНТ ІНВЕСТИЦІЙНОЇ ПОЛІТИКИ, ПРОЄКТІВ, МІЖНАРОДНИХ ЗВ'ЯЗКІВ, ТУРИЗМУ ТА ПРОМОЦІЙ МІСТА ІВАНО-ФРАНКІВСЬКОЇ МІСЬКОЇ РАДИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „ДК 021:2015 (CPV): 79997000-9 Послуги з організації відряджень (послуги з організації відрядження стейкхолдерів для участі у воркшопі в межах реалізації Проєкту “Розумний туризм - розумні дестинації: доступність, сталість, диджиталізація, культурна спадщина та креативність (Smart Tour)”, що реалізується в рамках програми Interreg Europe (номер проєкту 03C0938)”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 150000.0 UAH. U javnom zapisu evidentirano je 9 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕПАРТАМЕНТ ІНВЕСТИЦІЙНОЇ ПОЛІТИКИ, ПРОЄКТІВ, МІЖНАРОДНИХ ЗВ'ЯЗКІВ, ТУРИЗМУ ТА ПРОМОЦІЙ МІСТА ІВАНО-ФРАНКІВСЬКОЇ МІСЬКОЇ РАДИ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "ДК 021:2015 (CPV): 79997000-9 Послуги з організації відряджень (послуги з організації відрядження стейкхолдерів для участі у воркшопі в межах реалізації Проєкту “Розумний туризм - розумні дестинації: доступність, сталість, диджиталізація, культурна спадщина та креативність (Smart Tour)”, що реалізується в рамках програми Interreg Europe (номер проєкту 03C0938)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -1792,7 +1868,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -1830,7 +1906,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Belgija – Studija izvodljivosti, savjetodavna usluga, analiza – Programmations culturelle et architecturale de la Maison-musée Salvatore Adamo et encadrement de la mission d'auteur de projet”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Ville de Mons; država/lokacija navedena u pregledu: Belgija. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Belgija – Studija izvodljivosti, savjetodavna usluga, analiza – Programmations culturelle et architecturale de la Maison-musée Salvatore Adamo et encadrement de la mission d'auteur de projet”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Ville de Mons; država/lokacija navedena u pregledu: Belgija. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "BEL",
       "areas": [
@@ -1840,9 +1916,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Le présent marché a pour objectif de désigner un-e spécialiste des programmations culturelle et architecturale, afin d’accompagner la traduction opérationnelle du projet de la Maison Salvatore Adamo en un lieu muséal et culturel à forte vocation touristique. Il s’agira de définir les orientations, usages et fonctionnalités permettant d’articuler, au sein du bâtiment et de ses abords, une double ambition : la valorisation patrimoniale et la mise en œuvre d’un musée vivant, dont la dynamique repose sur la programmation artistique et l’accueil de créateurs. Les prestations attendues intègreront également une expertise en concertation et en gouvernance collaborative, en vue d’assurer l’ancrage territorial du projet et la valorisation de la création musicale locale. L’équipe doit se composer au minimum de : >un ARCHITECTE ou INGENIEUR CIVIL ARCHITECTE >un EXPERT EN INGENIERIE CULTURELLE >un EXPERT EN INTELLIGENCE COLLECTIVE Le présent marché est divisé en 5 \"volets\" et c'est un marché à tranches ferme et conditionnelles. La tranche ferme porte sur le volet 1, le volet 2, 3, 4 et 5 étant des tranches conditionnelles et sont donc susceptibles de ne pas être commandées par le pouvoir adjudicateur en fonction de l'évolution du projet, de ses possibilités financières ou pour toute autre raison qui lui est propre. Le prestataire de service est avisé que le Pouvoir Adjudicateur est susceptible d’interrompre la mission après chacune des phases pour des raisons qui lui sont propres, sans qu’il en résulte pour lui aucune indemnité.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "fra"
+      ],
+      "source_excerpts_original": [
+        "Le présent marché a pour objectif de désigner un-e spécialiste des programmations culturelle et architecturale, afin d’accompagner la traduction opérationnelle du projet de la Maison Salvatore Adamo en un lieu muséal et culturel à forte vocation touristique. Il s’agira de définir les orientations, usages et fonctionnalités permettant d’articuler, au sein du bâtiment et de ses abords, une double ambition : la valorisation patrimoniale et la mise en œuvre d’un musée vivant, dont la dynamique repose sur la programmation artistique et l’accueil de créateurs. Les prestations attendues intègreront également une expertise en concertation et en gouvernance collaborative, en vue d’assurer l’ancrage territorial du projet et la valorisation de la création musicale locale. L’équipe doit se composer au minimum de : >un ARCHITECTE ou INGENIEUR CIVIL ARCHITECTE >un EXPERT EN INGENIERIE CULTURELLE >un EXPERT EN INTELLIGENCE COLLECTIVE Le présent marché est divisé en 5 \"volets\" et c'est un marché à tranches ferme et conditionnelles. La tranche ferme porte sur le volet 1, le volet 2, 3, 4 et 5 étant des tranches conditionnelles et sont donc susceptibles de ne pas être commandées par le pouvoir adjudicateur en fonction de l'évolution du projet, de ses possibilités financières ou pour toute autre raison qui lui est propre. Le prestataire de service est avisé que le Pouvoir Adjudicateur est susceptible d’interrompre la mission après chacune des phases pour des raisons qui lui sont propres, sans qu’il en résulte pour lui aucune indemnité."
+      ],
+      "documents_titles": [],
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
@@ -1854,7 +1937,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "708348-2026",
@@ -1892,7 +1975,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Poljska – Usluge grafičkog oblikovanja – Kompleksowa odbudowa Zagrody Styp-Rekowskich w Płotowie. Opracowanie koncepcji aranżacji wystawy stałej pn. „Kaszubskie Pogranicze” w Płotowie”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Muzeum Zachodniokaszubskie w Bytowie; država/lokacija navedena u pregledu: Poljska. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Poljska – Usluge grafičkog oblikovanja – Kompleksowa odbudowa Zagrody Styp-Rekowskich w Płotowie. Opracowanie koncepcji aranżacji wystawy stałej pn. „Kaszubskie Pogranicze” w Płotowie”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Muzeum Zachodniokaszubskie w Bytowie; država/lokacija navedena u pregledu: Poljska. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "POL",
       "areas": [
@@ -1902,9 +1985,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "1. Przedmiotem konkursu jest opracowanie koncepcji aranżacji wystawy stałej pn. \"Kaszubskie Pogranicze\" zlokalizowanej w Zagrodzie Styp-Rekowskich w Płotowie, obejmującej: a. aranżację przestrzeni zewnętrznej zagrody, w tym układu komunikacji pomiędzy obiektami, elementów ekspozycyjnych w przestrzeni zewnętrznej, tablic informacyjnych oraz makiet - w szczególności tablicy informacyjnej przed wejściem, oznaczenia z nazwą muzeum, tablic lub modeli prezentujących budynek celny drewniany (niemiecki) i budynek celny murowany (polski), makiety z kamieniem/kamieniami granicznymi po uregulowaniach wersalskich, b. aranżację budynku poinwentarskiego, w tym strefy wejściowej z punktem informacji i sprzedaży pamiątek, sali ekspozycyjnej z infokioskiem z zestawem map historycznych oraz planszami tematycznymi, c. aranżację dworku w zakresie określonym wytycznymi konkursowymi stanowiącymi załącznik nr 1 do niniejszego regulaminu, d. spójną koncepcję narracji wystawy uwzględniającą dziedzictwo kulturowe Kaszubskiego Pogranicza, w tym historię ziemi bytowskiej od średniowiecza do początku XX wieku. 2. Szczegółowy opis przedmiotu konkursu zawierają wytyczne konkursowe stanowiące załącznik nr 1 do regulaminu. 3. Nagrodą w konkursie jest zaproszenie zwycięzcy do negocjacji w trybie zamówienia z wolnej ręki na podstawie art. 214 ust. 1 pkt 4 PZP w zw. z art. 326 pkt 2 PZP. Przedmiotem usługi będzie objęte wykonanie wystawy stałej zgodnie z wybraną pracą konkursową oraz załącznikiem nr 1 do niniejszego regulaminu.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "pol"
+      ],
+      "source_excerpts_original": [
+        "1. Przedmiotem konkursu jest opracowanie koncepcji aranżacji wystawy stałej pn. \"Kaszubskie Pogranicze\" zlokalizowanej w Zagrodzie Styp-Rekowskich w Płotowie, obejmującej: a. aranżację przestrzeni zewnętrznej zagrody, w tym układu komunikacji pomiędzy obiektami, elementów ekspozycyjnych w przestrzeni zewnętrznej, tablic informacyjnych oraz makiet - w szczególności tablicy informacyjnej przed wejściem, oznaczenia z nazwą muzeum, tablic lub modeli prezentujących budynek celny drewniany (niemiecki) i budynek celny murowany (polski), makiety z kamieniem/kamieniami granicznymi po uregulowaniach wersalskich, b. aranżację budynku poinwentarskiego, w tym strefy wejściowej z punktem informacji i sprzedaży pamiątek, sali ekspozycyjnej z infokioskiem z zestawem map historycznych oraz planszami tematycznymi, c. aranżację dworku w zakresie określonym wytycznymi konkursowymi stanowiącymi załącznik nr 1 do niniejszego regulaminu, d. spójną koncepcję narracji wystawy uwzględniającą dziedzictwo kulturowe Kaszubskiego Pogranicza, w tym historię ziemi bytowskiej od średniowiecza do początku XX wieku. 2. Szczegółowy opis przedmiotu konkursu zawierają wytyczne konkursowe stanowiące załącznik nr 1 do regulaminu. 3. Nagrodą w konkursie jest zaproszenie zwycięzcy do negocjacji w trybie zamówienia z wolnej ręki na podstawie art. 214 ust. 1 pkt 4 PZP w zw. z art. 326 pkt 2 PZP. Przedmiotem usługi będzie objęte wykonanie wystawy stałej zgodnie z wybraną pracą konkursową oraz załącznikiem nr 1 do niniejszego regulaminu."
+      ],
+      "documents_titles": [],
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
@@ -1916,60 +2006,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
-    },
-    {
-      "id": "719482-2026",
-      "source": "TED",
-      "title_original": "Njemačka – Arhitektonske, građevne, tehničke i inspekcije usluge – Denkmalgerechte Sanierung der Löwenapotheke - Generalplanung",
-      "title_hr": "",
-      "authority": "Gemeinnützige Gesellschaft zum Erhalt der historischen Altstadt von Hameln gGmbH",
-      "country": "Njemačka",
-      "canton": "",
-      "published": "2026-10-19",
-      "deadline": "2026-11-09",
-      "deadline_kind": "Rok ponude ili sudjelovanja; vrijeme provjeriti u TED-u",
-      "deadline_precision": "date",
-      "notice_type": "cn-standard",
-      "cpv": [
-        "71000000",
-        "71221000"
-      ],
-      "categories": [
-        "architecture"
-      ],
-      "url": "https://ted.europa.eu/en/notice/-/detail/719482-2026",
-      "codeling_status": "provjeriti",
-      "summary_sentence_minimum": null,
-      "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
-      "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Njemačka – Arhitektonske, građevne, tehničke i inspekcije usluge – Denkmalgerechte Sanierung der Löwenapotheke - Generalplanung”. Vrsta zahvata: Sanacija / rehabilitacija postojećeg objekta. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Gemeinnützige Gesellschaft zum Erhalt der historischen Altstadt von Hameln gGmbH; država/lokacija navedena u pregledu: Njemačka. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
-      "agency": "TED / naručitelj",
-      "country_code": "DEU",
-      "areas": [
-        "restoration"
-      ],
-      "verification": "live_ted_subset",
-      "verified_at": "2026-10-29T18:06:29+01:00",
-      "fit": "medium",
-      "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
-      "intervention_codes": [
-        "rehabilitation"
-      ],
-      "intervention_hr": "Sanacija / rehabilitacija postojećeg objekta",
-      "subject_explanation_hr": "",
-      "procurement_type_hr": "Moguće stručne usluge — potvrditi",
-      "tcod_priority": "provjeriti",
-      "tcod_priority_rank": 1,
-      "heritage_evidence": true,
-      "unesco_status": "not_verified",
-      "unesco_site": "",
-      "unesco_url": "",
-      "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-28-004401-a",
@@ -1989,10 +2026,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Поточний ремонт електромереж, пам’ятки архітектури «Миколаївський собор XVI-XVIII ст. ох №190025/1, складової пам’ятки архітектури «Миколаївський собор з келіями, ох. № 190025»., що знаходиться по вул. Шевченка 53 м. Кременець, Тернопільська обл.”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 318560.0 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Кременецько-Почаївський державний історико-архітектурний заповідник; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Поточний ремонт електромереж, пам’ятки архітектури «Миколаївський собор XVI-XVIII ст. ох №190025/1, складової пам’ятки архітектури «Миколаївський собор з келіями, ох. № 190025»., що знаходиться по вул. Шевченка 53 м. Кременець, Тернопільська обл.”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 318560.0 UAH. U javnom zapisu evidentirano je 3 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Кременецько-Почаївський державний історико-архітектурний заповідник; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Поточний ремонт електромереж, пам’ятки архітектури «Миколаївський собор XVI-XVIII ст. ох №190025/1, складової пам’ятки архітектури «Миколаївський собор з келіями, ох. № 190025»., що знаходиться по вул. Шевченка 53 м. Кременець, Тернопільська обл.",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -2016,7 +2053,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -2046,10 +2083,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „послуги з виготовлення паспортів на пам’ятки культурної спадщини (код ДК 021:2015: 92520000-2 - Послуги музеїв та послуги зі збереження історичних пам’яток і будівель)”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 208333.33 UAH. U javnom zapisu evidentirano je 8 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕПАРТАМЕНТ КУЛЬТУРИ І ТУРИЗМУ ПОЛТАВСЬКОЇ ОБЛАСНОЇ ДЕРЖАВНОЇ АДМІНІСТРАЦІЇ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „послуги з виготовлення паспортів на пам’ятки культурної спадщини (код ДК 021:2015: 92520000-2 - Послуги музеїв та послуги зі збереження історичних пам’яток і будівель)”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 208333.33 UAH. U javnom zapisu evidentirano je 8 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je ДЕПАРТАМЕНТ КУЛЬТУРИ І ТУРИЗМУ ПОЛТАВСЬКОЇ ОБЛАСНОЇ ДЕРЖАВНОЇ АДМІНІСТРАЦІЇ; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Школа земська двокомплектна (с. Бодаква, вул. Шкільна, 1) Школа земська двокомплектна (с. Безсали, вул. Єрамака, 4) Школа земська двокомплектна (с. Безсали, вул. Шкільна, 1) Школа земська однокомплектна (с. Христанівка, вул. Христини Литвиненко, 25-а) Школа земська однокомплектна (с. Старий Хутір, вул. Артополот, 17) Школа земська однокомплектна (с. Риги, вул. Миру, 54) Школа земська двокомплектна (с. Гаївщина, вул. Центральна, 2) Школа земська двокомплектна (с. Бербениці, вул. Молодіжна, 65) Школа земська двокомплектна (с. Млини, вул. Роменська, 11) Школа земська трикомплектна (с. Бондарі, вул. Лісова, 62)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -2087,7 +2124,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -2122,7 +2159,7 @@
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
       "source_portal": "TED + potvrda putem EOJN RH",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Hrvatska – Istraživačke usluge – Usluga uspostave i provedbe sustavnog dugotrajnog monitoringa ekoloških parametara te monitoring provedbe restauracijskih mjera u svrhu očuvanja Posebnog ornitološkog rezervata Podpanj”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Javna ustanova za zaštitu prirode OBŽ; država/lokacija navedena u pregledu: Hrvatska. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Hrvatska – Istraživačke usluge – Usluga uspostave i provedbe sustavnog dugotrajnog monitoringa ekoloških parametara te monitoring provedbe restauracijskih mjera u svrhu očuvanja Posebnog ornitološkog rezervata Podpanj”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Javna ustanova za zaštitu prirode OBŽ; država/lokacija navedena u pregledu: Hrvatska. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "HRV",
       "areas": [
@@ -2132,9 +2169,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Usluga uspostave i provedbe sustavnog dugotrajnog monitoringa ekoloških parametara te monitoring provedbe restauracijskih mjera u svrhu očuvanja Posebnog ornitološkog rezervata u okviru projekta PK.3.7.05.0012 „Poboljšano upravljanje Posebnim ornitološkim rezervatom Podpanj“ sukladno traženim minimalnim tehničkim specifikacijama koje su sastavni dio troškovnika koji su prilog Dokumentacije o nabavi. Nabava je povezana s projektom i/ili programom koji se financira iz fondova Europske unije • Broj ili uputa na projekt: - PK.3.7.05.0012 • EU Program: Konkurentnost i kohezija 2021. – 2027. Opis projekta: Nabava se financira iz Ugovora o dodjeli bespovratnih sredstava za projekte koji se financiraju iz programa Konkurentnost i kohezija, u okviru projekta PK.3.7.05.0012 „Poboljšano upravljanje Posebnim ornitološkim rezervatom Podpanj“",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "hrv"
+      ],
+      "source_excerpts_original": [
+        "Usluga uspostave i provedbe sustavnog dugotrajnog monitoringa ekoloških parametara te monitoring provedbe restauracijskih mjera u svrhu očuvanja Posebnog ornitološkog rezervata u okviru projekta PK.3.7.05.0012 „Poboljšano upravljanje Posebnim ornitološkim rezervatom Podpanj“ sukladno traženim minimalnim tehničkim specifikacijama koje su sastavni dio troškovnika koji su prilog Dokumentacije o nabavi. Nabava je povezana s projektom i/ili programom koji se financira iz fondova Europske unije • Broj ili uputa na projekt: - PK.3.7.05.0012 • EU Program: Konkurentnost i kohezija 2021. – 2027. Opis projekta: Nabava se financira iz Ugovora o dodjeli bespovratnih sredstava za projekte koji se financiraju iz programa Konkurentnost i kohezija, u okviru projekta PK.3.7.05.0012 „Poboljšano upravljanje Posebnim ornitološkim rezervatom Podpanj“"
+      ],
+      "documents_titles": [],
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
@@ -2146,7 +2190,7 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
     },
     {
       "id": "UA-2026-10-29-007844-a",
@@ -2166,10 +2210,10 @@
       ],
       "fit": "medium",
       "verification": "limited_live_api",
-      "verified_at": "2026-10-29T19:29:54+01:00",
+      "verified_at": "2026-10-29T19:33:40+01:00",
       "access": "Dokumenti i rok na službenoj Prozorro kartici",
       "details_hr": "Provjeriti ukrajinsko pravo sudjelovanja stranih ponuditelja, registraciju na akreditiranoj platformi i ratne uvjete nabave.",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Виготовлення облікової документації на об’єкти культурної спадщини та паспорти на пам’ятки історії м. Павлоград (ДК 021: 2015 92520000-2 Послуги музеїв та послуги зі збереження історичних пам’яток і будівель)”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge / projektiranje ili istraživanje. U izvornom zapisu navedena je procijenjena vrijednost 558333.0 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Відділ культури Павлоградської міської ради; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Виготовлення облікової документації на об’єкти культурної спадщини та паспорти на пам’ятки історії м. Павлоград (ДК 021: 2015 92520000-2 Послуги музеїв та послуги зі збереження історичних пам’яток і будівель)”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Usluge (vrsta usluge navedena u predmetu ugovora). U izvornom zapisu navedena je procijenjena vrijednost 558333.0 UAH. U javnom zapisu evidentirano je 4 priloga; njihovi naslovi ne potvrđuju da je sadržaj dokumenata automatski pregledan. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Відділ культури Павлоградської міської ради; država/lokacija navedena u pregledu: Ukrajina. Izvor: Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi). Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "description_original": "Виготовлення облікової документації на об’єкти культурної спадщини та паспорти на пам’ятки історії м. Павлоград (ДК 021: 2015 92520000-2 Послуги музеїв та послуги зі збереження історичних пам’яток і будівель)",
       "description_source": "Službeni Prozorro API (puni zapis natječaja: opis/stavke/lotovi)",
       "description_level": "item_descriptions",
@@ -2194,7 +2238,7 @@
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
-      "procurement_type_hr": "Usluge / projektiranje ili istraživanje",
+      "procurement_type_hr": "Usluge (vrsta usluge navedena u predmetu ugovora)",
       "tcod_priority": "provjeriti",
       "tcod_priority_rank": 1,
       "heritage_evidence": true,
@@ -2236,7 +2280,7 @@
       "summary_sentence_minimum": null,
       "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
       "open_checked_at": "2026-10-29T18:06:29+01:00",
-      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Češka – Izložbene jedinice – Realizace expozice Muzea Šumavy v Kašperských Horách”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Muzeum Šumavy Sušice, příspěvková organizace; država/lokacija navedena u pregledu: Češka. Izvor: Nije uspio dohvat potpunog opisa; korišten javni naslov. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Češka – Izložbene jedinice – Realizace expozice Muzea Šumavy v Kašperských Horách”. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Uloga iz ugovora: Vrsta ugovora nije potvrđena. Dodatni opis iz službenog oglasa dostupan je u izvornom jeziku te je odvojen od ovog hrvatskog tumačenja. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Podudarnost s uslugama ureda treba potvrditi u tehničkom zadatku i kriterijima sposobnosti. Naručitelj je Muzeum Šumavy Sušice, příspěvková organizace; država/lokacija navedena u pregledu: Češka. Izvor: Službeni TED Search API — opis postupka i lotova. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
       "agency": "TED / naručitelj",
       "country_code": "CZE",
       "areas": [
@@ -2246,9 +2290,16 @@
       "verified_at": "2026-10-29T18:06:29+01:00",
       "fit": "medium",
       "details_hr": "Provjeriti službeni opis, sve lotove, kulturno-povijesni status objekta te uvjete tima.",
-      "detail_fetch_error": "no element found: line 1, column 0",
-      "description_source": "Nije uspio dohvat potpunog opisa; korišten javni naslov",
-      "description_level": "title_only",
+      "description_original": "Předmětem veřejné zakázky je vybudování expozice Muzea Šumavy Sušice v pobočce na Kašperských Horách. Realizace proběhne v objektu muzea v Kašperských Horách na Náměstí č.p. 140. Expozice se bude nacházet ve třech podlažích objektu. V přízemí a prvním patře se realizuje expozice historicko-etnografická, zaměřená na historii a život na Šumavě. Ve druhé patře vznikne expozice věnovaná přírodě Šumavy. V expozici budou vystaveny sbírkové předměty Muzea Šumavy a rovněž zde bude problematika prezentována novými AV technologiemi. Výsledkem projektu a zakázky by měla být kompletní expozice vzniklá na základě Projektové dokumentace a dalších podkladů. Další informace o plnění jsou v Příloze č. 2 ZD – Projektová dokumentace, v Příloze č. 3 ZD – Soupis prací s výkazem výměr, a v Příloze č. 4 ZD – Návrh smlouvy o dílo.",
+      "description_source": "Službeni TED Search API — opis postupka i lotova",
+      "description_level": "full_notice",
+      "description_languages": [
+        "ces"
+      ],
+      "source_excerpts_original": [
+        "Předmětem veřejné zakázky je vybudování expozice Muzea Šumavy Sušice v pobočce na Kašperských Horách. Realizace proběhne v objektu muzea v Kašperských Horách na Náměstí č.p. 140. Expozice se bude nacházet ve třech podlažích objektu. V přízemí a prvním patře se realizuje expozice historicko-etnografická, zaměřená na historii a život na Šumavě. Ve druhé patře vznikne expozice věnovaná přírodě Šumavy. V expozici budou vystaveny sbírkové předměty Muzea Šumavy a rovněž zde bude problematika prezentována novými AV technologiemi. Výsledkem projektu a zakázky by měla být kompletní expozice vzniklá na základě Projektové dokumentace a dalších podkladů. Další informace o plnění jsou v Příloze č. 2 ZD – Projektová dokumentace, v Příloze č. 3 ZD – Soupis prací s výkazem výměr, a v Příloze č. 4 ZD – Návrh smlouvy o dílo."
+      ],
+      "documents_titles": [],
       "intervention_codes": [],
       "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
       "subject_explanation_hr": "",
@@ -2260,7 +2311,52 @@
       "unesco_site": "",
       "unesco_url": "",
       "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
-      "summary_evidence_level": "title_only"
+      "summary_evidence_level": "full_notice"
+    },
+    {
+      "id": "UNGM-317513",
+      "title_original": "Final evaluation of the third project “Support to Education, Culture and Media in Ukraine through UNESCO”",
+      "title_hr": "",
+      "source": "UNGM",
+      "agency": "UNESCO",
+      "authority": "UNESCO",
+      "country": "Ukrajina",
+      "country_code": "UKR",
+      "deadline": "2026-10-30T14:00:00+03:00",
+      "published": "2026-10-09",
+      "url": "https://www.ungm.org/Public/Notice/317513",
+      "reference": "RFP-UA-26-09",
+      "areas": [
+        "research",
+        "documentation"
+      ],
+      "fit": "low",
+      "access": "službena UNGM objava; dokumenti često zahtijevaju registraciju",
+      "verified_at": "2026-10-29T18:00:00+01:00",
+      "verification": "manual_official_2026_10_29",
+      "details_hr": "Provjeriti konačni rok iz oglasa i obvezne reference za evaluacije programa; izvorni opis sadrži i raniji datum predaje.",
+      "facts_hr": [
+        "Predmet je završna evaluacija UNESCO-ova projekta potpore obrazovanju, kulturi i medijima u Ukrajini.",
+        "Nije riječ o projektiranju ili fizičkoj restauraciji kulturnog dobra.",
+        "U oglasu je objavljen kontakt UNESCO-ova ureda u Ukrajini."
+      ],
+      "summary_hr": "Predmet je u objavi naveden pod nazivom: „Final evaluation of the third project “Support to Education, Culture and Media in Ukraine through UNESCO””. Vrsta zahvata: Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu. Predmet je završna evaluacija UNESCO-ova projekta potpore obrazovanju, kulturi i medijima u Ukrajini. Nije riječ o projektiranju ili fizičkoj restauraciji kulturnog dobra. U oglasu je objavljen kontakt UNESCO-ova ureda u Ukrajini. Uloga iz ugovora: Moguće stručne usluge — potvrditi. Opis izvan samog naslova i popisa stavki nije potvrđen u dostupnim javnim podacima. Upis konkretnog objekta na UNESCO-ov Popis svjetske baštine nije potvrđen. Predmet je primarno oprema, što nije osnovna projektantska ili dokumentacijska usluga ureda. Naručitelj je UNESCO; država/lokacija navedena u pregledu: Ukrajina. Izvor: Provjereni naslov i dostupni metapodaci izvornog oglasa. Mjerodavni su izvorni natječaj i njegovi prilozi, uključujući moguće izmjene rokova i opsega.",
+      "description_source": "Provjereni naslov i dostupni metapodaci izvornog oglasa",
+      "description_level": "title_only",
+      "intervention_codes": [],
+      "intervention_hr": "Vrsta intervencije nije dovoljno opisana u dostupnom javnom oglasu.",
+      "subject_explanation_hr": "",
+      "procurement_type_hr": "Moguće stručne usluge — potvrditi",
+      "tcod_priority": "nisko",
+      "tcod_priority_rank": 0,
+      "heritage_evidence": false,
+      "unesco_status": "not_verified",
+      "unesco_site": "",
+      "unesco_url": "",
+      "unesco_source": "UNESCO status nije utvrđen; naručitelj UNESCO ne znači da je objekt upisan",
+      "summary_kind": "Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa",
+      "summary_evidence_level": "title_only",
+      "summary_sentence_minimum": null
     }
   ],
   "counts_by_source": {
@@ -2270,12 +2366,12 @@
     "NATO_CONFIRMED_HERITAGE": 0
   },
   "insights_stats": {
-    "official_unesco_sites_loaded": 0,
-    "full_ted_xml": 0,
+    "official_unesco_sites_loaded": 1173,
+    "full_ted_xml": 12,
     "prozorro_item_details": 22,
-    "title_only": 16,
+    "title_only": 4,
     "confirmed_unesco": 1,
-    "detail_errors": 12
+    "detail_errors": 0
   },
   "source_states": {
     "TED": {
