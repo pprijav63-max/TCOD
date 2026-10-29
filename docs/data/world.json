@@ -1,8 +1,87 @@
 {
-  "status": "not_connected",
-  "last_success": null,
+  "status": "partial",
+  "last_success": "2026-10-29T17:42:13.488941+01:00",
   "source": "Međunarodni izvori; TED EU API planiran; drugi izvori službene poveznice",
-  "tenders": [],
+  "tenders": [
+    {
+      "id": "670795-2026",
+      "source": "TED",
+      "title_original": "Írország – Exkavátorok – 3.5 ton Excavator and Trailer",
+      "authority": "Department of Housing Local Government and Heritage",
+      "country": "IRL",
+      "deadline": "2026-10-30T12:00:00+01:00",
+      "published": "2026-09-30+02:00",
+      "url": "https://ted.europa.eu/en/notice/-/detail/670795-2026",
+      "summary_hr": "Naziv javnog poziva jest „Írország – Exkavátorok – 3.5 ton Excavator and Trailer”. Ovaj poziv objavljen je u europskom sustavu TED. Naručitelj je Department of Housing Local Government and Heritage. Zemlja naručitelja je IRL. Broj objave u TED-u je 670795-2026. Datum objave zabilježen je kao 2026-09-30+02:00. Rok naveden u rezultatima jest 30.10.2026. 12:00. Predmet nabave potrebno je detaljno provjeriti u izvornom dokumentu. Posebno provjeri postoji li više lotova s različitim uvjetima. Prije prijave provjeri dopuštenost Codelinga kao hrvatskog ponuditelja. Zatim provjeri reference, ovlaštenja i stručni tim. Potrebno je pročitati način predaje i natječajne obrasce. Pojedinačni zahtjevi mogu biti dodatno navedeni u prilozima. Ovo je neslužbeni hrvatski sažetak za istraživanje, a ne pravna potvrda uvjeta.",
+      "summary_sentence_minimum": 14,
+      "codeling_status": "provjeriti"
+    },
+    {
+      "id": "671391-2026",
+      "source": "TED",
+      "title_original": "Írország – Szociális szolgálati járművek – Purchase of a new Welfare Van",
+      "authority": "Department of Housing Local Government and Heritage",
+      "country": "IRL",
+      "deadline": "2026-11-03T12:00:00+01:00",
+      "published": "2026-09-30+02:00",
+      "url": "https://ted.europa.eu/en/notice/-/detail/671391-2026",
+      "summary_hr": "Naziv javnog poziva jest „Írország – Szociális szolgálati járművek – Purchase of a new Welfare Van”. Ovaj poziv objavljen je u europskom sustavu TED. Naručitelj je Department of Housing Local Government and Heritage. Zemlja naručitelja je IRL. Broj objave u TED-u je 671391-2026. Datum objave zabilježen je kao 2026-09-30+02:00. Rok naveden u rezultatima jest 03.11.2026. 12:00. Predmet nabave potrebno je detaljno provjeriti u izvornom dokumentu. Posebno provjeri postoji li više lotova s različitim uvjetima. Prije prijave provjeri dopuštenost Codelinga kao hrvatskog ponuditelja. Zatim provjeri reference, ovlaštenja i stručni tim. Potrebno je pročitati način predaje i natječajne obrasce. Pojedinačni zahtjevi mogu biti dodatno navedeni u prilozima. Ovo je neslužbeni hrvatski sažetak za istraživanje, a ne pravna potvrda uvjeta.",
+      "summary_sentence_minimum": 14,
+      "codeling_status": "provjeriti"
+    },
+    {
+      "id": "671402-2026",
+      "source": "TED",
+      "title_original": "Írország – Billenőszekrényes teherautók – Second Hand 12 ton Tipper Lorry",
+      "authority": "Department of Housing Local Government and Heritage",
+      "country": "IRL",
+      "deadline": "2026-11-03T12:00:00+01:00",
+      "published": "2026-09-30+02:00",
+      "url": "https://ted.europa.eu/en/notice/-/detail/671402-2026",
+      "summary_hr": "Naziv javnog poziva jest „Írország – Billenőszekrényes teherautók – Second Hand 12 ton Tipper Lorry”. Ovaj poziv objavljen je u europskom sustavu TED. Naručitelj je Department of Housing Local Government and Heritage. Zemlja naručitelja je IRL. Broj objave u TED-u je 671402-2026. Datum objave zabilježen je kao 2026-09-30+02:00. Rok naveden u rezultatima jest 03.11.2026. 12:00. Predmet nabave potrebno je detaljno provjeriti u izvornom dokumentu. Posebno provjeri postoji li više lotova s različitim uvjetima. Prije prijave provjeri dopuštenost Codelinga kao hrvatskog ponuditelja. Zatim provjeri reference, ovlaštenja i stručni tim. Potrebno je pročitati način predaje i natječajne obrasce. Pojedinačni zahtjevi mogu biti dodatno navedeni u prilozima. Ovo je neslužbeni hrvatski sažetak za istraživanje, a ne pravna potvrda uvjeta.",
+      "summary_sentence_minimum": 14,
+      "codeling_status": "provjeriti"
+    },
+    {
+      "id": "671766-2026",
+      "source": "TED",
+      "title_original": "Németország – Építészeti, építési, mérnöki és vizsgálati szolgáltatások – BLB NRW DU / Amtsgericht Duisburg Ruhrort/ Modernisierung Heizungsanlage/ Generalplanung/ (020-26-00213)",
+      "authority": "Bau- und Liegenschaftsbetrieb NRW Duisburg",
+      "country": "DEU",
+      "deadline": "2026-10-30T23:59:59+01:00",
+      "published": "2026-09-30+02:00",
+      "url": "https://ted.europa.eu/en/notice/-/detail/671766-2026",
+      "summary_hr": "Naziv javnog poziva jest „Németország – Építészeti, építési, mérnöki és vizsgálati szolgáltatások – BLB NRW DU / Amtsgericht Duisburg Ruhrort/ Modernisierung Heizungsanlage/ Generalplanung/ (020-26-00213)”. Ovaj poziv objavljen je u europskom sustavu TED. Naručitelj je Bau- und Liegenschaftsbetrieb NRW Duisburg. Zemlja naručitelja je DEU. Broj objave u TED-u je 671766-2026. Datum objave zabilježen je kao 2026-09-30+02:00. Rok naveden u rezultatima jest 30.10.2026. 23:59. Predmet nabave potrebno je detaljno provjeriti u izvornom dokumentu. Posebno provjeri postoji li više lotova s različitim uvjetima. Prije prijave provjeri dopuštenost Codelinga kao hrvatskog ponuditelja. Zatim provjeri reference, ovlaštenja i stručni tim. Potrebno je pročitati način predaje i natječajne obrasce. Pojedinačni zahtjevi mogu biti dodatno navedeni u prilozima. Ovo je neslužbeni hrvatski sažetak za istraživanje, a ne pravna potvrda uvjeta.",
+      "summary_sentence_minimum": 14,
+      "codeling_status": "provjeriti"
+    },
+    {
+      "id": "672040-2026",
+      "source": "TED",
+      "title_original": "Írország – Erdészettel kapcsolatos szolgáltatások – Request for tenders for the provision of maintenance works at National Parks and Wildlife Service (NPWS) properties in Co. Donegal and Co. Sligo",
+      "authority": "Department of Housing Local Government and Heritage",
+      "country": "IRL",
+      "deadline": "2026-10-30T12:00:00+01:00",
+      "published": "2026-09-30+02:00",
+      "url": "https://ted.europa.eu/en/notice/-/detail/672040-2026",
+      "summary_hr": "Naziv javnog poziva jest „Írország – Erdészettel kapcsolatos szolgáltatások – Request for tenders for the provision of maintenance works at National Parks and Wildlife Service (NPWS) properties in Co. Donegal and Co. Sligo”. Ovaj poziv objavljen je u europskom sustavu TED. Naručitelj je Department of Housing Local Government and Heritage. Zemlja naručitelja je IRL. Broj objave u TED-u je 672040-2026. Datum objave zabilježen je kao 2026-09-30+02:00. Rok naveden u rezultatima jest 30.10.2026. 12:00. Predmet nabave potrebno je detaljno provjeriti u izvornom dokumentu. Posebno provjeri postoji li više lotova s različitim uvjetima. Prije prijave provjeri dopuštenost Codelinga kao hrvatskog ponuditelja. Zatim provjeri reference, ovlaštenja i stručni tim. Potrebno je pročitati način predaje i natječajne obrasce. Pojedinačni zahtjevi mogu biti dodatno navedeni u prilozima. Ovo je neslužbeni hrvatski sažetak za istraživanje, a ne pravna potvrda uvjeta.",
+      "summary_sentence_minimum": 14,
+      "codeling_status": "provjeriti"
+    },
+    {
+      "id": "672263-2026",
+      "source": "TED",
+      "title_original": "Írország – Építési munkák – 9843 Design and Build Capacity Enhancement Works at Connolly Station",
+      "authority": "Iarnród Eireann-Irish Rail",
+      "country": "IRL",
+      "deadline": "2026-11-06T12:00:00+01:00",
+      "published": "2026-09-30+02:00",
+      "url": "https://ted.europa.eu/en/notice/-/detail/672263-2026",
+      "summary_hr": "Naziv javnog poziva jest „Írország – Építési munkák – 9843 Design and Build Capacity Enhancement Works at Connolly Station”. Ovaj poziv objavljen je u europskom sustavu TED. Naručitelj je Iarnród Eireann-Irish Rail. Zemlja naručitelja je IRL. Broj objave u TED-u je 672263-2026. Datum objave zabilježen je kao 2026-09-30+02:00. Rok naveden u rezultatima jest 06.11.2026. 12:00. Predmet nabave potrebno je detaljno provjeriti u izvornom dokumentu. Posebno provjeri postoji li više lotova s različitim uvjetima. Prije prijave provjeri dopuštenost Codelinga kao hrvatskog ponuditelja. Zatim provjeri reference, ovlaštenja i stručni tim. Potrebno je pročitati način predaje i natječajne obrasce. Pojedinačni zahtjevi mogu biti dodatno navedeni u prilozima. Ovo je neslužbeni hrvatski sažetak za istraživanje, a ne pravna potvrda uvjeta.",
+      "summary_sentence_minimum": 14,
+      "codeling_status": "provjeriti"
+    }
+  ],
   "portals": [
     {
       "name": "TED — EU",
@@ -35,5 +114,5 @@
       "scope": "SAD"
     }
   ],
-  "notice_hr": "Neovisni međunarodni odjel: ova početna lista sadrži službene portale, a ne potvrđenu kompletnu bazu svih svjetskih poziva."
+  "notice_hr": "Automatski preuzeti TED EU oglasi, ograničeni pretragom i prvim rezultatskim stranicama. Ostali portali prikazani su kao izravne poveznice."
 }
