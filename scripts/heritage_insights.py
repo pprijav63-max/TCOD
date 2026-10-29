@@ -192,6 +192,8 @@ def determine(record:dict)->dict:
  elif "conservation" in codes and "works" in proc_kind.lower():priority="srednje";rank=2
  elif "conservation" in codes or "adaptive_reuse" in codes:priority="srednje";rank=2
  elif "equipment" in codes:priority="nisko";rank=0
+ elif re.search(r"final evaluation|evaluacija projekta|підсумков.{0,15}оцінк|furniture|office equipment",title,re.I):
+  priority="nisko";rank=0
  else:priority="provjeriti";rank=1
  # Direct objects and buildings come from original titles; never fabricate protected status.
  origin=short_uk_title(title) if record.get("country_code")=="UKR" else ""
@@ -257,6 +259,10 @@ def summarize(record:dict)->str:
  if subject:lines.append("Predmet intervencije prema izvornom naslovu: "+subject+".")
  else:lines.append("Predmet je u objavi naveden pod nazivom: „"+title+"”.")
  lines.append("Vrsta zahvata: "+record.get("intervention_hr","nije utvrđena").rstrip(".")+".")
+ for verified_fact in (record.get("facts_hr") or [])[:3]:
+  fact=clean(verified_fact,280)
+  if fact:lines.append(fact if fact.endswith((".","?","!")) else fact+".")
+
  lines.append("Uloga iz ugovora: "+kind+".")
  if "urgent_works" in codes:lines.append("Izričito su prepoznati hitni radovi stabilizacije ili zaštite objekta; to je drukčije od samog projektiranja.")
  if "adaptive_reuse" in codes:lines.append("Spominje se prilagodba ili prenamjena postojećeg povijesnog objekta.")
