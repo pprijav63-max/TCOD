@@ -1,0 +1,41 @@
+name: TCOD Official Tender Detail Access Test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/heritage-detail-probe.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test official tender full text endpoints
+        run: |
+          python3 - <<'PY'
+          import json,urllib.request,urllib.error
+          ids=['UA-2026-10-14-013312-a','UA-2026-10-21-002195-a']
+          urls=['https://prozorro.gov.ua/api/tenders/'+ids[0]+'/summary',
+                'https://prozorro.gov.ua/api/tenders/'+ids[1]+'/summary',
+                'https://data.unesco.org/api/explore/v2.1/catalog/datasets/whc001/records?limit=1']
+          for url in urls:
+           try:
+            req=urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'TCOD-heritage-research/1.0'})
+            with urllib.request.urlopen(req,timeout=25) as r:doc=json.load(r)
+            print('RESPONSE',url,'KEYS',list(doc)[:15],'BODY',json.dumps(doc,ensure_ascii=False)[:950],flush=True)
+            if 'summary' in url:
+             ident=doc.get('id') or doc.get('data',{}).get('id') or doc.get('data',{}).get('tender',{}).get('id')
+             if not ident:
+              import re
+              match=re.search(r'[a-f0-9]{32}',json.dumps(doc))
+              ident=match.group() if match else None
+             if ident:
+              detail='https://public-api.prozorro.gov.ua/api/2.5/tenders/'+ident
+              with urllib.request.urlopen(urllib.request.Request(detail,headers={'Accept':'application/json'}),timeout=30) as d:full=json.load(d)
+              print('DETAIL',detail,'KEYS',list(full.get('data',full))[:17],flush=True)
+              x=full.get('data',full)
+              for k in ('title','description','items','documents','lots','value'):
+               print('FIELD',k,json.dumps(x.get(k),ensure_ascii=False)[:1100],flush=True)
+           except Exception as e:print('ERROR',url,type(e).__name__,str(e)[:260],flush=True)
+          PY
