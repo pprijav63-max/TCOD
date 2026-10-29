@@ -17,6 +17,31 @@
 .tcod-countryActions{padding:8px 0 16px;justify-content:space-between}
 .tcod-countryCards{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:740px){.tcod-countryCards{grid-template-columns:minmax(0,1fr)}.tcod-countryHeader{padding:14px}.tcod-countryBody{padding:10px}.tcod-countryTitle{font-size:17px}.tcod-countryMeta{font-size:11px}}
+</style><style>/* TCOD GEOGRAPHY + SERVICES UI */
+.tcod-areaChips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 24px}
+.tcod-areaChip{font-size:12px;border-radius:25px;background:#203226;border:1px solid #58735d;display:flex;align-items:center;gap:7px;line-height:1.2}
+.tcod-areaChip b{color:var(--lime);font-size:11px}
+.tcod-areaChip.active{background:var(--lime);color:#10200c;border-color:var(--lime);font-weight:bold}
+.tcod-areaChip.active b{color:#10200c}
+.tcod-areaGroup{border:1px solid var(--line);border-radius:8px;margin:12px 0;background:#18241c;overflow:hidden}
+.tcod-areaGroup summary{padding:13px 17px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px;font-size:14px}
+.tcod-areaGroup[open]{border-color:#658569}
+.tcod-areaGroup summary span{color:var(--lime);font-size:12px}
+.tcod-areaBody{padding:12px 16px 18px;border-top:1px solid var(--line)}
+.tcod-portalGroup{margin:12px 0;border:1px solid var(--line);background:var(--panel);border-radius:10px;overflow:hidden}
+.tcod-portalGroup summary{cursor:pointer;padding:17px 20px;font-size:16px;font-weight:700}
+.tcod-portalGroup summary small{color:var(--lime);font-size:12px;margin-left:8px}
+.tcod-portalGroup .tcod-grid{padding:15px;border-top:1px solid var(--line)}
+.tcod-filterCount{font-size:11px;opacity:.85;margin-left:5px}
+.tcod-swissGrouped{display:block}
+.tcod-swissCanton{background:var(--panel);border:1px solid var(--line);padding:20px;border-radius:10px;margin:15px 0}
+.tcod-swissCanton h3{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:21px;margin:0 0 15px}
+.tcod-swissCanton h3 span{font-size:12px;font-weight:400;color:var(--lime)}
+.tcod-swissArea{background:#132017;border:1px solid #445c48;border-radius:9px;margin:10px 0;overflow:hidden}
+.tcod-swissArea summary{cursor:pointer;padding:13px 16px;display:flex;justify-content:space-between;gap:12px;font-weight:700}
+.tcod-swissArea summary b{color:var(--lime)}
+.tcod-swissCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:14px;border-top:1px solid var(--line)}
+@media(max-width:740px){.tcod-swissCards{grid-template-columns:1fr}.tcod-swissCanton{padding:12px}.tcod-swissCanton h3{font-size:18px}.tcod-areaGroup summary{font-size:13px}}
 </style></head><body><header><div class="top"><div><div class="brand">TCOD <b>/</b> SIMAP RADAR</div><div class="micro">ŠVICARSKA · 26 KANTONA · HRVATSKI SAŽECI</div></div><div class="links"><a href="https://tcod-simap-tender-manager.yapp.page/" target="_blank" rel="noopener">Priprema ponuda ↗</a><a href="https://www.simap.ch/en/vendor/project-manager?page=published" target="_blank" rel="noopener">Službeni SIMAP ↗</a></div></div></header>
 <main><nav id="tcodTabs" class="tcod-tabs" aria-label="Odjeli aplikacije"><button type="button" data-switch="swiss">Švicarska / SIMAP</button><button type="button" data-switch="world">Svijet / međunarodni pozivi</button><button type="button" data-switch="docs">Dokumentacija i ponuda</button><button type="button" data-switch="share">Dijeljenje i istraživanje</button></nav><section id="swissView"><div class="eyebrow">THE CODE ARCHITECTURE / CODELING d.o.o. ZAGREB</div><h1>Javni natječaji cijele Švicarske.</h1><p class="muted lead">Objave iz posljednjih 30 kalendarskih dana s još važećim rokom. Arhitektura, konzervacija, restauracija, lasersko skeniranje, BIM/HBIM, grafički/web dizajn, video i animacija. Za svaki projekt prikazuje se neslužbeni sažetak na hrvatskom.</p>
 <div id="status" class="notice" role="status">Provjeravam dnevni izvor iz GitHuba…</div><div class="statbar"><div class="stat"><b id="total">—</b><small>Natječaji u izvoru s rokom</small></div><div class="stat"><b id="relevant">—</b><small>Relevantni za Codeling</small></div><div class="stat"><b id="soon">—</b><small>Rok u sljedećih 7 dana</small></div><div class="stat"><b id="date">—</b><small>Posljednji uspješni dohvat</small></div></div>
@@ -26,7 +51,61 @@
 <div class="panel"><h2>Može li se Codeling iz Hrvatske prijaviti?</h2><p class="muted">Hrvatska tvrtka nije automatski isključena iz švicarskih natječaja, ali pravo sudjelovanja ovisi o obuhvatu konkretnog postupka, zahtjevima za stručne potpise, referencama, osiguranju i eventualnim lokalnim kvalifikacijama. Oznake u aplikaciji predstavljaju preliminarnu procjenu, a ne potvrdu naručitelja.</p></div></section><section id="worldView" hidden></section><section id="docsView" hidden></section><section id="shareView" hidden></section></main>
 <div id="modal" class="modal"><div class="drawer"><button id="close">✕ Zatvori</button><div id="details"></div></div></div>
 <footer>Dies ist keine amtliche Veröffentlichung. Massgebend sind die auf der Plattform www.simap.ch veröffentlichten Daten.<p>Hrvatski sažeci nisu službeni prijevodi. Za prijavu i rokove uvijek je mjerodavan izvorni oglas.</p></footer>
-<script>
+<script>/* TCOD SUBJECT CLASSIFICATION */
+/* TCOD subject classification: interpret original contract title, CPV and verified description only.
+   Do not classify from generic Croatian procedural summaries. */
+(function(){
+'use strict';
+const LABELS={
+ architecture:'Arhitektura / Bauleitung',
+ heritage:'Kulturna baština / restauracija',
+ scanning:'3D skeniranje / fotogrametrija',
+ bim:'BIM / HBIM',
+ graphic:'Grafički dizajn / komunikacije',
+ web:'Web / UX',
+ video:'Video / animacija',
+ other:'Ostalo / potrebno provjeriti'
+};
+const PATTERNS={
+ architecture:/architekt|architect|arquitect|arquitet|objektplan|planerleist|generalplan|bauleit|ma[iî]trise d.?oeuvre|progettazion|urbanis|urbanistič|urbanistic|krajobraz|landscape arch|projektiranj|projektantsk|projektna dokumentacij|izrada glavnih projekta|redacci[oó]n de proyectos|planning services|stručni nadzor|construction supervis|supervision de travaux|project design|projektno.tehničk/i,
+ heritage:/kulturn[a-zćčšž]* baštin|kultur(?:erbe|gut)|patrimoine|heritage|denkmal|monument historique|monument.*histori|restaurat|restauro|restaurir|restoration of historic|konzervator|arheolog|arch[aä]olog|museu[m]?|muzej|cultural monument|historical preservation|unesco|conservation of heritage/i,
+ scanning:/laser.{0,6}scan|lasersk.{0,14}sken|scans?ione laser|3d.{0,8}scan|3d.{0,12}sken|skeniranj|photogramm|fotogramm|photogramm[eé]trie|point.{0,4}cloud|punktwolke|nuage de points|digital surveying.*3d/i,
+ bim:/(?:^|[^a-z])hbim(?:[^a-z]|$)|(?:^|[^a-z])bim(?:[^a-z]|$)|building information model|digital twin|digitaler zwilling|jumeau num[eé]rique/i,
+ graphic:/grafičk|grafi[cč]k|graphic.{0,18}design|graphique|graphis|mise en page|grafische|corporate design|visual identity|vizualni identitet|branding|design graphique|kommunikationsdesign|comunicaci[oó]n visual|kommunikationskampagne|komunikacijsk.{0,25}kampanj|graphic communication|public information campaign|gestaltun[g]?.*print|printmedien|visual design/i,
+ web:/web.{0,14}(design|razvoj|stranic|site|page|entwickl|portal)|webdesign|website|site internet|portail web|user experience|ux\/ui|ui\/ux|webauftritt|website design|internet portal|izrada web/i,
+ video:/videoprodu|video.produc|erkl[aä]rvideo|fil[m]?produktion|film produc|filmsk|audiovisual|audiovizual|multimedijsk|multimedia (production|solution|design)|animacij|animation|motion design|3d animat|motion graphics/i
+};
+function getText(value){if(!value)return '';if(typeof value==='string')return value;if(typeof value==='number')return String(value);return '';}
+function prefix(cpv,pre){return cpv.some(code=>code.startsWith(pre));}
+function categories(t){
+ t=t||{};
+ const source=(t.source||'').toUpperCase();
+ const cpv=(Array.isArray(t.cpv)?t.cpv:[]).map(String);
+ const title=getText(t.title_original||t.title_hr);
+ const desc=source==='TED'?'':getText(t.description_original);
+ const phrase=(title+' '+desc).slice(0,12000);
+ const arr=[];
+ for(const [k,regexp] of Object.entries(PATTERNS)){if(regexp.test(phrase))arr.push(k);}
+ if(prefix(cpv,'712')||prefix(cpv,'714')||prefix(cpv,'7132'))arr.push('architecture');
+ if(prefix(cpv,'798225')||prefix(cpv,'7993'))arr.push('graphic');
+ if(prefix(cpv,'921'))arr.push('video');
+ if(prefix(cpv,'72413'))arr.push('web');
+ if(prefix(cpv,'713551'))arr.push('scanning');
+ if(prefix(cpv,'92521')||prefix(cpv,'92522'))arr.push('heritage');
+ // TED old records sometimes mark architecture for every CPV; discard that stale label.
+ // Swiss public SIMAP classification has verified description and is retained.
+ if(source!=='TED'){
+  const stored=Array.isArray(t.categories)?t.categories:[t.category].filter(Boolean);
+  for(const k of stored){if(k in LABELS&&k!=='other')arr.push(k);}
+ }
+ const unique=[...new Set(arr.filter(k=>k in LABELS&&k!=='other'))];
+ return unique.length?unique:['other'];
+}
+function first(t){return categories(t)[0];}
+function count(rows){const out={};for(const t of rows||[]){for(const k of categories(t))out[k]=(out[k]||0)+1;}return out;}
+window.TCODSubject={labels:LABELS,order:Object.keys(LABELS),categories,first,count};
+})();
+</script><script>
 (function(){
 const SEED=[["Chur — LOT 1: planiranje uredskih prostora","Stadt Chur","GR","Chur","2026-10-23","2026-11-12","architecture","Planiranje uredskih radnih prostora i njihove reorganizacije. Za Codeling relevantan LOT 1; provjeriti obrasce i reference.","e139b094-2908-4d14-b1df-09c9cc313968"],["Mels — novi školski kompleks","Gemeinde Mels","SG","Mels","2026-10-26","2026-11-13","architecture","Projektni natječaj za proširenje školskih i sportskih prostora. Potreban projektantski tim, uz provjeru registracije.","3f25f664-8868-4f04-bd8e-7a1aa1738b51"],["Zürich — obnova Bäckerstrasse 7","Stadt Zürich, Amt für Hochbauten","ZH","Zürich","2026-10-26","2026-11-17","architecture","Obnova i prilagodba postojeće zgrade, uključujući pristupačnost i mogućnost ponovne uporabe materijala.","5b1b8139-9223-46fa-9bc5-b1b3da21196a"],["Oberwil — razvoj lokacije Hüslimatt","BLT Baselland Transport AG","BL","Oberwil","2026-10-14","2026-11-17","architecture","Pretkvalifikacija projektantskog tima za razvoj lokacije Hüslimatt i koordinaciju više projektantskih disciplina.","297d677a-2aa8-4e6f-960f-e9eda8630e0a"],["Solothurn — sanacija St. Josefsgasse 7a","Stadt Solothurn","SO","Solothurn","2026-10-22","2026-11-20","architecture","Sanacija postojeće zgrade radi prilagodbe smještaju starijih osoba. Uvjeti selektivnog postupka zahtijevaju provjeru.","ab64c1c9-a5bd-42b8-9ec3-80fc845a830f"],["Zürich — komunikacijske kampanje za klimu","Umwelt- und Gesundheitsschutz Zürich","ZH","Zürich","2026-10-26","2026-11-23","graphic","Grafički dizajn, strateška komunikacija i priprema vizualnih sadržaja za klimatske kampanje.","54a65873-42a9-40cf-ae60-01e6ea00286c"],["Brugg — kantonalna arheologija","Immobilien Aargau","AG","Brugg","2026-10-16","2026-11-24","heritage","Projektiranje obnove i modernizacije prostora kantonske arheologije. Potreban multidisciplinarni tim.","61cb49dd-cc37-4f32-b9b0-a917a307443b"],["Zürich — animirani edukativni videozapisi","Stadtkanzlei Zürich","ZH","Zürich","2026-10-14","2026-11-26","video","Izrada objašnjavajućih animiranih videa, grafika i pristupačnih informativnih sadržaja.","d3239a64-ff48-4e93-9ed7-6132a4f1b255"],["Rapperswil-Jona — obrazovni centar","Kanton St. Gallen","SG","Rapperswil-Jona","2026-10-26","2026-11-27","architecture","Projektni natječaj za obrazovni centar. Rok u pregledu odnosi se na registraciju, a ne završnu predaju projekta.","94251180-534d-4937-9775-4d00518fe617"],["Birsfelden — komunikacije tijekom gradnje","Kanton Basel-Landschaft","BL","Birsfelden","2026-10-18","2026-12-03","graphic","Komunikacijski koncept i javno informiranje tijekom infrastrukturne obnove prometnog koridora.","fc6c2d0e-7572-4443-9273-88b2415f384f"],["Lancy — digitalna inventarizacija gradskih zgrada","Ville de Lancy","GE","Lancy","2026-10-26","2026-12-07","architecture","Dijagnostika fonda gradskih zgrada i unos podataka u sustav Stratus; potreban stručnjak zaštite od požara.","b1d29fc9-8f04-440f-b007-831da33c9268"],["Riehen — obnova stambeno-poslovne zgrade","Einwohnergemeinde Riehen","BS","Riehen","2026-10-21","2026-12-21","architecture","Arhitektonsko projektiranje i koordinacija podprojektanata za sanaciju stambeno-poslovne zgrade.","2da7c568-b404-4479-81af-0ba0f431f9a4"],["Sion — nova škola i zatvoreni bazen","Association des Cycles d’orientation régionaux de Sion","VS","Sion","2026-10-26","2027-02-26","architecture","Projektni natječaj za školu, zatvoreni bazen i javne prostore. Dokumentacija na francuskom.","11dd1366-219c-41ac-a0a7-5e52718abaf9"]].map(r=>({id:r[8],title_original:r[0],title_hr:r[0],authority:r[1],canton:r[2],city:r[3],published:r[4],deadline:r[5],categories:[r[6]],score:10,summary_hr:r[7],codeling_status:'provjeriti',codeling_reasons:['Rok i uvjete prijave hrvatske tvrtke provjeriti u službenom SIMAP oglasu.'],deadline_kind:'Prethodno zabilježen rok',url:'https://www.simap.ch/de/project-detail/'+r[8]}));
 const DEFAULT='https://raw.githubusercontent.com/pprijav63-max/TCOD/main/docs/data/tenders.json';
@@ -35,7 +114,7 @@ const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,
 let data={tenders:SEED,status:'snapshot',window_start:'2026-09-30',window_end:'2026-10-29',last_success:null},category='',page=1,onlySaved=false,favs={};
 try{favs=JSON.parse(localStorage.getItem('tcod-simap-favs-2026')||'{}')}catch(e){}
 const dt=x=>{if(!x)return null;let d=new Date(x.length===10?x+'T23:59:59+01:00':x);return isNaN(d)?null:d},fmt=x=>{let d=dt(x);return d?d.toLocaleString('hr-HR',{timeZone:'Europe/Zurich',year:'numeric',month:'2-digit',day:'2-digit',hour:x&&x.includes('T')?'2-digit':undefined,minute:x&&x.includes('T')?'2-digit':undefined}):'Nije potvrđeno'};
-const cats=t=>t.categories||(t.category?[t.category]:[]),el=t=>t.codeling_status||'provjeriti',safeUrl=u=>/^https:\/\/www\.simap\.ch\//.test(u||'')?u:'https://www.simap.ch/en';
+const cats=t=>window.TCODSubject?window.TCODSubject.categories(t):(t.categories||(t.category?[t.category]:[])),el=t=>t.codeling_status||'provjeriti',safeUrl=u=>/^https:\/\/www\.simap\.ch\//.test(u||'')?u:'https://www.simap.ch/en';
 function age(t){let d=dt(t.deadline);return d?(d.getTime()-Date.now())/86400000:-99999}
 function visible(t){let pub=String(t.published||'').slice(0,10);return pub>=data.window_start&&pub<=data.window_end&&age(t)>=0}
 function base(){return(data.tenders||[]).filter(visible)}
@@ -43,11 +122,66 @@ function items(){let q=$('query').value.trim().toLowerCase(),kt=$('canton').valu
 let a=base().filter(t=>(!kt||t.canton===kt)&&(!category||cats(t).includes(category))&&(!only||cats(t).length>0)&&(!onlySaved||!!favs[t.id])&&(em==='all'||em==='potential'&&el(t)!=='otezano'||em===el(t))&&(!q||[t.title_hr,t.title_original,t.authority,t.summary_hr,t.description_original,t.city].join(' ').toLowerCase().includes(q)));const mode=$('sort').value;
 a.sort((a,b)=>mode==='recent'?String(b.published).localeCompare(String(a.published)):mode==='score'?Number(b.score||0)-Number(a.score||0):String(a.deadline).localeCompare(String(b.deadline)));return a}
 function notice(){let x=data.last_success,old=!x||Date.now()-new Date(x).getTime()>36*3600000;const out=$('status');if(data.status==='live'&&!old){out.className='notice good';out.textContent='SIMAP API — uspješan nacionalni dohvat '+fmt(x)+'. Prikaz sadrži potvrđene rezultate izvora; hrvatski sažeci su neslužbeni.'}else if(data.status==='partial'&&!old){out.className='notice';out.textContent='DJELOMIČAN SIMAP API dohvat '+fmt(x)+'. Dio detalja ili stranica rezultata nedostaje; nacionalni pregled nije potpun.'}else if(data.status==='degraded'||old&&x){out.className='notice bad';out.textContent='SIMAP API nije ažuran ili je posljednji pokušaj bio neuspješan. Zadnji uspješni dohvat: '+fmt(x)+'. Potrebna je provjera na službenom SIMAP-u.'}else{out.className='notice';out.textContent='POČETNI PREGLED (NIJE LIVE). Prikazani su samo ranije identificirani oglasi iz listopada 2026., ne potpuni nacionalni popis. GitHub još treba izvršiti prvi uspješan dnevni SIMAP dohvat.'}}
-function render(){notice();let all=base(),a=items(),per=30,last=Math.ceil(a.length/per),part=a.slice((page-1)*per,page*per);$('total').textContent=all.length;$('relevant').textContent=all.filter(t=>cats(t).length>0&&el(t)!=='otezano').length;$('soon').textContent=all.filter(t=>age(t)<=7).length;$('date').textContent=data.last_success?fmt(data.last_success).slice(0,11):'Nije LIVE';$('count').textContent=a.length+' oglasa odgovara filtrima'+(data.status==='snapshot'?' · nepotpun početni pregled':'');
-$('chips').innerHTML=[['','Sva područja'],...Object.entries(CAT)].map(([k,v])=>'<button data-cat="'+esc(k)+'" class="'+(category===k?'on':'')+'">'+esc(v)+'</button>').join('');
-$('cards').innerHTML=part.length?part.map(t=>'<article class="card"><div><span class="pill">'+esc(t.canton||'CH')+'</span><span class="pill">'+esc(CAT[cats(t)[0]]||'Javna nabava')+'</span><span class="pill '+(el(t)==='otezano'?'warn':'')+'">'+esc(el(t)==='nacelno_moguce'?'Načelno moguće – provjeriti':el(t)==='otezano'?'Otežano':'Provjeriti Codeling')+'</span></div><h3>'+esc(t.title_hr||t.title_original||'Bez naziva')+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije naveden')+' · '+esc(t.city||'')+'</p><p class="sum">'+esc((t.summary_hr||'Nema dostupnog hrvatskog sažetka.').slice(0,480))+'</p><p class="small muted">Objava '+esc(fmt(t.published))+' · '+esc(t.deadline_kind||'Rok')+': <b>'+esc(fmt(t.deadline))+'</b></p><div class="footerrow"><button data-id="'+esc(t.id)+'">HR detalji</button><button data-share="'+esc(t.id)+'">Podijeli ↗</button><a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">Službeni SIMAP ↗</a><button data-fav="'+esc(t.id)+'">'+(favs[t.id]?'★':'☆')+'</button></div></article>').join(''):'<div class="empty">Nema oglasa za ove filtre. Provjeri izvor ili prikaz svih natječaja.</div>';
-$('pages').innerHTML=last>1?'<button id="prev" '+(page<=1?'disabled':'')+'>←</button><span>'+page+' / '+last+'</span><button id="next" '+(page>=last?'disabled':'')+'>→</button>':'';
-document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{category=b.dataset.cat;page=1;render()});document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>detail(b.dataset.id));document.querySelectorAll('[data-share]').forEach(b=>b.onclick=()=>window.TCOD_share&&window.TCOD_share(b.dataset.share));document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{favs[b.dataset.fav]=!favs[b.dataset.fav];try{localStorage.setItem('tcod-simap-favs-2026',JSON.stringify(favs))}catch(e){}render()});if($('prev'))$('prev').onclick=()=>{page--;render()};if($('next'))$('next').onclick=()=>{page++;render()}}
+function render(){
+ notice();
+ const all=base(),filtered=items(),per=36,last=Math.ceil(filtered.length/per),part=filtered.slice((page-1)*per,page*per);
+ $('total').textContent=all.length;
+ $('relevant').textContent=all.filter(t=>cats(t).some(c=>c!=='other')&&el(t)!=='otezano').length;
+ $('soon').textContent=all.filter(t=>age(t)<=7).length;
+ $('date').textContent=data.last_success?fmt(data.last_success).slice(0,11):'Nije LIVE';
+ const q=$('query').value.trim().toLowerCase(),kt=$('canton').value,em=$('elig').value,only=$('only').checked;
+ // Category counts are calculated BEFORE category filtering and AFTER canton/eligibility/search.
+ const scope=all.filter(t=>(!kt||t.canton===kt)&&(!only||cats(t).some(c=>c!=='other'))&&
+  (!onlySaved||!!favs[t.id])&&(em==='all'||em==='potential'&&el(t)!=='otezano'||em===el(t))&&
+  (!q||[t.title_hr,t.title_original,t.authority,t.summary_hr,t.description_original,t.city].join(' ').toLowerCase().includes(q)));
+ const groups=window.TCODSubject?window.TCODSubject.count(scope):{};
+ const catLabels=window.TCODSubject?window.TCODSubject.labels:{...CAT,other:'Ostalo / provjera'};
+ $('count').textContent=filtered.length+' oglasa odgovara filtrima'+
+  (data.status==='partial'?' · djelomični SIMAP uvoz ('+all.length+' vidljivih oglasa)':
+   data.status==='snapshot'?' · početni nepotpuni pregled':'')+
+  '. Prikaz po kantonima i područjima. Natječaj može biti u više područja.';
+ $('chips').innerHTML=[['','Sva područja'],...Object.entries(catLabels)].map(([k,v])=>
+  '<button data-cat="'+esc(k)+'" class="'+(category===k?'on':'')+'">'+esc(v)+' <b class="tcod-filterCount">'+(k?groups[k]||0:scope.length)+'</b></button>'
+ ).join('');
+ const card=t=>{
+  const cs=cats(t);
+  return '<article class="card"><div><span class="pill">'+esc(t.canton||'CH')+'</span>'+
+   cs.map(k=>'<span class="pill">'+esc(catLabels[k]||k)+'</span>').join('')+
+   '<span class="pill '+(el(t)==='otezano'?'warn':'')+'">'+
+   esc(el(t)==='nacelno_moguce'?'Načelno moguće – provjeriti':el(t)==='otezano'?'Otežano':'Provjeriti Codeling')+
+   '</span></div><h3>'+esc(t.title_hr||t.title_original||'Bez naziva')+'</h3>'+
+   '<p class="muted">'+esc(t.authority||'Naručitelj nije naveden')+' · '+esc(t.city||'')+'</p>'+
+   '<p class="sum">'+esc((t.summary_hr||'Nema dostupnog hrvatskog sažetka.').slice(0,480))+'</p>'+
+   '<p class="small muted">Objava '+esc(fmt(t.published))+' · '+esc(t.deadline_kind||'Rok')+': <b>'+esc(fmt(t.deadline))+'</b></p>'+
+   '<div class="footerrow"><button data-id="'+esc(t.id)+'">HR detalji</button><button data-share="'+esc(t.id)+'">Podijeli ↗</button>'+
+   '<a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">Službeni SIMAP ↗</a><button data-fav="'+esc(t.id)+'">'+
+   (favs[t.id]?'★':'☆')+'</button></div></article>';
+ };
+ const byCanton={};
+ for(const t of part){(byCanton[t.canton||'CH']??=[]).push(t);}
+ const areas=Object.keys(catLabels);
+ const cardsHTML=Object.keys(byCanton).sort((a,b)=>a.localeCompare(b,'hr')).map(code=>{
+  const g=byCanton[code],byArea={};
+  for(const t of g){for(const k of cats(t))(byArea[k]??=[]).push(t);}
+  const areaCards=areas.filter(k=>byArea[k]?.length).map(k=>
+   '<details class="tcod-swissArea" open><summary>'+esc(catLabels[k]||k)+' <b>'+byArea[k].length+'</b></summary>'+
+   '<div class="tcod-swissCards">'+byArea[k].map(card).join('')+'</div></details>'
+  ).join('');
+  return '<section class="tcod-swissCanton"><h3>🇨🇭 '+esc(code)+' <span>'+g.length+' oglasa na ovoj stranici</span></h3>'+areaCards+'</section>';
+ }).join('');
+ $('cards').classList.add('tcod-swissGrouped');
+ $('cards').innerHTML=part.length?cardsHTML:
+  '<div class="empty"><p><b>Nema potvrđenih rezultata za odabrane filtre.</b></p>'+
+  '<p>Ovo ne znači da natječaji za područje '+esc(catLabels[category]||'')+' ne postoje. SIMAP uvoz može biti djelomičan ili je odabrano više ograničenja.</p>'+
+  '<button id="tcodSwissReset">Prikaži sva područja</button> <a class="tcod-action" href="https://www.simap.ch/en" target="_blank" rel="noopener">Pretraži službeni SIMAP ↗</a></div>';
+ $('pages').innerHTML=last>1?'<button id="prev" '+(page<=1?'disabled':'')+'>←</button><span>'+page+' / '+last+'</span><button id="next" '+(page>=last?'disabled':'')+'>→</button>':'';
+ document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{category=b.dataset.cat;page=1;render()});
+ document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>detail(b.dataset.id));
+ document.querySelectorAll('[data-share]').forEach(b=>b.onclick=()=>window.TCOD_share&&window.TCOD_share(b.dataset.share));
+ document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{favs[b.dataset.fav]=!favs[b.dataset.fav];try{localStorage.setItem('tcod-simap-favs-2026',JSON.stringify(favs))}catch(e){}render()});
+ const reset=$('tcodSwissReset');if(reset)reset.onclick=()=>{category='';page=1;render()};
+ if($('prev'))$('prev').onclick=()=>{page--;render()};if($('next'))$('next').onclick=()=>{page++;render()};
+}
 function detail(id){let t=(data.tenders||[]).find(x=>x.id===id);if(!t)return;let fields=[['Izvorni naziv',t.title_original],['Opširni hrvatski sažetak (minimalno 10 rečenica)',window.TCOD_report?window.TCOD_report(t):t.summary_hr],['Opis u izvornom jeziku',t.description_original||'Nije dostupan u početnom pregledu'],['Strojni prijevod punog opisa',t.description_hr||'Nije uključen (DeepL nije povezan)'],['Naručitelj',t.authority],['Lokacija',String(t.city||'')+' · '+String(t.canton||'')],['Faza',t.deadline_kind||'Nije potvrđena'],['Rok',fmt(t.deadline)],['Codeling – preliminarna procjena',el(t)],['Glavne provjere',(t.codeling_reasons||[]).join('\n')],['Kontakt',t.contact||'Nije potvrđeno'],['Javni e-mail',t.email||'Nije potvrđeno'],['Broj projekta',t.project_number||'Nije potvrđeno']];
 $('details').innerHTML='<p class="eyebrow" style="margin-top:18px">TCOD / detalji natječaja</p><h2>'+esc(t.title_hr||t.title_original)+'</h2><p><a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">Službeni SIMAP oglas ↗</a></p><dl>'+fields.map(([k,v])=>'<div class="field"><dt>'+esc(k)+'</dt><dd>'+esc(v||'Nije potvrđeno')+'</dd></div>').join('')+'</dl>';$('modal').classList.add('open')}
 function csv(){let hdr=['Izvorni naziv','Naručitelj','Kanton','Objavljeno','Rok','Status Codeling','HR sažetak','Izvorni SIMAP'];let table=[hdr,...items().map(t=>[t.title_original||'',t.authority||'',t.canton||'',t.published||'',t.deadline||'',el(t),t.summary_hr||'',safeUrl(t.url)])];let content='\uFEFF'+table.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\r\n');let file=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=file;a.download='TCOD_SIMAP_CODELING_30D.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(file),1500)}
