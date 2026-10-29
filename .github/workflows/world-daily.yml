@@ -1,0 +1,35 @@
+name: TCOD World - TED EU
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/world_sync.py'
+      - '.github/workflows/world-daily.yml'
+  schedule:
+    - cron: '45 7 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: tcod-world-feed
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Python
+        run: python3 -m py_compile scripts/world_sync.py
+      - name: Fetch EU TED notices
+        run: python3 scripts/world_sync.py
+      - name: Save global feed
+        if: always()
+        run: |
+          git config user.name "tcod-world-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/world.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update international tenders"
+            git push
+          fi
