@@ -61,7 +61,7 @@ function make(url){
  await sleep(25);
  assert(clipboard.includes('favorites=UA-2026-10-29-000001-a'),'favourites share URL');
  d.querySelector('[data-hd="UA-2026-10-29-000001-a"]').click();
- assert(d.getElementById('details').textContent.includes('Kontrolna lista'),'full documentation controls');
+ assert(d.getElementById('details').textContent.includes('Što je potrebno provjeriti u dokumentaciji'),'full documentation controls');
  assert.equal(errors.length,0,'no browser errors: '+errors.join(';'));
  dom.window.close();
  const obj=make('https://tcod-simap-radar.yapp.page/?tab=heritage&favorites=UNGM-319525');
