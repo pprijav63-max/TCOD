@@ -122,39 +122,123 @@ if(shareMode)txt+=' Prikazuje se POPIS primljen preko poveznice; možeš ga spre
 $('worldFavStatus').textContent=txt;
 $('worldImport').hidden=!shareMode;
 }
+
+const COUNTRY_NAMES={
+ HRV:'Hrvatska',DEU:'Njemačka',FRA:'Francuska',ITA:'Italija',AUT:'Austrija',SVN:'Slovenija',
+ BEL:'Belgija',POL:'Poljska',ESP:'Španjolska',PRT:'Portugal',NLD:'Nizozemska',LUX:'Luksemburg',
+ CZE:'Češka',SVK:'Slovačka',HUN:'Mađarska',ROU:'Rumunjska',BGR:'Bugarska',GRC:'Grčka',
+ DNK:'Danska',SWE:'Švedska',FIN:'Finska',NOR:'Norveška',ISL:'Island',IRL:'Irska',
+ MLT:'Malta',CYP:'Cipar',EST:'Estonija',LVA:'Latvija',LTU:'Litva',
+ GBR:'Ujedinjeno Kraljevstvo',CHE:'Švicarska',UKR:'Ukrajina',SRB:'Srbija',BIH:'Bosna i Hercegovina',
+ MNE:'Crna Gora',MKD:'Sjeverna Makedonija',ALB:'Albanija',TUR:'Turska',
+ USA:'Sjedinjene Američke Države',CAN:'Kanada',AUS:'Australija',JPN:'Japan',
+ IND:'Indija',ARE:'Ujedinjeni Arapski Emirati',SAU:'Saudijska Arabija',KOR:'Južna Koreja',
+ ZAF:'Južnoafrička Republika',ISR:'Izrael',MEX:'Meksiko',BRA:'Brazil',GEO:'Gruzija'
+};
+const COUNTRY_FLAGS={
+ HRV:'🇭🇷',DEU:'🇩🇪',FRA:'🇫🇷',ITA:'🇮🇹',AUT:'🇦🇹',SVN:'🇸🇮',BEL:'🇧🇪',POL:'🇵🇱',
+ ESP:'🇪🇸',PRT:'🇵🇹',NLD:'🇳🇱',LUX:'🇱🇺',CZE:'🇨🇿',SVK:'🇸🇰',HUN:'🇭🇺',
+ ROU:'🇷🇴',BGR:'🇧🇬',GRC:'🇬🇷',DNK:'🇩🇰',SWE:'🇸🇪',FIN:'🇫🇮',NOR:'🇳🇴',
+ ISL:'🇮🇸',IRL:'🇮🇪',MLT:'🇲🇹',CYP:'🇨🇾',EST:'🇪🇪',LVA:'🇱🇻',LTU:'🇱🇹',
+ GBR:'🇬🇧',CHE:'🇨🇭',UKR:'🇺🇦',SRB:'🇷🇸',BIH:'🇧🇦',MNE:'🇲🇪',MKD:'🇲🇰',
+ ALB:'🇦🇱',TUR:'🇹🇷',USA:'🇺🇸',CAN:'🇨🇦',AUS:'🇦🇺',JPN:'🇯🇵',IND:'🇮🇳',
+ ARE:'🇦🇪',SAU:'🇸🇦',KOR:'🇰🇷',ZAF:'🇿🇦',ISR:'🇮🇱',MEX:'🇲🇽',BRA:'🇧🇷',GEO:'🇬🇪'
+};
+const countryName=code=>COUNTRY_NAMES[code]||code||'Nepoznata država';
+const countryFlag=code=>COUNTRY_FLAGS[code]||'🌍';
+const countryOrder=(a,b)=>(a==='HRV'?-1:b==='HRV'?1:countryName(a).localeCompare(countryName(b),'hr'));
+const expandedCountries=new Set(['HRV']);
+const linkedCountry=q.get('country')||'';
+if(linkedCountry)expandedCountries.add(linkedCountry);
+
+
 function renderWorld(){
- const portals=$('worldPortals');portals.innerHTML=PORTALS.map(p=>'<article class="tcod-portal"><div class="eyebrow">'+esc(p[1])+'</div><h3>'+esc(p[0])+'</h3><p class="muted">'+esc(p[3])+'</p><a class="tcod-action" href="'+esc(p[2])+'" target="_blank" rel="noopener">Otvori službeni portal ↗</a></article>').join('');
+ const portals=$('worldPortals');
+ portals.innerHTML=PORTALS.map(p=>'<article class="tcod-portal"><div class="eyebrow">'+esc(p[1])+'</div><h3>'+esc(p[0])+'</h3><p class="muted">'+esc(p[3])+'</p><a class="tcod-action" href="'+esc(p[2])+'" target="_blank" rel="noopener">Otvori službeni portal ↗</a></article>').join('');
  const n=(world.tenders||[]).filter(x=>x&&x.id);
- const t0=$('worldCountry'),country=t0?t0.value:'';
+ const select=$('worldCountry');
+ const country=select?select.value:'';
  const search=($('worldSearch')?.value||'').trim().toLowerCase();
  const only=$('worldFavOnly')&&$('worldFavOnly').checked;
  const ids=favSet();
  const countedHR=n.filter(t=>t.country==='HRV'&&worldOpen(t)).length;
  const countedOTHER=n.filter(t=>t.country!=='HRV'&&worldOpen(t)).length;
+ const names=[...new Set(n.filter(worldOpen).map(t=>t.country||''))].filter(Boolean).sort(countryOrder);
+ const counts={};
+ for(const t of n.filter(worldOpen))counts[t.country||'UNKNOWN']=(counts[t.country||'UNKNOWN']||0)+1;
+ const options='<option value="">Sve države ('+n.filter(worldOpen).length+')</option>'+
+  names.map(k=>'<option value="'+esc(k)+'">'+esc(countryFlag(k)+' '+countryName(k))+' ('+counts[k]+')</option>').join('')+
+  '<option value="OTHER">Ostale države (bez Hrvatske)</option>';
+ if(select){
+  select.innerHTML=options;
+  if(country)select.value=country;
+  if(country&&!select.value)select.value='';
+ }
  $('worldNotice').className='notice'+(world.last_success&&world.status!=='degraded'?' good':'');
  $('worldNotice').textContent=world.last_success
-  ?'TED: '+countedHR+' otvorenih relevantnih oglasa iz Hrvatske i '+countedOTHER+' iz drugih država u dohvaćenom uzorku. Provjera '+world.last_success+'. Status '+world.status+'. '+(world.source_status?.HRV?.complete?'Hrvatski TED rezultat potpuno paginiran.':'Hrvatski TED rezultat još nije potpuno potvrđen.')+' Nacionalni EOJN oglasi koji nisu u TED-u otvaraju se na zasebnom portalu.'
+  ?'TED: '+countedHR+' natječaja iz Hrvatske i '+countedOTHER+' iz drugih država s budućim rokom u posljednjem izvoru. Prikupljeno: '+world.last_success+'. Ovdje su oglasi grupirani po državama. Pokrivenost: pregledani TED oglasi, ne sve javne nabave svijeta. Nacionalne EOJN oglase provjeri zasebno.'
   :'Međunarodni izvor još nije potvrđeno ažuriran. Provjeri hrvatski EOJN i ostale službene portale.';
- const candidates=n.filter(worldOpen);
- let shown=candidates.filter(t=>(!country||country==='OTHER'&&t.country!=='HRV'||t.country===country)&&(!search||[t.title_original,t.title_hr,t.authority,t.country,t.summary_hr,t.id].join(' ').toLowerCase().includes(search))&&(!only||ids.includes(String(t.id))));
+ const candidates=n.filter(t=>worldOpen(t)||(only&&ids.includes(String(t.id))));
+ let shown=candidates.filter(t=>
+  (!country||(country==='OTHER'&&t.country!=='HRV')||t.country===country)&&
+  (!search||[t.title_original,t.title_hr,t.authority,t.country,countryName(t.country),t.summary_hr,t.id].join(' ').toLowerCase().includes(search))&&
+  (!only||ids.includes(String(t.id))));
  if(only){
-  for(const id of ids){if(!n.some(t=>String(t.id)===id)){
-   const p=worldCache[id]||{title_original:'TED objava '+id,country:'',url:'https://ted.europa.eu/en/notice/-/detail/'+id,deadline:'',authority:''};
-   if((!country||country==='OTHER'&&p.country!=='HRV'||p.country===country)&&(!search||[p.title_original,p.authority,id].join(' ').toLowerCase().includes(search)))shown.push({...p,id,not_in_feed:true});
-  }}
+  for(const id of ids){
+   if(!n.some(t=>String(t.id)===id)){
+    const p=worldCache[id]||{title_original:'TED objava '+id,country:'',url:'https://ted.europa.eu/en/notice/-/detail/'+id,deadline:'',authority:''};
+    if((!country||(country==='OTHER'&&p.country!=='HRV')||p.country===country)&&
+      (!search||[p.title_original,p.authority,id,countryName(p.country)].join(' ').toLowerCase().includes(search)))shown.push({...p,id,not_in_feed:true});
+   }
+  }
  }
- shown.sort((a,b)=>(a.country==='HRV'?0:1)-(b.country==='HRV'?0:1)||String(a.deadline||'9999').localeCompare(String(b.deadline||'9999')));
+ shown.sort((a,b)=>countryOrder(a.country,b.country)||String(a.deadline||'9999').localeCompare(String(b.deadline||'9999')));
+ const grouped={};
+ for(const item of shown){const k=item.country||'UNKNOWN';(grouped[k]??=[]).push(item);}
+ const ordered=Object.keys(grouped).sort(countryOrder);
  const isCurrent=!!world.last_success&&Date.now()-Date.parse(world.last_success)<36*3600*1000;
- $('worldResults').innerHTML=shown.length?shown.slice(0,300).map(t=>{
-  const favorite=!!worldFav[t.id],shared=shareMode&&sharedIds.includes(String(t.id));
+ // Sažetak po državama ostaje vidljiv i kada su pojedini natječaji sklopljeni.
+ const index=$('worldCountryIndex');
+ if(index){
+  index.innerHTML='<button class="tcod-countryLink '+(!country?'active':'')+'" data-select-country="">Sve države ('+n.filter(worldOpen).length+')</button>'+
+    names.map(code=>'<button class="tcod-countryLink '+(country===code?'active':'')+'" data-select-country="'+esc(code)+'">'+esc(countryFlag(code)+' '+countryName(code))+' <b>'+counts[code]+'</b></button>').join('');
+  index.querySelectorAll('[data-select-country]').forEach(btn=>btn.onclick=()=>{
+    const chosen=btn.dataset.selectCountry;select.value=chosen;if(chosen)expandedCountries.add(chosen);
+    renderWorld();
+  });
+ }
+ const card=t=>{
+  const favorite=!!worldFav[t.id];
   const unavailable=!!t.not_in_feed,expiry=!unavailable&&!worldOpen(t);
-  const title=esc(t.title_original||t.title_hr||'Naziv nije potvrđen');
-  const label=t.country==='HRV'?'Hrvatska':esc(t.country||'Međunarodno');
+  const label=countryName(t.country);
   const url=/^https:\/\/ted\.europa\.eu\//.test(t.url||'')?t.url:'https://ted.europa.eu/en/notice/-/detail/'+encodeURIComponent(t.id);
-  return '<article class="tcod-worldCard"><div class="eyebrow">'+label+' · TED '+esc(t.id)+'</div><h3>'+title+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
- }).join(''):'<div class="tcod-box"><p>Nema otvorenih oglasa prema filtrima ili izvor nije dostupno ažuriran. Za hrvatske postupke pogledaj službeni EOJN RH.</p></div>';
+  return '<article class="tcod-worldCard"><div class="eyebrow">'+esc(label)+' · TED '+esc(t.id)+'</div><h3>'+esc(t.title_original||t.title_hr||'Naziv nije potvrđen')+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
+ };
+ $('worldResults').innerHTML=ordered.length?ordered.map(code=>{
+  const list=grouped[code];
+  const selected=country&&country!=='OTHER';
+  const shareCountry=new URL(root);
+  shareCountry.searchParams.set('tab','world');
+  shareCountry.searchParams.set('country',code);
+  const groupFav=list.filter(t=>worldFav[t.id]).length;
+  const open=selected||expandedCountries.has(code)||shareMode&&list.length>0;
+  return '<details class="tcod-countryGroup" data-country-group="'+esc(code)+'" '+(open?'open':'')+'>'+
+   '<summary class="tcod-countryHeader"><span class="tcod-countryTitle">'+esc(countryFlag(code)+' '+countryName(code))+'</span><span class="tcod-countryMeta">'+list.length+' natječaja'+(groupFav?' · ★ '+groupFav+' favorita':'')+'</span></summary>'+
+   '<div class="tcod-countryBody"><div class="tcod-row tcod-countryActions"><button data-country-share="'+esc(code)+'">Proslijedi državu ↗</button><span class="tcod-note">Natječaji sortirani prema najbližem roku</span></div><div class="tcod-grid tcod-countryCards">'+list.map(card).join('')+'</div></div></details>';
+ }).join(''):'<div class="tcod-box"><p>Nema oglasa za odabranu državu ili filtre. Za nacionalne postupke provjeri službeni portal.</p></div>';
+ document.querySelectorAll('[data-country-group]').forEach(group=>group.addEventListener('toggle',()=>{
+   const code=group.dataset.countryGroup;if(group.open)expandedCountries.add(code);else expandedCountries.delete(code);
+ }));
+ document.querySelectorAll('[data-country-share]').forEach(b=>b.onclick=()=>{
+  const link=new URL(root);link.searchParams.set('tab','world');link.searchParams.set('country',b.dataset.countryShare);
+  copy(link.href,'Kopiran je link na natječaje države '+countryName(b.dataset.countryShare)+'.');
+ });
  document.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>worldDetails(b.dataset.world));
- document.querySelectorAll('[data-favorite]').forEach(b=>b.onclick=()=>{let id=b.dataset.favorite;if(worldFav[id])delete worldFav[id];else{worldFav[id]=true;let item=n.find(t=>String(t.id)===id);if(item)worldCache[id]={title_original:item.title_original,authority:item.authority,country:item.country,deadline:item.deadline,url:item.url}}storeWorld();renderWorld()});
+ document.querySelectorAll('[data-favorite]').forEach(b=>b.onclick=()=>{
+  const id=b.dataset.favorite;if(worldFav[id])delete worldFav[id];
+  else {worldFav[id]=true;const item=n.find(t=>String(t.id)===id);if(item)worldCache[id]={title_original:item.title_original,authority:item.authority,country:item.country,deadline:item.deadline,url:item.url};}
+  storeWorld();renderWorld();
+ });
  document.querySelectorAll('[data-world-share]').forEach(b=>b.onclick=()=>copy(worldLink([b.dataset.world]),'Kopirana poveznica na ovaj međunarodni natječaj.'));
  worldFavStatus();
 }
@@ -177,9 +261,13 @@ function renderShare(){populateSelect($('shareSelect'),activeDoc)}
 document.querySelectorAll('#tcodTabs [data-switch]').forEach(b=>b.onclick=()=>showTab(b.dataset.switch));
 
 $('worldSearch').oninput=renderWorld;$('worldReload').onclick=fetchWorld;
-$('worldCountry').onchange=renderWorld;$('worldFavOnly').onchange=renderWorld;
+$('worldCountry').onchange=()=>{const code=$('worldCountry').value;if(code)expandedCountries.add(code);renderWorld()};$('worldFavOnly').onchange=renderWorld;
 $('worldFavOnly').checked=shareMode;
 const worldResultsBox=$('worldResults').closest('.tcod-box');
+worldResultsBox.querySelector('h2').textContent='Otvoreni natječaji po državama';
+const worldCountryIndex=document.createElement('div');worldCountryIndex.id='worldCountryIndex';worldCountryIndex.className='tcod-countryIndex';worldResultsBox.insertBefore(worldCountryIndex,$('worldResults'));
+$('worldResults').classList.remove('tcod-grid');$('worldResults').classList.add('tcod-countryList');
+if(linkedCountry)$('worldCountry').value=linkedCountry;
 worldResultsBox.before($('worldShared'));
 const officialPortals=$('worldPortals');
 const portalHeading=document.createElement('h2');
@@ -228,6 +316,6 @@ $('docCopy').onclick=()=>copy(reportText(),'Kontrolna lista i bilješke kopirane
 $('shareApp').onclick=()=>copy(root,'Kopirana zajednička poveznica na TCOD Radar.');
 $('shareSelected').onclick=()=>copy(projLink($('shareSelect').value,'swiss'),'Kopirana poveznica na pojedini natječaj.');
 document.addEventListener('tcod:loaded',()=>{if(activeTab==='docs')renderDocs();if(activeTab==='share')renderShare();let project=q.get('project');if(project&&activeTab==='swiss'&&window.TCODRadar&&window.TCODRadar.list().some(t=>t.id===project))window.TCODRadar.detail(project)});
-showTab(q.get('tab')||'swiss',false);fetchWorld();
+showTab(q.get('tab')||'swiss',false);fetchWorld();setInterval(fetchWorld,1800000);
 if(q.get('project')&&activeTab==='swiss'){setTimeout(()=>{if(window.TCODRadar)window.TCODRadar.detail(q.get('project'))},100)}
 })();
