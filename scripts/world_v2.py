@@ -160,9 +160,9 @@ def main():
   # Collapse repeated TED publication notices with the same buyer, contract title and deadline.
   unique={}
   for row in records:
-   key=(re.sub(r"\W+"," ",row["title_original"].casefold()).strip(),row["authority"].casefold(),row["deadline"])
+   key=(re.sub(r"\W+"," ",row["title_original"].casefold()).strip(),row["authority"].casefold())
    previous=unique.get(key)
-   if previous is None or row.get("published","")>previous.get("published",""):unique[key]=row
+   if previous is None or (row.get("published",""),row.get("id",""))>(previous.get("published",""),previous.get("id","")):unique[key]=row
   records=list(unique.values())
   data.update({"status":"live" if len(completeness)==3 and all(v["complete"] for v in completeness.values()) and not errors else "partial",
     "last_success":NOW.isoformat(timespec="seconds"),"tenders":sorted(records,key=lambda t:(t["deadline"],t["country"])),
