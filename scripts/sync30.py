@@ -78,7 +78,7 @@ def search(now):
  end=now.date().isoformat()
  params={"newestPublicationFrom":begin,"newestPublicationUntil":end,"lang":"de"}
  results=[];seen=set();cursor=None;complete=True
- for i in range(500):
+ for i in range(int(os.environ.get('TCOD_MAX_PAGES','500'))):
   q=dict(params)
   if cursor:q["lastItem"]=cursor
   doc=fetch("/publications/v2/project/project-search",q)
@@ -237,7 +237,7 @@ def main():
   projects=[p for p in projects if p.get("pubType") in ALLOWED and p.get("publicationId")]
   if now.hour<8:
    projects=[p for p in projects if str(p.get("publicationDate"))[:10]!=end]
-  failed=0;out=[];limit=3000
+  failed=0;out=[];limit=int(os.environ.get('TCOD_MAX_DETAILS','3000'))
   capped=len(projects)>limit
   for i,row in enumerate(projects[:limit]):
    try:
