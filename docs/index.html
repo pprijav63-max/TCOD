@@ -81,11 +81,21 @@
 .tcod-heritageSourceGroup>.tcod-heritageCards{padding:14px}
 @media(max-width:850px){.tcod-heritageStats{grid-template-columns:repeat(2,minmax(0,1fr))}.tcod-heritageCards{grid-template-columns:1fr}}
 @media(max-width:550px){.tcod-heritageStats b{font-size:23px}.tcod-heritageCountry>summary{font-size:16px}.tcod-heritageArea{margin:9px}.tcod-heritageChips button{font-size:11px}}
+</style><style>/* ONE-CLICK PUBLIC PROCUREMENT REVIEW */
+.tcod-reviewButton{background:#cceaa9!important;border-color:#cceaa9!important;color:#162011!important;font-size:12px!important;font-weight:700;white-space:normal;line-height:1.35;min-height:37px}
+.tcod-reviewButton:hover{background:#e5f7c7!important;border-color:#e5f7c7!important;color:#111f0d!important}
+.tcod-reviewButton:focus-visible{outline:3px solid white;outline-offset:2px}
+.tcod-reviewNotice{position:fixed;z-index:60;right:20px;bottom:24px;max-width:min(540px,calc(100vw - 40px));padding:16px 18px;border:1px solid #af8461;border-radius:10px;box-shadow:0 8px 40px #0009;background:#2e241b;color:#fff;line-height:1.5;font-size:14px}
+.tcod-reviewNotice.success{border-color:#91c77b;background:#1b3821}
+#tcodReviewFallback{background:#19261e;border:1px solid #87a487;border-radius:12px;color:#fff;padding:22px;width:min(92vw,850px)}
+#tcodReviewFallback::backdrop{background:#000b}
+#tcodReviewFallback textarea{width:100%;height:min(56vh,600px);padding:13px;border:1px solid #6a8b6d;border-radius:7px;background:#0e1a11;color:#f8fff4;font:13px/1.5 monospace}
+@media(max-width:660px){.tcod-reviewButton{font-size:11px!important}.tcod-reviewNotice{right:12px;bottom:12px}}
 </style></head><body><header><div class="top"><div><div class="brand">TCOD <b>/</b> SIMAP RADAR</div><div class="micro">ŠVICARSKA · 26 KANTONA · HRVATSKI SAŽECI</div></div><div class="links"><a href="https://tcod-simap-tender-manager.yapp.page/" target="_blank" rel="noopener">Priprema ponuda ↗</a><a href="https://www.simap.ch/en/vendor/project-manager?page=published" target="_blank" rel="noopener">Službeni SIMAP ↗</a></div></div></header>
 <main><nav id="tcodTabs" class="tcod-tabs" aria-label="Odjeli aplikacije"><button type="button" data-switch="swiss">Švicarska / SIMAP</button><button type="button" data-switch="world">Svijet / međunarodni pozivi</button><button type="button" data-switch="heritage">Kulturna baština · svijet</button><button type="button" data-switch="docs">Dokumentacija i ponuda</button><button type="button" data-switch="share">Dijeljenje i istraživanje</button></nav><section id="swissView"><div class="eyebrow">THE CODE ARCHITECTURE / CODELING d.o.o. ZAGREB</div><h1>Javni natječaji cijele Švicarske.</h1><p class="muted lead">Objave iz posljednjih 30 kalendarskih dana s još važećim rokom. Arhitektura, konzervacija, restauracija, lasersko skeniranje, BIM/HBIM, grafički/web dizajn, video i animacija. Za svaki projekt prikazuje se neslužbeni sažetak na hrvatskom.</p>
 <div id="status" class="notice" role="status">Provjeravam dnevni izvor iz GitHuba…</div><div class="statbar"><div class="stat"><b id="total">—</b><small>Natječaji u izvoru s rokom</small></div><div class="stat"><b id="relevant">—</b><small>Relevantni za Codeling</small></div><div class="stat"><b id="soon">—</b><small>Rok u sljedećih 7 dana</small></div><div class="stat"><b id="date">—</b><small>Posljednji uspješni dohvat</small></div></div>
 <div class="filter"><div><label for="query">Pretraži</label><input id="query" type="search" placeholder="Naziv, naručitelj, hrvatski sažetak…"></div><div><label for="canton">Kanton</label><select id="canton"></select></div><div><label for="elig">Codeling — pristup postupku</label><select id="elig"><option value="potential">Potencijalno / provjeriti</option><option value="all">Svi otvoreni oglasi</option><option value="nacelno_moguce">Načelno moguće (provjeriti)</option><option value="provjeriti">Potrebna provjera</option><option value="otezano">Otežano / pozivni postupak</option></select></div><div><label for="sort">Poredak</label><select id="sort"><option value="deadline">Najbliži rok</option><option value="recent">Nove objave</option><option value="score">Najrelevantnije</option></select></div></div>
-<div class="chips" id="chips"></div><div class="controls"><label><input type="checkbox" id="only" checked> Samo djelatnosti Codelinga</label><div><button id="saved">☆ Favoriti</button> <button id="csv">↓ Izvezi CSV</button> <button id="refresh">↻ Dohvati podatke</button></div></div><p id="count" class="small muted"></p><div id="cards" class="cards"></div><div id="pages" class="paging"></div>
+<div class="chips" id="chips"></div><div class="controls"><label><input type="checkbox" id="only" checked> Samo djelatnosti Codelinga</label><div><button id="saved">☆ Favoriti</button> <button id="csv">↓ Izvezi CSV</button> <button class="tcod-reviewButton" data-review-bulk="swiss">📋 Kopiraj favorite za provjeru</button> <button id="refresh">↻ Dohvati podatke</button></div></div><p id="count" class="small muted"></p><div id="cards" class="cards"></div><div id="pages" class="paging"></div>
 <div class="panel"><h2>Automatski izvor podataka</h2><p class="muted">GitHub repozitorij <a href="https://github.com/pprijav63-max/TCOD" target="_blank" rel="noopener">pprijav63-max/TCOD</a> sadrži uvoznik koji se rasporedom pokušava pokretati svaki dan oko 08:20 prema švicarskom vremenu. Ova Yapp stranica provjerava javni JSON pri otvaranju i svakih 30 minuta. Ako je posljednji uspješni dohvat stariji od 36 sati, pojavljuje se upozorenje.</p><details><summary style="cursor:pointer;color:var(--lime)">Podesi izvor (napredno)</summary><div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><input id="feed" style="flex:1;min-width:220px" placeholder="Javna HTTPS URL JSON datoteke"><button id="savefeed">Spremi</button></div></details></div>
 <div class="panel"><h2>Može li se Codeling iz Hrvatske prijaviti?</h2><p class="muted">Hrvatska tvrtka nije automatski isključena iz švicarskih natječaja, ali pravo sudjelovanja ovisi o obuhvatu konkretnog postupka, zahtjevima za stručne potpise, referencama, osiguranju i eventualnim lokalnim kvalifikacijama. Oznake u aplikaciji predstavljaju preliminarnu procjenu, a ne potvrdu naručitelja.</p></div></section><section id="worldView" hidden></section><section id="heritageView" hidden><p class="eyebrow">THE CODE · ZAŠTITA I OBNOVA KULTURNE BAŠTINE</p>
 <h1>Kulturna baština. Cijeli svijet.</h1>
@@ -112,6 +122,7 @@
  <div>
   <button id="heritageReview">↻ Provjeri favorite</button>
   <button id="heritageShare">↗ Proslijedi favorite</button>
+  <button class="tcod-reviewButton" data-review-bulk="heritage">📋 Kopiraj favorite za provjeru</button>
   <button id="heritageExport">↓ CSV</button>
   <button id="heritageImport" hidden>Spremi primljene favorite</button>
  </div>
@@ -229,7 +240,7 @@ function render(){
    '<p class="muted">'+esc(t.authority||'Naručitelj nije naveden')+' · '+esc(t.city||'')+'</p>'+
    '<p class="sum">'+esc((t.summary_hr||'Nema dostupnog hrvatskog sažetka.').slice(0,480))+'</p>'+
    '<p class="small muted">Objava '+esc(fmt(t.published))+' · '+esc(t.deadline_kind||'Rok')+': <b>'+esc(fmt(t.deadline))+'</b></p>'+
-   '<div class="footerrow"><button data-id="'+esc(t.id)+'">HR detalji</button><button data-share="'+esc(t.id)+'">Podijeli ↗</button>'+
+   '<div class="footerrow"><button data-id="'+esc(t.id)+'">HR detalji</button><button data-share="'+esc(t.id)+'">Podijeli ↗</button><button class="tcod-reviewButton" data-review-kind="swiss" data-review-id="'+esc(t.id)+'">📋 Kopiraj za javnu nabavu</button>'+
    '<a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">Službeni SIMAP ↗</a><button data-fav="'+esc(t.id)+'">'+
    (favs[t.id]?'★':'☆')+'</button></div></article>';
  };
@@ -259,7 +270,7 @@ function render(){
  if($('prev'))$('prev').onclick=()=>{page--;render()};if($('next'))$('next').onclick=()=>{page++;render()};
 }
 function detail(id){let t=(data.tenders||[]).find(x=>x.id===id);if(!t)return;let fields=[['Izvorni naziv',t.title_original],['Opširni hrvatski sažetak (minimalno 10 rečenica)',window.TCOD_report?window.TCOD_report(t):t.summary_hr],['Opis u izvornom jeziku',t.description_original||'Nije dostupan u početnom pregledu'],['Strojni prijevod punog opisa',t.description_hr||'Nije uključen (DeepL nije povezan)'],['Naručitelj',t.authority],['Lokacija',String(t.city||'')+' · '+String(t.canton||'')],['Faza',t.deadline_kind||'Nije potvrđena'],['Rok',fmt(t.deadline)],['Codeling – preliminarna procjena',el(t)],['Glavne provjere',(t.codeling_reasons||[]).join('\n')],['Kontakt',t.contact||'Nije potvrđeno'],['Javni e-mail',t.email||'Nije potvrđeno'],['Broj projekta',t.project_number||'Nije potvrđeno']];
-$('details').innerHTML='<p class="eyebrow" style="margin-top:18px">TCOD / detalji natječaja</p><h2>'+esc(t.title_hr||t.title_original)+'</h2><p><a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">Službeni SIMAP oglas ↗</a></p><dl>'+fields.map(([k,v])=>'<div class="field"><dt>'+esc(k)+'</dt><dd>'+esc(v||'Nije potvrđeno')+'</dd></div>').join('')+'</dl>';$('modal').classList.add('open')}
+$('details').innerHTML='<p class="eyebrow" style="margin-top:18px">TCOD / detalji natječaja</p><h2>'+esc(t.title_hr||t.title_original)+'</h2><p><a href="'+esc(safeUrl(t.url))+'" target="_blank" rel="noopener">Službeni SIMAP oglas ↗</a></p><button class="tcod-reviewButton" data-review-kind="swiss" data-review-id="'+esc(t.id)+'">📋 Kopiraj upit za javnu nabavu</button><dl>'+fields.map(([k,v])=>'<div class="field"><dt>'+esc(k)+'</dt><dd>'+esc(v||'Nije potvrđeno')+'</dd></div>').join('')+'</dl>';$('modal').classList.add('open')}
 function csv(){let hdr=['Izvorni naziv','Naručitelj','Kanton','Objavljeno','Rok','Status Codeling','HR sažetak','Izvorni SIMAP'];let table=[hdr,...items().map(t=>[t.title_original||'',t.authority||'',t.canton||'',t.published||'',t.deadline||'',el(t),t.summary_hr||'',safeUrl(t.url)])];let content='\uFEFF'+table.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\r\n');let file=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=file;a.download='TCOD_SIMAP_CODELING_30D.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(file),1500)}
 async function load(){let src=DEFAULT;try{src=localStorage.getItem('tcod-public-feed')||DEFAULT}catch(e){}$('feed').value=src;try{let r=await fetch(src+(src.includes('?')?'&':'?')+'v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let json=await r.json();if(!Array.isArray(json.tenders)||!json.last_success||!json.window_start||!['live','partial','degraded'].includes(json.status))throw Error('Izvor nije još aktiviran');data=json}catch(e){if(data.status==='live'||data.status==='partial')data.status='degraded';else data={tenders:SEED,status:'snapshot',window_start:'2026-09-30',window_end:'2026-10-29',last_success:null}}page=1;render();document.dispatchEvent(new Event('tcod:loaded'))}
 $('canton').innerHTML='<option value="">Svi kantoni + CH</option>'+'AG AI AR BE BL BS FR GE GL GR JU LU NE NW OW SG SH SO SZ TG TI UR VD VS ZG ZH CH'.split(' ').map(x=>'<option>'+x+'</option>').join('');
@@ -372,7 +383,7 @@ window.TCOD_share=id=>copy(projLink(id,'swiss'),'Kopirana je poveznica na projek
 const worldView=$('worldView'), docsView=$('docsView'), shareView=$('shareView');
 worldView.innerHTML='<p class="eyebrow">NEOVISNO OD ŠVICARSKE</p><h1>Svjetske javne nabave.</h1><p class="muted">Međunarodni izvori za kulturnu baštinu, arhitekturu, skeniranje, BIM, vizualizacije, grafiku i video. Svaka zemlja i izvor imaju vlastite uvjete sudjelovanja; pregled nije potpuni automatski indeks svih svjetskih natječaja.</p><div class="notice" id="worldNotice">Dohvaćam međunarodni izvor…</div><div class="tcod-grid" id="worldPortals"></div><div class="tcod-box"><h2>Automatski pronađeni međunarodni oglasi</h2><p class="tcod-note">Za sada je predviđen ograničeni TED API dohvat europskih oglasa. UNGM, World Bank, EBRD, Prozorro i drugi otvaraju se na izvornim službenim portalima.</p><div class="tcod-row"><input id="worldSearch" placeholder="Pretraži međunarodne oglase…"><button id="worldReload">Osvježi</button></div><div class="tcod-grid" id="worldResults"></div></div>';
 
-worldView.insertAdjacentHTML('beforeend','<div class="tcod-box" id="worldShared"><h2>Favoriti · zajednički pregled</h2><p class="tcod-note">Označi zvjezdicom natječaje. Zatim klikni „Provjeri sve favorite” za usporedbu s posljednjim službenim TED podacima i „Proslijedi favorite” za zajednički link. Oznake se pohranjuju lokalno. Link prenosi odabrane brojeve TED objava, bez privatnih bilježaka.</p><div class="tcod-row"><label for="worldCountry">Država</label><select id="worldCountry"><option value="">Sve države</option><option value="HRV">Hrvatska</option><option value="OTHER">Druge države</option></select><label><input id="worldFavOnly" type="checkbox"> Samo favoriti</label></div><div class="tcod-row" style="margin-top:12px"><button id="worldVerifyAll">↻ Provjeri sve favorite</button><button id="worldShareFavorites">↗ Proslijedi favorite</button><button id="worldCsvFavorites">↓ Izvezi favorite</button><button id="worldImport" hidden>Spremi primljene favorite</button></div><p class="tcod-note" id="worldFavStatus"></p></div>');
+worldView.insertAdjacentHTML('beforeend','<div class="tcod-box" id="worldShared"><h2>Favoriti · zajednički pregled</h2><p class="tcod-note">Označi zvjezdicom natječaje. Zatim klikni „Provjeri sve favorite” za usporedbu s posljednjim službenim TED podacima i „Proslijedi favorite” za zajednički link. Oznake se pohranjuju lokalno. Link prenosi odabrane brojeve TED objava, bez privatnih bilježaka.</p><div class="tcod-row"><label for="worldCountry">Država</label><select id="worldCountry"><option value="">Sve države</option><option value="HRV">Hrvatska</option><option value="OTHER">Druge države</option></select><label><input id="worldFavOnly" type="checkbox"> Samo favoriti</label></div><div class="tcod-row" style="margin-top:12px"><button id="worldVerifyAll">↻ Provjeri sve favorite</button><button id="worldShareFavorites">↗ Proslijedi favorite</button><button id="worldCsvFavorites">↓ Izvezi favorite</button><button class="tcod-reviewButton" data-review-bulk="world">📋 Kopiraj sve favorite za provjeru</button><button id="worldImport" hidden>Spremi primljene favorite</button></div><p class="tcod-note" id="worldFavStatus"></p></div>');
 docsView.innerHTML='<p class="eyebrow">ISTRAŽIVANJE NATJEČAJA I PRIPREMA PONUDE</p><h1>Dokumentacija projekta.</h1><p class="muted">Opširan kontrolni pregled dokumenata, sposobnosti i predaje za Codeling. Stavke su preporučena provjera, a ne tvrdnja da ih svaki naručitelj obvezno traži.</p><div class="notice">Službeni SIMAP: prijava ponuditelja → odabir organizacije Codeling → otvaranje projekta → Register interest → Documentation. Natječajne priloge često nije moguće preuzeti anonimno.</div><div class="tcod-box"><label for="docSelect">Odaberi projekt</label><div class="tcod-row"><select id="docSelect"></select><a id="docOfficial" class="tcod-action" target="_blank" rel="noopener">Otvori SIMAP projekt ↗</a><button id="docShare">Podijeli ovu provjeru</button></div><p id="docHeadline" class="tcod-note"></p><p id="docProgress" class="tcod-note"></p></div><div id="docChecklists"></div><div class="tcod-box"><h2>Bilješke i primljeni prilozi</h2><p class="tcod-note">Bilješke i oznake pohranjuju se samo u tvom pregledniku i nisu zajednički sinkronizirane.</p><textarea id="docNotes" class="tcod-textarea" placeholder="Npr. pitanja naručitelju, analiza natječajne dokumentacije, tko priprema koji prilog…"></textarea><p><input id="docFiles" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.zip"></p><p class="tcod-note" id="docFilesInfo">Odabrane datoteke ostaju na tvom uređaju; ne prenose se na poslužitelj i ne čitaju se automatski.</p><div class="tcod-row"><button id="docExport">Preuzmi analizu / checklist</button><button id="docCopy">Kopiraj kontrolnu listu</button></div></div>';
 shareView.innerHTML='<p class="eyebrow">ZAJEDNIČKO ISTRAŽIVANJE</p><h1>Pošalji javne nabave kolegama.</h1><p class="muted">Cijeli Radar i svaki projekt imaju adresu koju možeš poslati e-mailom, WhatsAppom ili Slackom. Prijatelji i kolege mogu otvoriti iste javno dostupne podatke i službeni SIMAP oglas.</p><div class="tcod-box"><h2>Zajednički link aplikacije</h2><div class="tcod-row"><input class="tcod-copy" value="'+root+'" readonly><button id="shareApp">Kopiraj link</button></div></div><div class="tcod-box"><h2>Izravni link na pojedini projekt</h2><div class="tcod-row"><select id="shareSelect"></select><button id="shareSelected">Kopiraj projekt</button></div><p class="tcod-note">Link otvara projekt i njegov hrvatski sažetak. Lokalni favoriti, označeni dokumenti, bilješke i odabrane datoteke ne dijele se automatski.</p></div><div class="tcod-box"><h2>Zaštita podataka i rad u timu</h2><p class="tcod-note">Ne dijeli povjerljive cijene, osobne isprave ni privatnu natječajnu dokumentaciju kroz javnu poveznicu. Za zajedničko uređivanje kontrolnih lista treba zasebna autentificirana baza i korisnička prava; ova verzija dijeli javne projekte i dopušta izvoz vlastitih bilježaka.</p></div><p id="tcodActionStatus" role="status" class="tcod-note"></p>';
 
@@ -518,7 +529,7 @@ function renderWorld(){
   const unavailable=!!t.not_in_feed,expiry=!unavailable&&!worldOpen(t);
   const label=countryName(t.country);
   const url=/^https:\/\/ted\.europa\.eu\//.test(t.url||'')?t.url:'https://ted.europa.eu/en/notice/-/detail/'+encodeURIComponent(t.id);
-  return '<article class="tcod-worldCard"><div class="eyebrow">'+esc(label)+' · TED '+esc(t.id)+'</div><h3>'+esc(t.title_original||t.title_hr||'Naziv nije potvrđen')+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
+  return '<article class="tcod-worldCard"><div class="eyebrow">'+esc(label)+' · TED '+esc(t.id)+'</div><h3>'+esc(t.title_original||t.title_hr||'Naziv nije potvrđen')+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><button class="tcod-reviewButton" data-review-kind="world" data-review-id="'+esc(t.id)+'">📋 Kopiraj za javnu nabavu</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
  };
  $('worldResults').innerHTML=ordered.length?ordered.map(code=>{
   const list=grouped[code];
@@ -641,6 +652,7 @@ $('shareApp').onclick=()=>copy(root,'Kopirana zajednička poveznica na TCOD Rada
 $('shareSelected').onclick=()=>copy(projLink($('shareSelect').value,'swiss'),'Kopirana poveznica na pojedini natječaj.');
 document.addEventListener('tcod:loaded',()=>{if(activeTab==='docs')renderDocs();if(activeTab==='share')renderShare();let project=q.get('project');if(project&&activeTab==='swiss'&&window.TCODRadar&&window.TCODRadar.list().some(t=>t.id===project))window.TCODRadar.detail(project)});
 showTab(q.get('tab')||'swiss',false);fetchWorld();setInterval(fetchWorld,1800000);
+window.TCODWorld={getData:()=>world};
 if(q.get('project')&&activeTab==='swiss'){setTimeout(()=>{if(window.TCODRadar)window.TCODRadar.detail(q.get('project'))},100)}
 })();
 
@@ -712,7 +724,7 @@ function render(){
     '<p>'+esc((t.summary_hr||'Sažetak nije dostupan.').slice(0,460))+'</p>'+
     '<div class="tcod-heritageActions"><button data-hd="'+esc(t.id)+'">HR analiza</button>'+
     '<button data-hf="'+esc(t.id)+'">'+(fav[t.id]?'★ Favorit':'☆ Favorit')+'</button>'+
-    '<button data-hshare="'+esc(t.id)+'">Proslijedi</button>'+
+    '<button data-hshare="'+esc(t.id)+'">Proslijedi</button><button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj za javnu nabavu</button>'+
     '<a class="tcod-action" href="'+esc(official(t))+'" target="_blank" rel="noopener">Službeni oglas ↗</a></div></article>';
  }
  $('heritageResults').innerHTML=Object.keys(groups).sort(order).map(c=>{
@@ -762,7 +774,7 @@ function details(id){
  '<div class="field"><dt>Provjera podataka</dt><dd>'+esc(t.verification||'Nije potvrđeno')+' · '+esc(t.verified_at||'Nepoznat datum')+'</dd></div>'+
  '<div class="field"><dt>Što treba provjeriti za Codeling</dt><dd>'+esc(t.details_hr||'Pravo sudjelovanja, ovlaštenja i dokumentaciju provjeriti kod naručitelja.')+'</dd></div>'+
  '<div class="field"><dt>Kontrolna lista za prijavu</dt><dd><ul>'+checks.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></dd></div>'+
- '<button id="heritageDetailCopy">Podijeli ovaj projekt</button>';
+ '<button id="heritageDetailCopy">Podijeli ovaj projekt</button> <button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj upit za javnu nabavu</button>';
  $('modal').classList.add('open');
  $('heritageDetailCopy').onclick=()=>copy(link([t.id]));
 }
@@ -789,5 +801,218 @@ $('heritageExport').onclick=()=>{
 };
 window.TCODHeritage={render,load,getData:()=>feed};
 load();setInterval(load,30*60*1000);
+})();
+</script><script>/* TCOD PUBLIC PROCUREMENT REVIEW MODULE */
+/* TCOD Radar — one-click procurement review package for Codeling d.o.o.
+ * Copies public data only; never exports local notes, private attachments or credentials.
+ * All eligibility and documentary requests are QUESTIONS, not verified requirements.
+ */
+(function(){
+'use strict';
+const BASE='https://tcod-simap-radar.yapp.page/';
+const HOST='Codeling d.o.o., Zagreb (Republika Hrvatska)';
+const $=id=>document.getElementById(id);
+const str=v=>typeof v==='string'?v:String(v??'');
+const collapse=v=>str(v).replace(/\s+/g,' ').trim();
+function sourceLabel(kind,t){
+ if(kind==='swiss')return 'SIMAP — Švicarska';
+ if(kind==='world')return 'TED — europske javne nabave';
+ return t.source==='UNGM'?'UNGM / '+(t.agency||'UN'):t.source==='Prozorro'?'Prozorro — Ukrajina':t.source==='TED'?'TED — Europa':str(t.source||'Međunarodni portal');
+}
+function validLink(kind,t){
+ const uri=str(t.url||'');
+ const hosts=kind==='swiss'?['https://www.simap.ch/']:kind==='world'?['https://ted.europa.eu/']:['https://www.ungm.org/','https://ted.europa.eu/','https://prozorro.gov.ua/'];
+ return hosts.some(host=>uri.startsWith(host))?uri:'(potrebno otvoriti službeni oglas na portalu)';
+}
+function projectLink(kind,t){
+ const uri=new URL(BASE);
+ uri.searchParams.set('tab',kind==='world'?'world':kind==='heritage'?'heritage':'swiss');
+ uri.searchParams.set(kind==='swiss'?'project':'favorites',str(t.id||''));
+ return uri.href;
+}
+function statusLabel(kind,t,overall){
+ const time=overall?.last_success;
+ const age=time?Date.now()-Date.parse(time):NaN;
+ const dated=Number.isFinite(age)&&age<=36*3600000;
+ if(kind==='heritage'&&t.verification==='manual_official_2026_10_29')return 'Službena objava pregledana 29.10.2026. (nije neprekidno praćena)';
+ if(!dated)return 'Podaci nisu potvrđeni kao svježi — obavezna provjera na službenom portalu';
+ if(overall?.status==='partial')return 'Posljednji dohvat je djelomičan; status projekta mora se potvrditi';
+ if(overall?.status==='live')return 'Preuzet iz javnog izvora; postupak treba provjeriti';
+ return 'Informativan pregled — pravo prijave nije potvrđeno';
+}
+const QUESTIONS=[
+'Je li poduzeću Codeling d.o.o. iz Hrvatske dopušteno sudjelovati u ovom postupku kao samostalnom ponuditelju?',
+'Je li potreban lokalni partner, zajednica ponuditelja, podizvođač ili lokalno stručno ovlaštenje?',
+'Koje reference, kvalifikacije ključnih stručnjaka i osiguranja naručitelj obvezno traži?',
+'Koji registracijski, porezni, poslovni i drugi dokazi ili izjave moraju biti priloženi?',
+'Koja je točna natječajna dokumentacija za preuzimanje i koje obrasce/cjenike treba popuniti?',
+'Postoje li posebni uvjeti za konzervaciju kulturne baštine, projektiranje, 3D dokumentaciju ili BIM/HBIM?',
+'Koji su službeni rokovi za prijavu interesa, postavljanje pitanja i predaju, s točnom vremenskom zonom?',
+'Predaje li se ponuda na SIMAP-u, EOJN-u, TED-u, UNGM/Quantum portalu, Prozorru ili drugim kanalom?',
+'Postoje li obvezni potpisi, jamstva, potvrde o nepostojanju zapreka, jezik ponude ili ugovorne posebnosti?',
+'Može li se ponuditi samo određeni LOT i kakvi su kriteriji ocjenjivanja i cijena?'
+];
+function questionLines(){return QUESTIONS.map((line,index)=>(index+1)+'. '+line).join('\n');}
+function dataFor(kind){
+ if(kind==='swiss')return window.TCODRadar?.getData?.()||null;
+ if(kind==='world')return window.TCODWorld?.getData?.()||null;
+ return window.TCODHeritage?.getData?.()||null;
+}
+function title(t){return collapse(t.title_original||t.title_hr||'Naziv nije potvrđen');}
+function summary(t){return collapse(t.summary_hr||'Nije dostupan cjelovit hrvatski opis. Provjeriti izvornu dokumentaciju.');}
+function individual(kind,t){
+ const d=dataFor(kind);
+ const deadline=t.deadline||'nije potvrđen';
+ const area=kind==='swiss'?['Kanton',t.canton,'Grad',t.city].filter(Boolean).join(' · '):
+  t.country||t.country_code||'Država nije potvrđena';
+ const lines=[
+ 'PREDMET: Molba za stručnu provjeru javnog natječaja – '+title(t),
+ '',
+ 'Poštovani,',
+ '',
+ 'molim vas da za društvo '+HOST+' provjerite mogućnost sudjelovanja u sljedećem javnom natječaju i navedete sve potrebne korake i dokumente za prijavu.',
+ '',
+ 'OSNOVNI PODACI O NATJEČAJU',
+ 'Naziv: '+title(t),
+ 'Naručitelj: '+(t.authority||t.agency||'nije potvrđen'),
+ 'Izvor: '+sourceLabel(kind,t),
+ 'Država / lokacija: '+(area||'nije potvrđena'),
+ 'Broj oglasa / projekta: '+(t.reference||t.project_number||t.id||'nije potvrđen'),
+ 'Datum objave: '+(t.published||'nije potvrđen'),
+ 'Rok iz trenutačnog pregleda: '+deadline+' (provjeriti datum, vrijeme, vremensku zonu i eventualne izmjene)',
+ 'Službeni oglas: '+validLink(kind,t),
+ 'TCOD istraživački prikaz: '+projectLink(kind,t),
+ 'Status podataka: '+statusLabel(kind,t,d),
+ '',
+ 'HRVATSKI ISTRAŽIVAČKI SAŽETAK (NESLUŽBEN)',
+ summary(t),
+ '',
+ 'MOLIM PROVJERITI:',
+ questionLines(),
+ '',
+ 'Molim kratko stručno očitovanje: (A) MOŽEMO SAMOSTALNO, (B) MOŽEMO UZ PARTNERA ili (C) NE ISPUNJAVAMO UVJETE, uz popis obveznih dokumenata, rokova i eventualnih zapreka.',
+ 'Molim posebno navesti koje od navedenih stavki su stvarno propisane ovim natječajem, a koje nisu primjenjive.',
+ '',
+ 'Napomena: podatke iz ovog istraživačkog prikaza treba usporediti sa službenim natječajem i svim naknadnim ispravcima.',
+ '',
+ 'Hvala i srdačan pozdrav,',
+ 'Codeling d.o.o.',
+ 'Zagreb, Hrvatska'
+ ];
+ return lines.join('\n');
+}
+function selectedIds(kind){
+ const key=kind==='swiss'?'tcod-simap-favs-2026':kind==='world'?'tcod-world-favs-v2':'tcod-heritage-favs';
+ let saved={};
+ try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+ const ids=Object.keys(saved).filter(id=>saved[id]);
+ const params=new URLSearchParams(location.search);
+ const incoming=params.get('tab')===kind?(params.get('favorites')||'').split(',').filter(Boolean):[];
+ return [...new Set([...ids,...incoming])].slice(0,40);
+}
+function bulk(kind){
+ const all=dataFor(kind)?.tenders||[];
+ const fav=selectedIds(kind);
+ if(!fav.length)return null;
+ const keys=all.map(t=>[str(t.id),t]);
+ const lookup=new Map(keys);
+ const groups=fav.map((id,index)=>{
+   const t=lookup.get(id);
+   if(!t)return (index+1)+'. Oglas '+id+' nije u najnovijem izvoru — provjeriti je li istekao ili promijenjen.\n';
+   return [
+    (index+1)+'. '+title(t),
+    '   Naručitelj: '+(t.authority||t.agency||'nije potvrđen')+'; država: '+(t.country||t.canton||'nije potvrđena'),
+    '   Rok (potvrditi): '+(t.deadline||'nije potvrđen'),
+    '   Službeni oglas: '+validLink(kind,t),
+    '   Kratki HR opis: '+summary(t).slice(0,520)+(summary(t).length>520?' […]':''),
+    ''
+   ].join('\n');
+ });
+ return [
+  'PREDMET: Zajednička provjera '+fav.length+' odabranih javnih natječaja – Codeling d.o.o.',
+  '',
+  'Poštovani,',
+  '',
+  'molim vas da za Codeling d.o.o., Zagreb, pregledate odabrane natječaje ispod te utvrdite u kojim postupcima smijemo sudjelovati i što trebamo pripremiti za prijavu.',
+  '',
+  'ODABRANI NATJEČAJI ('+fav.length+')',
+  groups.join('\n'),
+  'ZA SVAKI NATJEČAJ MOLIM PROVJERITI:',
+  questionLines(),
+  '',
+  'Molim pregled u tablici: NATJEČAJ | SAMOSTALNO / UZ PARTNERA / NE | OBVEZNI PRILOZI | ROK | PREOSTALI KORACI | PREPORUKA.',
+  '',
+  'Napomena: ovo su neslužbeni hrvatski sažeci iz djelomičnih izvora. Konačni status, dokumentacija i rokovi potvrđuju se kod naručitelja.',
+  '',
+  'Hvala i srdačan pozdrav,',
+  'Codeling d.o.o., Zagreb'
+ ].join('\n');
+}
+function notify(message,success){
+ let el=$('tcodReviewNotice');
+ if(!el){
+  el=document.createElement('div');
+  el.id='tcodReviewNotice';
+  el.setAttribute('role','status');
+  el.setAttribute('aria-live','polite');
+  document.body.appendChild(el);
+ }
+ el.className='tcod-reviewNotice'+(success?' success':'');
+ el.textContent=message;
+ el.hidden=false;
+}
+function backupCopy(text){
+ const el=document.createElement('textarea');
+ el.value=text;
+ el.setAttribute('readonly','');
+ el.style.position='fixed';
+ el.style.left='-9999px';
+ document.body.append(el);
+ el.focus();el.select();
+ let ok=false;
+ try{ok=document.execCommand('copy')}catch(e){}
+ el.remove();
+ return ok;
+}
+async function copy(text){
+ try{
+  if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(text);
+  else if(!backupCopy(text))throw Error('Clipboard nije podržan');
+  notify('Kopirano! Otvori e-mail ili WhatsApp i zalijepi (Cmd + V / Ctrl + V).',true);
+  return true;
+ }catch(e){
+  if(backupCopy(text)){notify('Kopirano! Zalijepi u poruku javnoj nabavi.',true);return true;}
+  // Make contents selectable without using unsafe unsupported storage.
+  let panel=$('tcodReviewFallback');
+  if(!panel){
+   panel=document.createElement('dialog');panel.id='tcodReviewFallback';
+   panel.innerHTML='<h2>Tekst za provjeru javne nabave</h2><p>Označi sav tekst i kopiraj ga.</p><textarea readonly></textarea><button type="button">Zatvori</button>';
+   panel.querySelector('button').onclick=()=>panel.close();
+   document.body.append(panel);
+  }
+  panel.querySelector('textarea').value=text;
+  panel.showModal();
+  panel.querySelector('textarea').focus();panel.querySelector('textarea').select();
+  notify('Preglednik nije dopustio izravno kopiranje. Tekst je pripremljen za ručno kopiranje.',false);
+  return false;
+ }
+}
+document.addEventListener('click',event=>{
+ const one=event.target.closest('[data-review-kind][data-review-id]');
+ const many=event.target.closest('[data-review-bulk]');
+ if(one){
+  const kind=one.dataset.reviewKind;
+  const id=one.dataset.reviewId;
+  const t=(dataFor(kind)?.tenders||[]).find(row=>str(row.id)===id);
+  if(!t){notify('Ovaj projekt nije pronađen u učitanim podacima. Osvježi Radar.',false);return;}
+  void copy(individual(kind,t));return;
+ }
+ if(many){
+  const content=bulk(many.dataset.reviewBulk);
+  if(!content){notify('Prvo označi barem jedan natječaj zvjezdicom ★ Favorit.',false);return;}
+  void copy(content);
+ }
+});
+window.TCODReview={individual,bulk,selectedIds,copy};
 })();
 </script></body></html>
