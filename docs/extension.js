@@ -263,7 +263,7 @@ function renderWorld(){
   const open=selected||expandedCountries.has(code)||shareMode&&list.length>0;
   const subgroups={};
   for(const item of list){for(const k of subjectCategories(item)){(subgroups[k]??=[]).push(item);}}
-  const subheads=subjectOrder.filter(k=>subgroups[k]&&subgroups[k].length);
+  const subheads=subjectOrder.filter(k=>subgroups[k]&&subgroups[k].length&&(!area||area===k));
   const areaBlocks=subheads.map(k=>{
     const arr=subgroups[k];
     const areaLink=new URL(root);areaLink.searchParams.set('tab','world');areaLink.searchParams.set('country',code);areaLink.searchParams.set('area',k);
