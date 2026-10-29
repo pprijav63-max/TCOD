@@ -183,7 +183,19 @@ def short_uk_title(title:str)->str:
  ]
  for regex,hr in rules:
   if re.search(regex,title,re.I) and hr not in parts:parts.append(hr)
- return "; ".join(parts[:5])
+ # Translate a small set of independently identifiable object names.
+ if re.search(r"флігель",title,re.I):
+  year=re.search(r"\b(1[6789]\d{2}|20\d{2})\s*року",title)
+  parts.insert(0,"povijesni pomoćni objekt (aneks / fligel)"+(" iz "+year.group(1)+". godine" if year else ""))
+ if re.search(r"держпром",title,re.I):
+  parts.insert(0,"povijesna zgrada Deržprom u Harkivu")
+ if re.search(r"новобогородицьк.{0,20}фортец",title,re.I):
+  parts.insert(0,"područje povijesne utvrde Novobogorodytska")
+ if re.search(r"іван франко і київ",title,re.I):
+  parts.insert(0,"muzej „Ivan Franko i Kijev”")
+ if re.search(r"пам.?ятк.{0,25}національного значення",title,re.I):
+  parts.append("povijesni spomenik nacionalnog značenja prema objavi")
+ return "; ".join(dict.fromkeys(parts))[:500]
 # Factual micro-translations: include an assertion only when the source phrase occurs.
 FACT_RULES=[
  (r"architectural led design team|architectural-led design team","Traži se odabir stručnog projektantskog tima kojem je arhitektura vodeća disciplina."),
