@@ -207,6 +207,7 @@ const countryFlag=code=>COUNTRY_FLAGS[code]||'🌍';
 const countryOrder=(a,b)=>(a==='HRV'?-1:b==='HRV'?1:countryName(a).localeCompare(countryName(b),'hr'));
 const expandedCountries=new Set(['HRV']);
 const linkedCountry=q.get('country')||'';
+let countryFilter=linkedCountry;
 if(linkedCountry)expandedCountries.add(linkedCountry);
 
 
@@ -215,7 +216,7 @@ function renderWorld(){
  portals.innerHTML=PORTALS.map(p=>'<article class="tcod-portal"><div class="eyebrow">'+esc(p[1])+'</div><h3>'+esc(p[0])+'</h3><p class="muted">'+esc(p[3])+'</p><a class="tcod-action" href="'+esc(p[2])+'" target="_blank" rel="noopener">Otvori službeni portal ↗</a></article>').join('');
  const n=(world.tenders||[]).filter(x=>x&&x.id);
  const select=$('worldCountry');
- const country=select?select.value:'';
+ const country=countryFilter;
  const search=($('worldSearch')?.value||'').trim().toLowerCase();
  const only=$('worldFavOnly')&&$('worldFavOnly').checked;
  const ids=favSet();
@@ -261,7 +262,7 @@ function renderWorld(){
   index.innerHTML='<button class="tcod-countryLink '+(!country?'active':'')+'" data-select-country="">Sve države ('+n.filter(worldOpen).length+')</button>'+
     names.map(code=>'<button class="tcod-countryLink '+(country===code?'active':'')+'" data-select-country="'+esc(code)+'">'+esc(countryFlag(code)+' '+countryName(code))+' <b>'+counts[code]+'</b></button>').join('');
   index.querySelectorAll('[data-select-country]').forEach(btn=>btn.onclick=()=>{
-    const chosen=btn.dataset.selectCountry;select.value=chosen;if(chosen)expandedCountries.add(chosen);
+    const chosen=btn.dataset.selectCountry;countryFilter=chosen;select.value=chosen;if(chosen)expandedCountries.add(chosen);
     renderWorld();
   });
  }
@@ -319,7 +320,7 @@ function renderShare(){populateSelect($('shareSelect'),activeDoc)}
 document.querySelectorAll('#tcodTabs [data-switch]').forEach(b=>b.onclick=()=>showTab(b.dataset.switch));
 
 $('worldSearch').oninput=renderWorld;$('worldReload').onclick=fetchWorld;
-$('worldCountry').onchange=()=>{const code=$('worldCountry').value;if(code)expandedCountries.add(code);renderWorld()};$('worldFavOnly').onchange=renderWorld;
+$('worldCountry').onchange=()=>{const code=$('worldCountry').value;countryFilter=code;if(code)expandedCountries.add(code);renderWorld()};$('worldFavOnly').onchange=renderWorld;
 $('worldFavOnly').checked=shareMode;
 const worldResultsBox=$('worldResults').closest('.tcod-box');
 worldResultsBox.querySelector('h2').textContent='Otvoreni natječaji po državama';
