@@ -9,6 +9,10 @@ var params=new URLSearchParams(location.search);
 var country=params.get('country')||'', agency=params.get('source')||'', area=params.get('area')||'';
 var shared=(params.get('favorites')||'').split(',').filter(x=>/^[A-Za-z0-9-]{5,50}$/.test(x)).slice(0,40);
 var sharedMode=shared.length>0;
+var priority=params.get('priority')||'all';
+var unescoFilter=params.get('unesco')||'all';
+var specialty=params.get('special')||'';
+
 var fav={};try{fav=JSON.parse(localStorage.getItem('tcod-heritage-favs')||'{}')}catch(e){}
 var feed={status:'not_connected',tenders:[],sources:[],last_success:null};
 var areas={restoration:'Restauracija i konzervacija',architecture:'Povijesne građevine / projektiranje',documentation:'3D skeniranje / HBIM',archaeology:'Arheologija / lokaliteti',museum:'Muzeji / arhivi',research:'Stručne studije / istraživanja',equipment:'Oprema za zaštitu baštine'};
@@ -42,7 +46,16 @@ function render(){
  if(country&&!codes.includes(country))combo.innerHTML+='<option value="'+esc(country)+'">'+esc(name(country))+' (0)</option>';
  combo.value=country;
  var query=$('heritageSearch').value.trim().toLowerCase(),onlyFav=$('heritageFavOnly').checked;
- var matched=values.filter(t=>(!country||t.country_code===country)&&(!agency||agency==='UNESCO'&&t.source==='UNGM'&&t.agency==='UNESCO'||agency==='UNGM'&&t.source==='UNGM'||agency==='UNDP'&&t.agency==='UNDP'||agency==='UNOPS'&&t.agency==='UNOPS'||t.source===agency)&&(!query||[t.title_original,t.authority,t.country,t.agency,t.summary_hr,t.reference,t.id].join(' ').toLowerCase().includes(query))&&(!onlyFav||favIds().includes(String(t.id))));
+ var matched=values.filter(t=>(!country||t.country_code===country)&&
+ (!agency||agency==='UNESCO'&&t.source==='UNGM'&&t.agency==='UNESCO'||agency==='UNGM'&&t.source==='UNGM'||agency==='UNDP'&&t.agency==='UNDP'||agency==='UNOPS'&&t.agency==='UNOPS'||t.source===agency)&&
+ (!query||[t.title_original,t.authority,t.country,t.agency,t.summary_hr,t.reference,t.id,t.intervention_hr,t.subject_explanation_hr,t.description_original,t.unesco_site].join(' ').toLowerCase().includes(query))&&
+ (!onlyFav||favIds().includes(String(t.id)))&&
+ (unescoFilter==='all'||unescoFilter==='confirmed'&&t.unesco_status==='unesco_confirmed'||unescoFilter==='unverified'&&t.unesco_status!=='unesco_confirmed')&&
+ (!specialty||(t.intervention_codes||[]).includes(specialty))&&
+ (priority==='all'||priority==='relevant'&&Number(t.tcod_priority_rank||0)>=2||
+  priority==='direct'&&(t.intervention_codes||[]).some(k=>['heritage_design','investigation','laser_scanning','point_cloud','photogrammetry','hbim','survey','digital_inventory','archaeology'].includes(k))||
+  priority==='works'&&(t.procurement_type_hr||'').includes('Izvođenje radova'))
+ );
  var count={};for(var t of matched)for(var k of t.areas||[])count[k]=(count[k]||0)+1;
  $('heritageAreas').innerHTML='<button class="'+(!area?'active':'')+'" data-ha="">Sva područja <b>'+matched.length+'</b></button>'+
  Object.entries(areas).map(([k,v])=>'<button data-ha="'+k+'" class="'+(area===k?'active':'')+'">'+esc(v)+' <b>'+(count[k]||0)+'</b></button>').join('');
@@ -53,17 +66,26 @@ function render(){
  document.querySelectorAll('[data-ha]').forEach(b=>b.onclick=()=>{area=b.dataset.ha;render()});
  document.querySelectorAll('[data-hs]').forEach(b=>b.onclick=()=>{agency=b.dataset.hs;render()});
  document.querySelectorAll('[data-hc]').forEach(b=>b.onclick=()=>{country=b.dataset.hc;render()});
- var rows=matched.filter(t=>!area||(t.areas||[]).includes(area)).sort((a,b)=>String(a.deadline).localeCompare(String(b.deadline)));
+ var rows=matched.filter(t=>!area||(t.areas||[]).includes(area)).sort((a,b)=>Number(b.tcod_priority_rank||0)-Number(a.tcod_priority_rank||0)||String(a.deadline).localeCompare(String(b.deadline)));
+ $('heritagePriority').value=priority;$('heritageUNESCO').value=unescoFilter;$('heritageSpecial').value=specialty;
  var groups={};for(var t of rows)(groups[t.country_code||'OTHER']??=[]).push(t);
- $('heritageCount').textContent=rows.length+' otvorenih poziva prema filtrima, grupiranih po državama i djelatnostima.';
+ $('heritageCount').textContent=rows.length+' aktivnih oglasa prema filtrima. Prioritet imaju projektiranje, istraživanja, 3D snimanje, point cloud, fotogrametrija i HBIM. Status UNESCO-a prikazuje se samo uz službenu potvrdu.';
  function card(t){
-  var typ=t.verification==='manual_official_2026_10_29'?'Službeni UNGM — provjeren 29.10.':'Javni API — djelomičan';
+  var typ=t.description_level==='full_notice'?'Izvorni službeni opis provjeren':t.description_level==='item_descriptions'?'Javne stavke i lotovi provjereni':'Opis ograničen na naslov';
+  var isU=t.unesco_status==='unesco_confirmed';
+  var priority=t.tcod_priority==='visoko'?'Visoka podudarnost s našim uslugama':t.tcod_priority==='nisko'?'Niska podudarnost – oprema/drugo':'Provjeriti opseg';
+  var title=t.title_original||'Naziv nije dostupan';
   return '<article class="tcod-heritageCard"><div class="eyebrow">'+esc(t.agency||t.source)+' · '+esc(name(t.country_code))+'</div>'+
-    '<h3>'+esc(t.title_original||'Bez naziva')+'</h3><p class="muted">'+esc(t.authority||'')+'</p>'+
+    '<h3>'+esc(title)+'</h3><p class="muted">'+esc(t.authority||'')+'</p>'+
+    '<div class="tcod-intervention"><strong>VRSTA INTERVENCIJE · IZ OGLASA</strong>'+esc(t.intervention_hr||'Opis intervencije nije još dovoljno potvrđen')+
+    (t.subject_explanation_hr?'<p>'+esc(t.subject_explanation_hr)+'</p>':'')+'</div>'+
+    (isU?'<a class="tcod-unesco" href="'+esc(t.unesco_url||'https://whc.unesco.org/en/list/')+'" target="_blank" rel="noopener">UNESCO – potvrđeno upisano dobro ↗</a>':'<span class="tcod-note-source">UNESCO status objekta nije službeno potvrđen</span>')+
+    '<p class="tcod-heritageMeta">Vrsta ugovora: '+esc(t.procurement_type_hr||'Potrebna provjera')+'</p>'+
     '<p class="tcod-heritageMeta">Rok: <b>'+esc(pretty(t.deadline))+' (CH)</b></p>'+
-    '<p class="tcod-heritageMeta">'+esc(typ)+' · '+esc(t.fit==='high'?'Visoka podudarnost':t.fit==='low'?'Niža podudarnost':'Provjeriti uvjete')+'</p>'+
-    '<p>'+esc((t.summary_hr||'Sažetak nije dostupan.').slice(0,460))+'</p>'+
-    '<div class="tcod-heritageActions"><button data-hd="'+esc(t.id)+'">HR analiza</button>'+
+    '<p class="tcod-heritageMeta">'+esc(typ)+' · '+esc(t.source||'')+'</p>'+
+    '<span class="tcod-priority '+(t.tcod_priority==='nisko'?'low':'')+'">'+esc(priority)+'</span>'+
+    '<p>'+esc((t.summary_hr||'Hrvatski pregled nije dostupan.').slice(0,640))+'</p>'+
+    '<div class="tcod-heritageActions"><button data-hd="'+esc(t.id)+'">Detaljna HR analiza</button>'+
     '<button data-hf="'+esc(t.id)+'">'+(fav[t.id]?'★ Favorit':'☆ Favorit')+'</button>'+
     '<button data-hshare="'+esc(t.id)+'">Proslijedi</button><button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj za javnu nabavu</button>'+
     '<a class="tcod-action" href="'+esc(official(t))+'" target="_blank" rel="noopener">Službeni oglas ↗</a></div></article>';
@@ -105,17 +127,26 @@ function render(){
 }
 function details(id){
  var t=all().find(t=>String(t.id)===String(id));if(!t)return;
- var checks=['Dopuštenost prijave tvrtke Codeling d.o.o. Zagreb','Službena dokumentacija i sve izmjene','Reference na sličnim kulturnim dobrima','Ovlaštenja i lokalni partneri','Sastav projektnog i konzervatorskog tima','Natječajni obrazac, izjave i cjenik','Obvezni obilazak i postupak pitanja','Točno vrijeme i način predaje ponude'];
+ var checks=['Provjera prava sudjelovanja Codeling d.o.o. Zagreb','Originalni tehnički opis i svi prilozi','Reference na radovima / istraživanjima kulturne baštine','Traženi projektantski i konzervatorski stručnjaci i lokalni potpisi','Vrsta isporuke – projektna dokumentacija, snimka, point cloud, HBIM ili samo radovi','Rokovi, obvezni obilazak i forma predaje'];
+ var unesco=t.unesco_status==='unesco_confirmed'?'<a class="tcod-unesco" href="'+esc(t.unesco_url||'https://whc.unesco.org/en/list/')+'" target="_blank" rel="noopener">'+esc(t.unesco_site||'Potvrđeno UNESCO dobro')+' – službeni UNESCO zapis ↗</a>':'UNESCO upis nije potvrđen; provjeriti odvojeno od statusa naručitelja.';
+ var sourceText=t.description_original||'Službeni opis nije dostupan u javnim metapodacima; izvorni naslov i tehničke priloge potrebno je otvoriti na portalu.';
+ var docs=Array.isArray(t.documents_titles)?t.documents_titles:[];
+ var evidence=docs.length?'<ul class="tcod-documentNames">'+docs.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul>':'Popis priloga nije dostupan u automatskom dohvatu.';
  $('details').innerHTML='<p class="eyebrow">TCOD · Kulturna baština · '+esc(t.agency||t.source)+'</p><h2>'+esc(t.title_original)+'</h2>'+
  '<p>'+esc(name(t.country_code))+' · '+esc(t.reference||t.id)+'</p>'+
- '<p><a class="tcod-action" href="'+esc(official(t))+'" target="_blank" rel="noopener">Otvori službenu dokumentaciju ↗</a></p>'+
- '<div class="field"><dt>Opširan hrvatski sažetak</dt><dd>'+esc(t.summary_hr||'Sažetak nedostupan')+'</dd></div>'+
- '<div class="field"><dt>Rok</dt><dd>'+esc(pretty(t.deadline))+' (CH). Obavezno provjeriti izvornu vremensku zonu.</dd></div>'+
- '<div class="field"><dt>Područja</dt><dd>'+esc((t.areas||[]).map(k=>areas[k]||k).join(', '))+'</dd></div>'+
- '<div class="field"><dt>Provjera podataka</dt><dd>'+esc(t.verification||'Nije potvrđeno')+' · '+esc(t.verified_at||'Nepoznat datum')+'</dd></div>'+
- '<div class="field"><dt>Što treba provjeriti za Codeling</dt><dd>'+esc(t.details_hr||'Pravo sudjelovanja, ovlaštenja i dokumentaciju provjeriti kod naručitelja.')+'</dd></div>'+
- '<div class="field"><dt>Kontrolna lista za prijavu</dt><dd><ul>'+checks.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></dd></div>'+
- '<button id="heritageDetailCopy">Podijeli ovaj projekt</button> <button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj upit za javnu nabavu</button>';
+ '<p><a class="tcod-action" href="'+esc(official(t))+'" target="_blank" rel="noopener">Otvori službeni natječaj ↗</a></p>'+
+ '<div class="field"><dt>1. Što se traži – vrsta intervencije</dt><dd class="tcod-intervention">'+esc(t.intervention_hr||'Nije dovoljno potvrđeno')+'</dd></div>'+
+ (t.subject_explanation_hr?'<div class="field"><dt>2. Tumačenje predmeta iz izvornog naslova</dt><dd>'+esc(t.subject_explanation_hr)+'</dd></div>':'')+
+ '<div class="field"><dt>Hrvatski pregled izvornog oglasa</dt><dd>'+esc(t.summary_hr||'Sažetak nije dostupan')+'</dd></div>'+
+ '<div class="field"><dt>Vrsta ugovora i relevantnost</dt><dd>'+esc(t.procurement_type_hr||'Nepoznato')+' · '+esc(t.tcod_priority||'provjeriti')+' za Codeling</dd></div>'+
+ '<div class="field"><dt>Izvorni opis iz natječaja – točan tekst</dt><dd class="tcod-evidence">'+esc(sourceText)+'</dd></div>'+
+ '<div class="field"><dt>Odakle su preuzeti podaci</dt><dd>'+esc(t.description_source||'Službena objava / metapodaci')+' · '+esc(t.summary_evidence_level||'Nepotpuno')+'</dd></div>'+
+ '<div class="field"><dt>UNESCO zaštita</dt><dd>'+unesco+'</dd></div>'+
+ '<div class="field"><dt>Objavljeni prilozi (nazivi, sadržaj nije automatski analiziran)</dt><dd>'+evidence+'</dd></div>'+
+ '<div class="field"><dt>Rok za prijavu</dt><dd>'+esc(pretty(t.deadline))+' (CH). Provjeriti vremensku zonu i objavljene izmjene.</dd></div>'+
+ '<div class="field"><dt>Što je potrebno provjeriti u dokumentaciji</dt><dd><ul>'+checks.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></dd></div>'+
+ '<div class="field"><dt>Specifične napomene za Codeling</dt><dd>'+esc(t.details_hr||'Dopuštenost, stručni tim i kvalifikacije treba potvrditi.')+'</dd></div>'+
+ '<button id="heritageDetailCopy">Podijeli projekt</button> <button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj upit za javnu nabavu</button>';
  $('modal').classList.add('open');
  $('heritageDetailCopy').onclick=()=>copy(link([t.id]));
 }
@@ -128,6 +159,13 @@ async function load(){
  render();
 }
 $('heritageSearch').oninput=render;
+$('heritagePriority').value=priority;
+$('heritageUNESCO').value=unescoFilter;
+$('heritageSpecial').value=specialty;
+$('heritagePriority').onchange=e=>{priority=e.target.value;render()};
+$('heritageUNESCO').onchange=e=>{unescoFilter=e.target.value;render()};
+$('heritageSpecial').onchange=e=>{specialty=e.target.value;render()};
+
 $('heritageCountry').onchange=e=>{country=e.target.value;render()};
 $('heritageFavOnly').checked=sharedMode;$('heritageFavOnly').onchange=render;
 $('heritageReload').onclick=load;
