@@ -78,9 +78,21 @@ function individual(kind,t){
  'Službeni oglas: '+validLink(kind,t),
  'TCOD istraživački prikaz: '+projectLink(kind,t),
  'Status podataka: '+statusLabel(kind,t,d),
+ 'Vrsta intervencije prema oglasu: '+(t.intervention_hr||'nije potvrđena'),
+ 'Vrsta ugovora: '+(t.procurement_type_hr||'potrebno provjeriti'),
+ 'UNESCO status: '+(t.unesco_status==='unesco_confirmed'?'potvrđeno upisano dobro '+(t.unesco_site||'')+'; '+(t.unesco_url||''):'nije potvrđeno da je ovaj objekt upisan na UNESCO-ov Popis svjetske baštine'),
+ 'Podrijetlo opisa: '+(t.description_source||'službeni oglas / javni metapodaci'),
+
  '',
- 'HRVATSKI ISTRAŽIVAČKI SAŽETAK (NESLUŽBEN)',
+ 'HRVATSKI PREGLED STVARNE INTERVENCIJE (NESLUŽBEN)',
  summary(t),
+ '',
+ 'IZVORNI OPIS IZ SLUŽBENOG NATJEČAJA (AKO JE DOSTUPAN)',
+ (t.description_original||'Pun izvorni opis nije dostupan u automatskom dohvatu; treba otvoriti originalne priloge.').slice(0,1800),
+ '',
+ 'OBJAVLJENI PRILOZI (SAMO NASLOVI, SADRŽAJ NIJE AUTOMATSKI PROČITAN)',
+ Array.isArray(t.documents_titles)&&t.documents_titles.length?t.documents_titles.slice(0,15).join('; '):'Nisu dohvaćeni nazivi priloga.',
+
  '',
  'MOLIM PROVJERITI:',
  questionLines(),
@@ -119,6 +131,7 @@ function bulk(kind){
     '   Naručitelj: '+(t.authority||t.agency||'nije potvrđen')+'; država: '+(t.country||t.canton||'nije potvrđena'),
     '   Rok (potvrditi): '+(t.deadline||'nije potvrđen'),
     '   Službeni oglas: '+validLink(kind,t),
+    '   Vrsta intervencije: '+(t.intervention_hr||'potrebno provjeriti'),
     '   Kratki HR opis: '+summary(t).slice(0,520)+(summary(t).length>520?' […]':''),
     ''
    ].join('\n');
