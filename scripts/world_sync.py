@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """TED EU (svjetski odjel) — samo dokazive objave s rokom; ostali portali ostaju izravne poveznice."""
-import datetime as dt,json,sys,urllib.request
+import datetime as dt,json,sys,urllib.request,re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 p=Path(__file__).resolve().parents[1]/"docs/data/world.json"
@@ -29,6 +29,7 @@ try:
    deadline=deadline.astimezone(tz)
   except Exception:continue
   if deadline<=now or not rid or not title:continue
+  if not re.search(r"architect|architekt|generalplan|heritage|restaur|conserv|denkmal|monument|museum|fotogram|photogram|laserscan|bim|visual|webdesign|website|graphic.design|videoproduc|animation|design and build|urbanis|sanierung",title,re.I):continue
   org=value(v.get("buyer-name"));country=value(v.get("buyer-country"))
   summary=[
    "Naziv javnog poziva jest „"+title+"”.",
