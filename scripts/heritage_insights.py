@@ -184,6 +184,51 @@ def short_uk_title(title:str)->str:
  for regex,hr in rules:
   if re.search(regex,title,re.I) and hr not in parts:parts.append(hr)
  return "; ".join(parts[:5])
+# Factual micro-translations: include an assertion only when the source phrase occurs.
+FACT_RULES=[
+ (r"architectural led design team|architectural-led design team","Traži se odabir stručnog projektantskog tima kojem je arhitektura vodeća disciplina."),
+ (r"heritage led urban regeneration|heritage-led urban regeneration","Projekt je dio urbane regeneracije koja je zasnovana na očuvanju i vrednovanju kulturne baštine."),
+ (r"denkmalgerechte sanierung|denkmalgerecht.{0,20}sanier","U opisu se zahtijeva obnova usklađena sa zahtjevima zaštite spomenika."),
+ (r"funktionale erweiterung|funktional.{0,14}erweiterung","Predviđeno je i funkcionalno proširenje postojećeg objekta."),
+ (r"ausstellungs.{0,20}begegnungsort|multifunktionale.{0,20}kultur","Planirana je kulturna, izložbena i društvena uporaba prostora."),
+ (r"barrierefreiheit|accessib(?:le|ility)","U tehničkom opisu spominje se pristupačnost objekta."),
+ (r"brandschutz|fire safety","U opisu su navedeni zahtjevi zaštite od požara."),
+ (r"energieeffizienz|energy efficiency","U opisu se spominju zahtjevi energetske učinkovitosti."),
+ (r"voruntersuchung|vorentwurf|grobaufmaß","Dokumentacija navodi prethodna istraživanja, predprojekt ili postojeću snimku objekta."),
+ (r"als monument beschermde pastorie|beschermde pastorie","Objekt je u izvornom oglasu označen kao zaštićeni župni dvor (pastorat)."),
+ (r"herbestemming|nieuwe functie","Predviđa se prenamjena ili nova funkcija postojeće građevine."),
+ (r"ensemble rond de|historische ensemble|historisch ensemble","Objekt je dio šire povijesne cjeline koju treba uzeti u obzir."),
+ (r"programmations culturelle et architecturale","Traži se stručna kulturna i arhitektonska programska studija."),
+ (r"lieu mus[eé]al et culturel|mus[eé]e vivant","Predmet uključuje planiranje muzejske ili kulturne funkcije prostora."),
+ (r"gouvernance collaborative|concertation","Traži se stručna koordinacija dionika i participativno upravljanje projektom."),
+ (r"ma[iî]trise d.?[oœ]uvre","Nabava se odnosi na projektantsku stručnu uslugu (maîtrise d’œuvre), a ne automatski na izvođenje radova."),
+ (r"programmation de travaux de restauration","Traži se planiranje programa restauratorskih zahvata."),
+ (r"tranches optionnelles|tranches optionnelles d[eé]finies","Ugovor predviđa opcijske faze definirane natječajnim uvjetima."),
+ (r"prix forfaitaires|prix forfaitaire","Ugovor predviđa paušalno utvrđene cijene usluga."),
+ (r"expozice historicko.etnografick|expozice historicko-ethnografick","Planirana je povijesno-etnografska muzejska postava."),
+ (r"t[řr]ech podla[zž]","Postava je planirana na tri etaže."),
+ (r"expozice v[eě]novan[aá] p[řr][ií]rod","Dio muzejske postave posvećen je prirodi regije."),
+ (r"av technolog|audio.?vizu[aá]ln","U izvornom opisu predviđene su audiovizualne tehnologije."),
+ (r"opracowanie koncepcji aran[zż]acji wystawy","Traži se izrada koncepcije uređenja stalne muzejske izložbe."),
+ (r"tablic informacyjnych|element[oó]w ekspozycyjnych","U opisu se traže izložbeni elementi i informacijske ploče."),
+ (r"makiet|models presenting the","Opis uključuje izradu fizičkih maketa ili modela."),
+ (r"przeciwpo[zż]arow|fire protection","U opisu se spominju mjere protupožarne zaštite."),
+ (r"санкц|пошкоджен.{0,30}воєнн|результат.{0,20}воєнних дій","Izvorni tekst govori o oštećenjima koja su posljedica ratnih djelovanja."),
+ (r"національного значення","Kulturno dobro u oglasu je opisano kao spomenik nacionalnog značenja."),
+ (r"попередн.{0,15}археологічн.{0,15}робот","Predmet su prethodni arheološki radovi ili arheološko rekognosciranje."),
+ (r"охоронн.{0,12}дощок","Predmet su zaštitne natpisne ploče na kulturnim dobrima, a ne restauracija građevine."),
+ (r"технічне обстеження","Traži se tehnički pregled i utvrđivanje stanja postojeće građevine."),
+ (r"коригування науково.прое?ктн.{0,15}документац","Predmet uključuje korekciju prethodno izrađene znanstveno-projektne dokumentacije."),
+ (r"протиаварійн","U oglasu su izričito navedeni hitni protuhavarijski radovi."),
+]
+FACT_RE=[(re.compile(pattern,re.I),message) for pattern,message in FACT_RULES]
+def verified_facts(record:dict)->list[str]:
+ source=clean(record.get("title_original"),650)+" "+clean(record.get("description_original"),5000)
+ out=[]
+ for pattern,hr in FACT_RE:
+  if pattern.search(source) and hr not in out:out.append(hr)
+ return out[:9]
+
 def determine(record:dict)->dict:
  title=clean(record.get("title_original"),650)
  desc=clean(record.get("description_original"),4200)
@@ -273,8 +318,11 @@ def summarize(record:dict)->str:
  authority=clean(record.get("authority") or record.get("agency") or "naručitelj nije naveden",250)
  lines=[]
  if subject:lines.append("Predmet intervencije prema izvornom naslovu: "+subject+".")
- else:lines.append("Predmet je u objavi naveden pod nazivom: „"+title+"”.")
+ else:lines.append("Predmet natječaja (izvorni naziv): „"+title+"”.")
  lines.append("Vrsta zahvata: "+record.get("intervention_hr","nije utvrđena").rstrip(".")+".")
+ for fact in (record.get("confirmed_facts_hr") or [])[:7]:
+  if fact not in lines:lines.append(fact)
+
  for verified_fact in (record.get("facts_hr") or [])[:3]:
   fact=clean(verified_fact,280)
   if fact:lines.append(fact if fact.endswith((".","?","!")) else fact+".")
@@ -326,6 +374,7 @@ def process_one(record:dict,sites:list[dict])->dict:
   row.setdefault("description_source","Nije uspio dohvat potpunog opisa; korišten javni naslov")
   row.setdefault("description_level","title_only")
  row.update(determine(row))
+ row['confirmed_facts_hr']=verified_facts(row)
  row.update(unesco_match(row,sites))
  row["summary_hr"]=summarize(row)
  row["summary_kind"]="Sadržajni HR pregled stvarne intervencije i dostupnog službenog opisa"
