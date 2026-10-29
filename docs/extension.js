@@ -179,7 +179,12 @@ document.querySelectorAll('#tcodTabs [data-switch]').forEach(b=>b.onclick=()=>sh
 $('worldSearch').oninput=renderWorld;$('worldReload').onclick=fetchWorld;
 $('worldCountry').onchange=renderWorld;$('worldFavOnly').onchange=renderWorld;
 $('worldFavOnly').checked=shareMode;
-$('worldResults').closest('.tcod-box').before($('worldShared'));
+const worldResultsBox=$('worldResults').closest('.tcod-box');
+worldResultsBox.before($('worldShared'));
+const officialPortals=$('worldPortals');
+const portalHeading=document.createElement('h2');
+portalHeading.textContent='Ostali službeni portali: Hrvatska, UNGM, Svjetska banka, EBRD i Prozorro';
+worldResultsBox.after(portalHeading,officialPortals);
 $('worldVerifyAll').onclick=async()=>{
  $('worldFavStatus').textContent='Ponovno učitavam javni TED feed radi usporedbe svih favorita…';
  await fetchWorld();
