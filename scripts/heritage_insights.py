@@ -86,26 +86,38 @@ def get(url:str,accept:str="application/json",limit:int=1500000)->bytes:
 def get_json(url:str)->dict:
  return json.loads(get(url,"application/json"))
 def ted_full(record:dict)->dict:
+ """Retrieve original descriptions using official TED Search API, including lots."""
  pub=clean(record.get("id"),60)
  if not re.fullmatch(r"\d{4,9}-20\d\d",pub):return {}
- xml=get("https://ted.europa.eu/en/notice/"+pub+"/xml","application/xml,text/xml")
- root=ET.fromstring(xml)
- descriptions=[];urls=[]
- for el in root.iter():
-  tag=el.tag.split("}")[-1]
-  if tag in ("Description","DescriptionOfProcurement","AdditionalInformation","ProcurementObject","Scope"):
-   value=clean(" ".join(el.itertext()),1700)
-   if len(value)<28 or value.startswith("http"):continue
-   if value not in descriptions:descriptions.append(value)
-  elif tag in ("URI","EndpointURI"):
-   value=clean(el.text,220)
-   if value.startswith("https://") and "http" in value:urls.append(value)
- main=" ".join(descriptions[:5])[:MAX_ORIGINAL]
- return {"description_original":main,
-   "description_source":"Službeni puni TED XML oglas",
-   "description_level":"full_notice" if len(main)>40 else "title_only",
-   "source_excerpts_original":descriptions[:5],
-   "documents_titles":[],"external_document_links":list(dict.fromkeys(urls))[:5]}
+ body={"query":"ND="+pub,
+  "fields":["publication-number","description-proc","description-lot","description-part","description-glo","additional-info-glo"],
+  "limit":2,"scope":"ALL"}
+ req=urllib.request.Request("https://api.ted.europa.eu/v3/notices/search",
+  data=json.dumps(body).encode("utf-8"),
+  headers={"Accept":"application/json","Content-Type":"application/json","User-Agent":USER_AGENT},
+  method="POST")
+ with urllib.request.urlopen(req,timeout=30) as response:answer=json.load(response)
+ found=next((x for x in (answer.get("notices") or []) if x.get("publication-number")==pub),{})
+ if not found:return {}
+ desc=[];languages=[]
+ for key in ("description-proc","description-lot","description-part","description-glo","additional-info-glo"):
+  raw=found.get(key)
+  if not isinstance(raw,dict):raw={"unspecified":raw}
+  for language,parts in raw.items():
+   if isinstance(parts,str):parts=[parts]
+   if not isinstance(parts,list):continue
+   for entry in parts[:7]:
+    value=clean(entry,2000)
+    if len(value)>28 and value not in desc:
+     desc.append(value);languages.append(language)
+ full=" ".join(desc[:7])[:MAX_ORIGINAL]
+ return {"description_original":full,
+  "description_source":"Službeni TED Search API — opis postupka i lotova",
+  "description_level":"full_notice" if len(full)>35 else "title_only",
+  "description_languages":list(dict.fromkeys(languages)),
+  "source_excerpts_original":desc[:7],
+  "documents_titles":[]}
+
 def prozorro_full(record:dict)->dict:
  tid=clean(record.get("id"),70)
  if not re.fullmatch(r"UA-\d{4}-\d{2}-\d{2}-\d{6}-[a-z]",tid):return {}
