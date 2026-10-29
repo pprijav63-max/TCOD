@@ -1,0 +1,21 @@
+name: TCOD Global UI Smoke Test
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/world-ui-test.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test-only DOM framework
+        run: npm install --no-save --no-package-lock jsdom@25
+      - name: Test Codeling world favourites and sharing
+        run: node tests/world_ui_smoke.cjs
