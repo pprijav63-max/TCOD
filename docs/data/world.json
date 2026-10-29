@@ -1,0 +1,39 @@
+{
+  "status": "not_connected",
+  "last_success": null,
+  "source": "Međunarodni izvori; TED EU API planiran; drugi izvori službene poveznice",
+  "tenders": [],
+  "portals": [
+    {
+      "name": "TED — EU",
+      "url": "https://ted.europa.eu/en/",
+      "scope": "EU"
+    },
+    {
+      "name": "UNGM — UN / UNESCO / UNDP / UNOPS",
+      "url": "https://www.ungm.org/Public/Notice",
+      "scope": "Svijet"
+    },
+    {
+      "name": "World Bank — Business Opportunities",
+      "url": "https://projects.worldbank.org/en/projects-operations/opportunities",
+      "scope": "Svijet"
+    },
+    {
+      "name": "EBRD — ECEPP",
+      "url": "https://ecepp.ebrd.com/",
+      "scope": "Više zemalja"
+    },
+    {
+      "name": "Prozorro — Ukrajina",
+      "url": "https://prozorro.gov.ua/en",
+      "scope": "Ukrajina"
+    },
+    {
+      "name": "SAM.gov — SAD",
+      "url": "https://sam.gov/opportunities",
+      "scope": "SAD"
+    }
+  ],
+  "notice_hr": "Neovisni međunarodni odjel: ova početna lista sadrži službene portale, a ne potvrđenu kompletnu bazu svih svjetskih poziva."
+}
