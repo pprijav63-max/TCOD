@@ -1,0 +1,25 @@
+name: TCOD Heritage UI Verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/index.html'
+      - 'docs/heritage.js'
+      - 'tests/heritage_ui_smoke.cjs'
+      - '.github/workflows/heritage-ui-test.yml'
+permissions:
+  contents: read
+jobs:
+  heritage-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test DOM
+        run: npm install --no-save --no-package-lock jsdom@25
+      - name: Test UNESCO UNGM NATO Ukraine and favourite flows
+        run: node tests/heritage_ui_smoke.cjs
