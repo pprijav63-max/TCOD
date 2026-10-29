@@ -20,9 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check Python
-        run: python3 -m py_compile scripts/world_sync.py
+        run: python3 -m py_compile scripts/world_v2.py
       - name: Fetch EU TED notices
-        run: python3 scripts/world_sync.py
+        run: python3 scripts/world_v2.py
       - name: Save global feed
         if: always()
         run: |
