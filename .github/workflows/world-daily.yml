@@ -31,6 +31,10 @@ jobs:
           git add docs/data/world.json
           if ! git diff --cached --quiet; then
             git commit -m "Update international tenders"
-            git pull --rebase
-            git push
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase
+              if git push; then break; fi
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 3
+            done
           fi
