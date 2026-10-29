@@ -1,6 +1,23 @@
 <!DOCTYPE html><html lang="hr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b140d"><title>TCOD SIMAP Radar | Codeling d.o.o.</title><style>
 :root{color-scheme:dark;font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;--bg:#0b120d;--panel:#172219;--raised:#1e2a20;--line:#3c5140;--txt:#eef4e8;--muted:#a4b7a5;--lime:#c9eea4;--orange:#f6d5ac}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-size:14px}a{color:var(--lime);text-decoration:none}button,input,select{font:inherit}button{background:#243626;color:var(--txt);border:1px solid #59715b;padding:10px 12px;border-radius:8px;cursor:pointer}button:hover{border-color:var(--lime)}input,select{background:#101b13;border:1px solid #516b53;color:var(--txt);border-radius:8px;padding:12px;min-width:0}input[type=checkbox]{accent-color:var(--lime)}header{border-bottom:1px solid var(--line);background:#131e16}.top{padding:22px 4%;max-width:1500px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-size:20px;font-weight:800;letter-spacing:.14em}.brand b{color:var(--lime)}.micro{font-size:10px;letter-spacing:.16em;color:#a9bba9;margin-top:8px}.links{display:flex;gap:15px;flex-wrap:wrap;font-size:12px}main{max-width:1500px;padding:36px 4% 65px;margin:auto}h1{font-size:clamp(30px,5vw,50px);letter-spacing:-.05em;line-height:1.13;margin:9px 0 13px}h2{font-size:22px}h3{font-size:18px;line-height:1.37;margin:10px 0}.eyebrow{color:var(--lime);font-size:11px;text-transform:uppercase;letter-spacing:.13em}.muted{color:var(--muted)}p{line-height:1.6}.lead{max-width:900px}.notice{padding:18px;border:1px solid #84714c;background:#2a261e;color:#f5d9ad;border-radius:10px;line-height:1.6;font-size:13px;margin:22px 0}.notice.good{border-color:#59805d;background:#1a2e1f;color:#d5f0d1}.notice.bad{border-color:#a06658;background:#2d1d1b;color:#f3c1b6}.statbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}.stat b{display:block;font-size:27px}.stat small{color:var(--muted);font-size:11px}.filter{display:grid;grid-template-columns:2fr 1fr 1.6fr 1fr;gap:10px;background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:10px}.filter label{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);display:block;margin-bottom:7px}.filter input,.filter select{width:100%}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:19px 0}.chips button{font-size:12px;border-radius:30px}.chips button.on{color:#12200d;background:var(--lime);border-color:var(--lime);font-weight:bold}.controls{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}.controls label{font-size:12px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:22px;min-height:270px}.card:hover{border-color:#648567}.pill{display:inline-block;border:1px solid #658464;border-radius:20px;padding:5px 8px;font-size:10px;margin-right:5px;margin-bottom:4px}.pill.warn{border-color:#a48859;color:#f1d3a3}.card p{font-size:13px;margin:6px 0}.card .sum{margin:14px 0}.small{font-size:12px}.footerrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:14px;align-items:center}.footerrow a{font-size:12px;padding:9px;border:1px solid #5c795c;border-radius:8px}.footerrow button{font-size:12px}.panel{border:1px solid var(--line);background:var(--panel);padding:20px;border-radius:11px;margin:25px 0}.panel p{font-size:13px}.paging{display:flex;gap:9px;align-items:center;justify-content:center;margin:22px 0}.empty{grid-column:1/-1;border:1px dashed var(--line);padding:30px;color:var(--muted);border-radius:10px}.modal{position:fixed;inset:0;background:#000d;display:none;justify-content:flex-end;z-index:5}.modal.open{display:flex}.drawer{height:100%;overflow:auto;background:#121c15;border-left:1px solid var(--line);padding:26px;width:min(730px,100%)}.field{border-top:1px solid var(--line);padding:15px 0}.field dt{font-size:11px;color:var(--lime);text-transform:uppercase;letter-spacing:.1em}.field dd{margin:9px 0 0;white-space:pre-wrap;font-size:13px;line-height:1.5}footer{border-top:1px solid var(--line);padding:26px 4%;font-size:11px;color:var(--muted)}@media(max-width:920px){.statbar{grid-template-columns:repeat(2,1fr)}.filter{grid-template-columns:1fr 1fr}}@media(max-width:720px){.top{display:block}.links{margin-top:15px}.cards{grid-template-columns:1fr}.filter{grid-template-columns:1fr}main{padding:26px 16px 50px}.stat{padding:12px}.stat b{font-size:22px}}
-</style><style>.tcod-tabs{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 32px;padding:10px;border:1px solid var(--line);background:var(--panel);border-radius:11px}.tcod-tabs button{flex:1;min-width:150px;font-weight:700}.tcod-tabs button.active{background:var(--lime);color:#12200d;border-color:var(--lime)}[hidden]{display:none!important}.tcod-box{border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:20px;margin:17px 0}.tcod-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tcod-portal{border:1px solid var(--line);background:var(--raised);border-radius:9px;padding:20px}.tcod-portal p,.tcod-box p{font-size:13px}.tcod-check{display:flex;gap:10px;align-items:start;border-bottom:1px solid var(--line);padding:11px 0}.tcod-check input{margin-top:4px}.tcod-check span{font-size:13px}.tcod-check small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.tcod-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.tcod-row input,.tcod-row select{flex:1}.tcod-note{font-size:12px;color:var(--muted);line-height:1.6}.tcod-docsGroup{margin:13px 0;border:1px solid var(--line);border-radius:8px;padding:15px}.tcod-docsGroup summary{font-weight:700;cursor:pointer}.tcod-action{display:inline-block;border:1px solid #607b60;border-radius:8px;padding:10px 13px;color:var(--lime);font-size:12px}.tcod-copy{width:100%;font-size:12px}.tcod-textarea{width:100%;min-height:105px;background:#0d1710;border:1px solid #506a54;border-radius:8px;color:var(--txt);padding:12px;font:inherit}.tcod-worldCard{border:1px solid var(--line);border-radius:10px;padding:20px;background:var(--raised)}.tcod-worldCard p{font-size:13px}@media(max-width:740px){.tcod-grid{grid-template-columns:1fr}.tcod-tabs button{flex:1 1 130px}}</style></head><body><header><div class="top"><div><div class="brand">TCOD <b>/</b> SIMAP RADAR</div><div class="micro">ŠVICARSKA · 26 KANTONA · HRVATSKI SAŽECI</div></div><div class="links"><a href="https://tcod-simap-tender-manager.yapp.page/" target="_blank" rel="noopener">Priprema ponuda ↗</a><a href="https://www.simap.ch/en/vendor/project-manager?page=published" target="_blank" rel="noopener">Službeni SIMAP ↗</a></div></div></header>
+</style><style>.tcod-tabs{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 32px;padding:10px;border:1px solid var(--line);background:var(--panel);border-radius:11px}.tcod-tabs button{flex:1;min-width:150px;font-weight:700}.tcod-tabs button.active{background:var(--lime);color:#12200d;border-color:var(--lime)}[hidden]{display:none!important}.tcod-box{border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:20px;margin:17px 0}.tcod-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tcod-portal{border:1px solid var(--line);background:var(--raised);border-radius:9px;padding:20px}.tcod-portal p,.tcod-box p{font-size:13px}.tcod-check{display:flex;gap:10px;align-items:start;border-bottom:1px solid var(--line);padding:11px 0}.tcod-check input{margin-top:4px}.tcod-check span{font-size:13px}.tcod-check small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.tcod-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.tcod-row input,.tcod-row select{flex:1}.tcod-note{font-size:12px;color:var(--muted);line-height:1.6}.tcod-docsGroup{margin:13px 0;border:1px solid var(--line);border-radius:8px;padding:15px}.tcod-docsGroup summary{font-weight:700;cursor:pointer}.tcod-action{display:inline-block;border:1px solid #607b60;border-radius:8px;padding:10px 13px;color:var(--lime);font-size:12px}.tcod-copy{width:100%;font-size:12px}.tcod-textarea{width:100%;min-height:105px;background:#0d1710;border:1px solid #506a54;border-radius:8px;color:var(--txt);padding:12px;font:inherit}.tcod-worldCard{border:1px solid var(--line);border-radius:10px;padding:20px;background:var(--raised)}.tcod-worldCard p{font-size:13px}@media(max-width:740px){.tcod-grid{grid-template-columns:1fr}.tcod-tabs button{flex:1 1 130px}}</style><style>/* COUNTRY GROUP STYLES */
+.tcod-countryIndex{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:8px 0 19px}
+.tcod-countryLink{display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:30px;padding:9px 12px;font-size:12px;line-height:1.25;background:#213025;border-color:#567157;color:var(--txt)}
+.tcod-countryLink b{color:var(--lime);font-size:11px}
+.tcod-countryLink.active{background:var(--lime);color:#132110;border-color:var(--lime)}
+.tcod-countryLink.active b{color:#132110}
+.tcod-countryList{display:grid;grid-template-columns:minmax(0,1fr);gap:13px}
+.tcod-countryGroup{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#121e16}
+.tcod-countryGroup[open]{background:#18281c;border-color:#5b7b60}
+.tcod-countryHeader{cursor:pointer;padding:17px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;font-weight:bold;list-style:revert}
+.tcod-countryHeader:hover{background:#26382a}
+.tcod-countryTitle{font-size:19px}
+.tcod-countryMeta{font-size:12px;color:var(--lime);font-weight:500}
+.tcod-countryBody{padding:8px 17px 20px;border-top:1px solid var(--line)}
+.tcod-countryActions{padding:8px 0 16px;justify-content:space-between}
+.tcod-countryCards{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:740px){.tcod-countryCards{grid-template-columns:minmax(0,1fr)}.tcod-countryHeader{padding:14px}.tcod-countryBody{padding:10px}.tcod-countryTitle{font-size:17px}.tcod-countryMeta{font-size:11px}}
+</style></head><body><header><div class="top"><div><div class="brand">TCOD <b>/</b> SIMAP RADAR</div><div class="micro">ŠVICARSKA · 26 KANTONA · HRVATSKI SAŽECI</div></div><div class="links"><a href="https://tcod-simap-tender-manager.yapp.page/" target="_blank" rel="noopener">Priprema ponuda ↗</a><a href="https://www.simap.ch/en/vendor/project-manager?page=published" target="_blank" rel="noopener">Službeni SIMAP ↗</a></div></div></header>
 <main><nav id="tcodTabs" class="tcod-tabs" aria-label="Odjeli aplikacije"><button type="button" data-switch="swiss">Švicarska / SIMAP</button><button type="button" data-switch="world">Svijet / međunarodni pozivi</button><button type="button" data-switch="docs">Dokumentacija i ponuda</button><button type="button" data-switch="share">Dijeljenje i istraživanje</button></nav><section id="swissView"><div class="eyebrow">THE CODE ARCHITECTURE / CODELING d.o.o. ZAGREB</div><h1>Javni natječaji cijele Švicarske.</h1><p class="muted lead">Objave iz posljednjih 30 kalendarskih dana s još važećim rokom. Arhitektura, konzervacija, restauracija, lasersko skeniranje, BIM/HBIM, grafički/web dizajn, video i animacija. Za svaki projekt prikazuje se neslužbeni sažetak na hrvatskom.</p>
 <div id="status" class="notice" role="status">Provjeravam dnevni izvor iz GitHuba…</div><div class="statbar"><div class="stat"><b id="total">—</b><small>Natječaji u izvoru s rokom</small></div><div class="stat"><b id="relevant">—</b><small>Relevantni za Codeling</small></div><div class="stat"><b id="soon">—</b><small>Rok u sljedećih 7 dana</small></div><div class="stat"><b id="date">—</b><small>Posljednji uspješni dohvat</small></div></div>
 <div class="filter"><div><label for="query">Pretraži</label><input id="query" type="search" placeholder="Naziv, naručitelj, hrvatski sažetak…"></div><div><label for="canton">Kanton</label><select id="canton"></select></div><div><label for="elig">Codeling — pristup postupku</label><select id="elig"><option value="potential">Potencijalno / provjeriti</option><option value="all">Svi otvoreni oglasi</option><option value="nacelno_moguce">Načelno moguće (provjeriti)</option><option value="provjeriti">Potrebna provjera</option><option value="otezano">Otežano / pozivni postupak</option></select></div><div><label for="sort">Poredak</label><select id="sort"><option value="deadline">Najbliži rok</option><option value="recent">Nove objave</option><option value="score">Najrelevantnije</option></select></div></div>
@@ -163,39 +180,123 @@ if(shareMode)txt+=' Prikazuje se POPIS primljen preko poveznice; možeš ga spre
 $('worldFavStatus').textContent=txt;
 $('worldImport').hidden=!shareMode;
 }
+
+const COUNTRY_NAMES={
+ HRV:'Hrvatska',DEU:'Njemačka',FRA:'Francuska',ITA:'Italija',AUT:'Austrija',SVN:'Slovenija',
+ BEL:'Belgija',POL:'Poljska',ESP:'Španjolska',PRT:'Portugal',NLD:'Nizozemska',LUX:'Luksemburg',
+ CZE:'Češka',SVK:'Slovačka',HUN:'Mađarska',ROU:'Rumunjska',BGR:'Bugarska',GRC:'Grčka',
+ DNK:'Danska',SWE:'Švedska',FIN:'Finska',NOR:'Norveška',ISL:'Island',IRL:'Irska',
+ MLT:'Malta',CYP:'Cipar',EST:'Estonija',LVA:'Latvija',LTU:'Litva',
+ GBR:'Ujedinjeno Kraljevstvo',CHE:'Švicarska',UKR:'Ukrajina',SRB:'Srbija',BIH:'Bosna i Hercegovina',
+ MNE:'Crna Gora',MKD:'Sjeverna Makedonija',ALB:'Albanija',TUR:'Turska',
+ USA:'Sjedinjene Američke Države',CAN:'Kanada',AUS:'Australija',JPN:'Japan',
+ IND:'Indija',ARE:'Ujedinjeni Arapski Emirati',SAU:'Saudijska Arabija',KOR:'Južna Koreja',
+ ZAF:'Južnoafrička Republika',ISR:'Izrael',MEX:'Meksiko',BRA:'Brazil',GEO:'Gruzija'
+};
+const COUNTRY_FLAGS={
+ HRV:'🇭🇷',DEU:'🇩🇪',FRA:'🇫🇷',ITA:'🇮🇹',AUT:'🇦🇹',SVN:'🇸🇮',BEL:'🇧🇪',POL:'🇵🇱',
+ ESP:'🇪🇸',PRT:'🇵🇹',NLD:'🇳🇱',LUX:'🇱🇺',CZE:'🇨🇿',SVK:'🇸🇰',HUN:'🇭🇺',
+ ROU:'🇷🇴',BGR:'🇧🇬',GRC:'🇬🇷',DNK:'🇩🇰',SWE:'🇸🇪',FIN:'🇫🇮',NOR:'🇳🇴',
+ ISL:'🇮🇸',IRL:'🇮🇪',MLT:'🇲🇹',CYP:'🇨🇾',EST:'🇪🇪',LVA:'🇱🇻',LTU:'🇱🇹',
+ GBR:'🇬🇧',CHE:'🇨🇭',UKR:'🇺🇦',SRB:'🇷🇸',BIH:'🇧🇦',MNE:'🇲🇪',MKD:'🇲🇰',
+ ALB:'🇦🇱',TUR:'🇹🇷',USA:'🇺🇸',CAN:'🇨🇦',AUS:'🇦🇺',JPN:'🇯🇵',IND:'🇮🇳',
+ ARE:'🇦🇪',SAU:'🇸🇦',KOR:'🇰🇷',ZAF:'🇿🇦',ISR:'🇮🇱',MEX:'🇲🇽',BRA:'🇧🇷',GEO:'🇬🇪'
+};
+const countryName=code=>COUNTRY_NAMES[code]||code||'Nepoznata država';
+const countryFlag=code=>COUNTRY_FLAGS[code]||'🌍';
+const countryOrder=(a,b)=>(a==='HRV'?-1:b==='HRV'?1:countryName(a).localeCompare(countryName(b),'hr'));
+const expandedCountries=new Set(['HRV']);
+const linkedCountry=q.get('country')||'';
+if(linkedCountry)expandedCountries.add(linkedCountry);
+
+
 function renderWorld(){
- const portals=$('worldPortals');portals.innerHTML=PORTALS.map(p=>'<article class="tcod-portal"><div class="eyebrow">'+esc(p[1])+'</div><h3>'+esc(p[0])+'</h3><p class="muted">'+esc(p[3])+'</p><a class="tcod-action" href="'+esc(p[2])+'" target="_blank" rel="noopener">Otvori službeni portal ↗</a></article>').join('');
+ const portals=$('worldPortals');
+ portals.innerHTML=PORTALS.map(p=>'<article class="tcod-portal"><div class="eyebrow">'+esc(p[1])+'</div><h3>'+esc(p[0])+'</h3><p class="muted">'+esc(p[3])+'</p><a class="tcod-action" href="'+esc(p[2])+'" target="_blank" rel="noopener">Otvori službeni portal ↗</a></article>').join('');
  const n=(world.tenders||[]).filter(x=>x&&x.id);
- const t0=$('worldCountry'),country=t0?t0.value:'';
+ const select=$('worldCountry');
+ const country=select?select.value:'';
  const search=($('worldSearch')?.value||'').trim().toLowerCase();
  const only=$('worldFavOnly')&&$('worldFavOnly').checked;
  const ids=favSet();
  const countedHR=n.filter(t=>t.country==='HRV'&&worldOpen(t)).length;
  const countedOTHER=n.filter(t=>t.country!=='HRV'&&worldOpen(t)).length;
+ const names=[...new Set(n.filter(worldOpen).map(t=>t.country||''))].filter(Boolean).sort(countryOrder);
+ const counts={};
+ for(const t of n.filter(worldOpen))counts[t.country||'UNKNOWN']=(counts[t.country||'UNKNOWN']||0)+1;
+ const options='<option value="">Sve države ('+n.filter(worldOpen).length+')</option>'+
+  names.map(k=>'<option value="'+esc(k)+'">'+esc(countryFlag(k)+' '+countryName(k))+' ('+counts[k]+')</option>').join('')+
+  '<option value="OTHER">Ostale države (bez Hrvatske)</option>';
+ if(select){
+  select.innerHTML=options;
+  if(country)select.value=country;
+  if(country&&!select.value)select.value='';
+ }
  $('worldNotice').className='notice'+(world.last_success&&world.status!=='degraded'?' good':'');
  $('worldNotice').textContent=world.last_success
-  ?'TED: '+countedHR+' otvorenih relevantnih oglasa iz Hrvatske i '+countedOTHER+' iz drugih država u dohvaćenom uzorku. Provjera '+world.last_success+'. Status '+world.status+'. '+(world.source_status?.HRV?.complete?'Hrvatski TED rezultat potpuno paginiran.':'Hrvatski TED rezultat još nije potpuno potvrđen.')+' Nacionalni EOJN oglasi koji nisu u TED-u otvaraju se na zasebnom portalu.'
+  ?'TED: '+countedHR+' natječaja iz Hrvatske i '+countedOTHER+' iz drugih država s budućim rokom u posljednjem izvoru. Prikupljeno: '+world.last_success+'. Ovdje su oglasi grupirani po državama. Pokrivenost: pregledani TED oglasi, ne sve javne nabave svijeta. Nacionalne EOJN oglase provjeri zasebno.'
   :'Međunarodni izvor još nije potvrđeno ažuriran. Provjeri hrvatski EOJN i ostale službene portale.';
- const candidates=n.filter(worldOpen);
- let shown=candidates.filter(t=>(!country||country==='OTHER'&&t.country!=='HRV'||t.country===country)&&(!search||[t.title_original,t.title_hr,t.authority,t.country,t.summary_hr,t.id].join(' ').toLowerCase().includes(search))&&(!only||ids.includes(String(t.id))));
+ const candidates=n.filter(t=>worldOpen(t)||(only&&ids.includes(String(t.id))));
+ let shown=candidates.filter(t=>
+  (!country||(country==='OTHER'&&t.country!=='HRV')||t.country===country)&&
+  (!search||[t.title_original,t.title_hr,t.authority,t.country,countryName(t.country),t.summary_hr,t.id].join(' ').toLowerCase().includes(search))&&
+  (!only||ids.includes(String(t.id))));
  if(only){
-  for(const id of ids){if(!n.some(t=>String(t.id)===id)){
-   const p=worldCache[id]||{title_original:'TED objava '+id,country:'',url:'https://ted.europa.eu/en/notice/-/detail/'+id,deadline:'',authority:''};
-   if((!country||country==='OTHER'&&p.country!=='HRV'||p.country===country)&&(!search||[p.title_original,p.authority,id].join(' ').toLowerCase().includes(search)))shown.push({...p,id,not_in_feed:true});
-  }}
+  for(const id of ids){
+   if(!n.some(t=>String(t.id)===id)){
+    const p=worldCache[id]||{title_original:'TED objava '+id,country:'',url:'https://ted.europa.eu/en/notice/-/detail/'+id,deadline:'',authority:''};
+    if((!country||(country==='OTHER'&&p.country!=='HRV')||p.country===country)&&
+      (!search||[p.title_original,p.authority,id,countryName(p.country)].join(' ').toLowerCase().includes(search)))shown.push({...p,id,not_in_feed:true});
+   }
+  }
  }
- shown.sort((a,b)=>(a.country==='HRV'?0:1)-(b.country==='HRV'?0:1)||String(a.deadline||'9999').localeCompare(String(b.deadline||'9999')));
+ shown.sort((a,b)=>countryOrder(a.country,b.country)||String(a.deadline||'9999').localeCompare(String(b.deadline||'9999')));
+ const grouped={};
+ for(const item of shown){const k=item.country||'UNKNOWN';(grouped[k]??=[]).push(item);}
+ const ordered=Object.keys(grouped).sort(countryOrder);
  const isCurrent=!!world.last_success&&Date.now()-Date.parse(world.last_success)<36*3600*1000;
- $('worldResults').innerHTML=shown.length?shown.slice(0,300).map(t=>{
-  const favorite=!!worldFav[t.id],shared=shareMode&&sharedIds.includes(String(t.id));
+ // Sažetak po državama ostaje vidljiv i kada su pojedini natječaji sklopljeni.
+ const index=$('worldCountryIndex');
+ if(index){
+  index.innerHTML='<button class="tcod-countryLink '+(!country?'active':'')+'" data-select-country="">Sve države ('+n.filter(worldOpen).length+')</button>'+
+    names.map(code=>'<button class="tcod-countryLink '+(country===code?'active':'')+'" data-select-country="'+esc(code)+'">'+esc(countryFlag(code)+' '+countryName(code))+' <b>'+counts[code]+'</b></button>').join('');
+  index.querySelectorAll('[data-select-country]').forEach(btn=>btn.onclick=()=>{
+    const chosen=btn.dataset.selectCountry;select.value=chosen;if(chosen)expandedCountries.add(chosen);
+    renderWorld();
+  });
+ }
+ const card=t=>{
+  const favorite=!!worldFav[t.id];
   const unavailable=!!t.not_in_feed,expiry=!unavailable&&!worldOpen(t);
-  const title=esc(t.title_original||t.title_hr||'Naziv nije potvrđen');
-  const label=t.country==='HRV'?'Hrvatska':esc(t.country||'Međunarodno');
+  const label=countryName(t.country);
   const url=/^https:\/\/ted\.europa\.eu\//.test(t.url||'')?t.url:'https://ted.europa.eu/en/notice/-/detail/'+encodeURIComponent(t.id);
-  return '<article class="tcod-worldCard"><div class="eyebrow">'+label+' · TED '+esc(t.id)+'</div><h3>'+title+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
- }).join(''):'<div class="tcod-box"><p>Nema otvorenih oglasa prema filtrima ili izvor nije dostupno ažuriran. Za hrvatske postupke pogledaj službeni EOJN RH.</p></div>';
+  return '<article class="tcod-worldCard"><div class="eyebrow">'+esc(label)+' · TED '+esc(t.id)+'</div><h3>'+esc(t.title_original||t.title_hr||'Naziv nije potvrđen')+'</h3><p class="muted">'+esc(t.authority||'Naručitelj nije potvrđen')+'</p><p>'+esc((t.summary_hr||'Sažetak nije dostupan u trenutačnom feedu.').slice(0,370))+'</p><p class="tcod-note">Rok: <b>'+esc(String(t.deadline||'nije potvrđen').slice(0,10))+'</b> · Vrijeme: provjeriti u službenom oglasu</p><p class="tcod-note">'+(unavailable?'<b>Nije pronađen u najnovijem feedu — status provjeriti.</b>':expiry?'Rok prema feedu je istekao.':isCurrent?'U posljednjem ažuriranju TED-a; rok još nije istekao.':'Izvor nije svježe potvrđen.')+'</p><div class="tcod-row"><button data-world="'+esc(t.id)+'">HR detalji</button><button data-favorite="'+esc(t.id)+'">'+(favorite?'★ Favorit':'☆ Favorit')+'</button><button data-world-share="'+esc(t.id)+'">Proslijedi</button><a class="tcod-action" href="'+esc(url)+'" target="_blank" rel="noopener">Provjeri službeni TED ↗</a></div></article>';
+ };
+ $('worldResults').innerHTML=ordered.length?ordered.map(code=>{
+  const list=grouped[code];
+  const selected=country&&country!=='OTHER';
+  const shareCountry=new URL(root);
+  shareCountry.searchParams.set('tab','world');
+  shareCountry.searchParams.set('country',code);
+  const groupFav=list.filter(t=>worldFav[t.id]).length;
+  const open=selected||expandedCountries.has(code)||shareMode&&list.length>0;
+  return '<details class="tcod-countryGroup" data-country-group="'+esc(code)+'" '+(open?'open':'')+'>'+
+   '<summary class="tcod-countryHeader"><span class="tcod-countryTitle">'+esc(countryFlag(code)+' '+countryName(code))+'</span><span class="tcod-countryMeta">'+list.length+' natječaja'+(groupFav?' · ★ '+groupFav+' favorita':'')+'</span></summary>'+
+   '<div class="tcod-countryBody"><div class="tcod-row tcod-countryActions"><button data-country-share="'+esc(code)+'">Proslijedi državu ↗</button><span class="tcod-note">Natječaji sortirani prema najbližem roku</span></div><div class="tcod-grid tcod-countryCards">'+list.map(card).join('')+'</div></div></details>';
+ }).join(''):'<div class="tcod-box"><p>Nema oglasa za odabranu državu ili filtre. Za nacionalne postupke provjeri službeni portal.</p></div>';
+ document.querySelectorAll('[data-country-group]').forEach(group=>group.addEventListener('toggle',()=>{
+   const code=group.dataset.countryGroup;if(group.open)expandedCountries.add(code);else expandedCountries.delete(code);
+ }));
+ document.querySelectorAll('[data-country-share]').forEach(b=>b.onclick=()=>{
+  const link=new URL(root);link.searchParams.set('tab','world');link.searchParams.set('country',b.dataset.countryShare);
+  copy(link.href,'Kopiran je link na natječaje države '+countryName(b.dataset.countryShare)+'.');
+ });
  document.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>worldDetails(b.dataset.world));
- document.querySelectorAll('[data-favorite]').forEach(b=>b.onclick=()=>{let id=b.dataset.favorite;if(worldFav[id])delete worldFav[id];else{worldFav[id]=true;let item=n.find(t=>String(t.id)===id);if(item)worldCache[id]={title_original:item.title_original,authority:item.authority,country:item.country,deadline:item.deadline,url:item.url}}storeWorld();renderWorld()});
+ document.querySelectorAll('[data-favorite]').forEach(b=>b.onclick=()=>{
+  const id=b.dataset.favorite;if(worldFav[id])delete worldFav[id];
+  else {worldFav[id]=true;const item=n.find(t=>String(t.id)===id);if(item)worldCache[id]={title_original:item.title_original,authority:item.authority,country:item.country,deadline:item.deadline,url:item.url};}
+  storeWorld();renderWorld();
+ });
  document.querySelectorAll('[data-world-share]').forEach(b=>b.onclick=()=>copy(worldLink([b.dataset.world]),'Kopirana poveznica na ovaj međunarodni natječaj.'));
  worldFavStatus();
 }
@@ -218,9 +319,13 @@ function renderShare(){populateSelect($('shareSelect'),activeDoc)}
 document.querySelectorAll('#tcodTabs [data-switch]').forEach(b=>b.onclick=()=>showTab(b.dataset.switch));
 
 $('worldSearch').oninput=renderWorld;$('worldReload').onclick=fetchWorld;
-$('worldCountry').onchange=renderWorld;$('worldFavOnly').onchange=renderWorld;
+$('worldCountry').onchange=()=>{const code=$('worldCountry').value;if(code)expandedCountries.add(code);renderWorld()};$('worldFavOnly').onchange=renderWorld;
 $('worldFavOnly').checked=shareMode;
 const worldResultsBox=$('worldResults').closest('.tcod-box');
+worldResultsBox.querySelector('h2').textContent='Otvoreni natječaji po državama';
+const worldCountryIndex=document.createElement('div');worldCountryIndex.id='worldCountryIndex';worldCountryIndex.className='tcod-countryIndex';worldResultsBox.insertBefore(worldCountryIndex,$('worldResults'));
+$('worldResults').classList.remove('tcod-grid');$('worldResults').classList.add('tcod-countryList');
+if(linkedCountry)$('worldCountry').value=linkedCountry;
 worldResultsBox.before($('worldShared'));
 const officialPortals=$('worldPortals');
 const portalHeading=document.createElement('h2');
@@ -269,7 +374,7 @@ $('docCopy').onclick=()=>copy(reportText(),'Kontrolna lista i bilješke kopirane
 $('shareApp').onclick=()=>copy(root,'Kopirana zajednička poveznica na TCOD Radar.');
 $('shareSelected').onclick=()=>copy(projLink($('shareSelect').value,'swiss'),'Kopirana poveznica na pojedini natječaj.');
 document.addEventListener('tcod:loaded',()=>{if(activeTab==='docs')renderDocs();if(activeTab==='share')renderShare();let project=q.get('project');if(project&&activeTab==='swiss'&&window.TCODRadar&&window.TCODRadar.list().some(t=>t.id===project))window.TCODRadar.detail(project)});
-showTab(q.get('tab')||'swiss',false);fetchWorld();
+showTab(q.get('tab')||'swiss',false);fetchWorld();setInterval(fetchWorld,1800000);
 if(q.get('project')&&activeTab==='swiss'){setTimeout(()=>{if(window.TCODRadar)window.TCODRadar.detail(q.get('project'))},100)}
 })();
 
