@@ -1,0 +1,33 @@
+name: Probe Ukraine Prozorro public tender API
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/prozorro-probe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test official Ukraine API and search
+        run: |
+          python3 - <<'PY'
+          import json,urllib.request,urllib.parse
+          def read(url,data=None):
+            req=urllib.request.Request(url,data=data,headers={'Accept':'application/json','Content-Type':'application/json','User-Agent':'TCOD-Radar/1.0 heritage research'})
+            with urllib.request.urlopen(req,timeout=25) as response:return json.load(response)
+          sources=[
+            ('feed','https://public-api.prozorro.gov.ua/api/2.5/tenders?descending=1&limit=3',None),
+            ('search','https://prozorro.gov.ua/api/search/tenders',json.dumps({'text':'реставрація','page':1}).encode()),
+            ('search2','https://prozorro.gov.ua/api/search/tenders',json.dumps({'text':'пам’яток','page':1}).encode())
+          ]
+          for name,url,body in sources:
+            try:
+              payload=read(url,body)
+              print('RESULT',name,'keys',list(payload)[:15],flush=True)
+              print('SAMPLE',name,json.dumps(payload,ensure_ascii=False)[:1700],flush=True)
+            except Exception as e:print('ERROR',name,type(e).__name__,str(e)[:250],flush=True)
+          PY
