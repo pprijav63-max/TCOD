@@ -1,0 +1,55 @@
+name: TCOD SIMAP Radar - Daily Switzerland
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 6 * * *'
+    - cron: '20 7 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: tcod-simap-radar
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Switzerland local 08:20
+        id: time
+        env:
+          EVENT: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          now=datetime.now(ZoneInfo("Europe/Zurich"))
+          hour=int(now.utcoffset().total_seconds()/3600)
+          cron=os.environ.get("CRON","")
+          ok=os.environ.get("EVENT")=="workflow_dispatch" or (hour==2 and cron=="20 6 * * *") or (hour==1 and cron=="20 7 * * *")
+          print("run="+str(ok).lower())
+          print("Local time:",now.isoformat())
+          PY
+      - name: Validate Python source
+        if: steps.time.outputs.run == 'true'
+        run: python3 -m py_compile scripts/sync30.py
+      - name: Fetch SIMAP last 30 days and compose Croatian summaries
+        if: steps.time.outputs.run == 'true'
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: python3 scripts/sync30.py
+      - name: Validate data
+        if: steps.time.outputs.run == 'true'
+        run: python3 -m json.tool docs/data/tenders.json >/dev/null
+      - name: Publish public JSON
+        if: steps.time.outputs.run == 'true'
+        run: |
+          git config user.name "tcod-simap-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/tenders.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily SIMAP update"
+            git push
+          fi
