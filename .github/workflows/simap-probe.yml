@@ -1,0 +1,48 @@
+name: SIMAP API diagnostics
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/simap-probe.yml'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Test SIMAP unauthenticated search
+        run: |
+          python3 - <<'PY'
+          import json,urllib.request,urllib.parse
+          base="https://www.simap.ch/api"
+          path="/publications/v2/project/project-search"
+          query=urllib.parse.urlencode({"newestPublicationFrom":"2026-10-20","newestPublicationUntil":"2026-10-29","lang":"de"})
+          uri=base+path+"?"+query
+          req=urllib.request.Request(uri,headers={"Accept":"application/json","User-Agent":"TCOD-Radar-Diagnostic/1.0"})
+          print("Request",uri,flush=True)
+          try:
+            with urllib.request.urlopen(req,timeout=35) as r:
+              data=json.load(r)
+              print("STATUS",r.status,flush=True)
+              print("TOP KEYS",list(data.keys()),flush=True)
+              print("PAGINATION",data.get("pagination"),flush=True)
+              items=data.get("projects",[])
+              print("ITEMS FIRST PAGE",len(items),flush=True)
+              if items:
+                item=items[0]
+                print("FIRST KEYS",list(item.keys()),flush=True)
+                print("PUB TYPE",item.get("pubType"),"ID",item.get("id"),"PUB ID",item.get("publicationId"),flush=True)
+                pid=item.get("id");pubid=item.get("publicationId")
+                if pid and pubid:
+                  detail_uri=base+"/publications/v1/project/"+str(pid)+"/publication-details/"+str(pubid)
+                  with urllib.request.urlopen(urllib.request.Request(detail_uri,headers={"Accept":"application/json"}),timeout=30) as d:
+                    obj=json.load(d)
+                    print("DETAIL KEYS",list(obj.keys()),flush=True)
+                    print("DATES",obj.get("dates"),flush=True)
+                    print("PUBLIC DOCUMENT FLAG",obj.get("hasProjectDocuments"),flush=True)
+          except Exception as ex:
+            print("SIMAP PROBE ERROR",type(ex).__name__,str(ex),flush=True)
+            raise
+          PY
