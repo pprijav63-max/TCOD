@@ -15,6 +15,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from heritage_insights import enrich_all
 
 BASE=Path(__file__).resolve().parents[1]
 WORLD=BASE/"docs/data/world.json"
@@ -154,7 +155,7 @@ def from_ungm():
    "url":n["url"],"reference":n["reference"],"areas":n["areas"],"fit":n["fit"],
    "access":"službena UNGM objava; dokumenti često zahtijevaju registraciju",
    "verified_at":"2026-10-29T18:00:00+01:00",
-   "verification":"manual_official_2026_10_29","details_hr":n["needs"]
+   "verification":"manual_official_2026_10_29","details_hr":n["needs"],"facts_hr":n.get("facts",[])
   }
   t["summary_hr"]=report(t,n["facts"]);out.append(t)
  return out
@@ -271,6 +272,25 @@ def main():
   key=(item.get("source"),str(item.get("id")))
   merged[key]=item
  items=sorted(merged.values(),key=lambda x:x.get("deadline",""))
+ items,insight_stats=enrich_all(items)
+ # Keep subject area labels only when they are backed by the official tender text.
+ for item in items:
+  codes=set(item.get("intervention_codes") or [])
+  mapped=[]
+  if codes.intersection({"heritage_design","survey","adaptive_reuse"}):mapped.append("architecture")
+  if codes.intersection({"investigation","digital_inventory"}):mapped.append("research")
+  if codes.intersection({"laser_scanning","point_cloud","photogrammetry","hbim","survey","digital_inventory"}):mapped.append("documentation")
+  if codes.intersection({"archaeology"}):mapped.append("archaeology")
+  if codes.intersection({"museum"}):mapped.append("museum")
+  if codes.intersection({"conservation","rehabilitation","urgent_works","adaptive_reuse","roof","facade"}):mapped.append("restoration")
+  if "equipment" in codes:mapped.append("equipment")
+  # Allow confirmed publisher-tagged heritage areas when detailed text is silent.
+  if not mapped and item.get("source")=="UNGM":
+   mapped=[v for v in (item.get("areas") or []) if v in AREAS]
+  item["areas"]=list(dict.fromkeys(mapped or ["research"]))
+  item["fit"]="high" if item.get("tcod_priority")=="visoko" else "low" if item.get("tcod_priority")=="nisko" else "medium"
+ items.sort(key=lambda x:(-(x.get("tcod_priority_rank") or 0),x.get("deadline","")))
+
  summary={"TED":len(ted),"UNGM_CURATED":len(ungm),"PROZORRO":len(ua),"NATO_CONFIRMED_HERITAGE":0}
  response={
   "schema_version":2,
@@ -281,7 +301,7 @@ def main():
   "heritage_only":True,
   "coverage_complete":False,
   "coverage_warning_hr":"Ovo nije cjelovit popis natječaja cijelog svijeta. TED i Prozorro obuhvaćeni su ograničenim pretragama. UNGM/UNESCO/UNDP/UNOPS i NATO imaju vlastite portale; UNESCO/UNGM primjeri provjereni su 29.10.2026., a ne automatski s UNGM API-ja.",
-  "tenders":items,"counts_by_source":summary,
+  "tenders":items,"counts_by_source":summary,"insights_stats":insight_stats,
   "source_states":{"TED":{"status":ted_status,"partial":True},
     "Prozorro":ua_status,
     "UNGM":{"mode":"verified_official_notices","last_human_check":"2026-10-29","api_connected":False},
