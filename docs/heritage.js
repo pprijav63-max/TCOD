@@ -65,7 +65,7 @@ function render(){
     '<p>'+esc((t.summary_hr||'Sažetak nije dostupan.').slice(0,460))+'</p>'+
     '<div class="tcod-heritageActions"><button data-hd="'+esc(t.id)+'">HR analiza</button>'+
     '<button data-hf="'+esc(t.id)+'">'+(fav[t.id]?'★ Favorit':'☆ Favorit')+'</button>'+
-    '<button data-hshare="'+esc(t.id)+'">Proslijedi</button>'+
+    '<button data-hshare="'+esc(t.id)+'">Proslijedi</button><button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj za javnu nabavu</button>'+
     '<a class="tcod-action" href="'+esc(official(t))+'" target="_blank" rel="noopener">Službeni oglas ↗</a></div></article>';
  }
  $('heritageResults').innerHTML=Object.keys(groups).sort(order).map(c=>{
@@ -115,7 +115,7 @@ function details(id){
  '<div class="field"><dt>Provjera podataka</dt><dd>'+esc(t.verification||'Nije potvrđeno')+' · '+esc(t.verified_at||'Nepoznat datum')+'</dd></div>'+
  '<div class="field"><dt>Što treba provjeriti za Codeling</dt><dd>'+esc(t.details_hr||'Pravo sudjelovanja, ovlaštenja i dokumentaciju provjeriti kod naručitelja.')+'</dd></div>'+
  '<div class="field"><dt>Kontrolna lista za prijavu</dt><dd><ul>'+checks.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></dd></div>'+
- '<button id="heritageDetailCopy">Podijeli ovaj projekt</button>';
+ '<button id="heritageDetailCopy">Podijeli ovaj projekt</button> <button class="tcod-reviewButton" data-review-kind="heritage" data-review-id="'+esc(t.id)+'">📋 Kopiraj upit za javnu nabavu</button>';
  $('modal').classList.add('open');
  $('heritageDetailCopy').onclick=()=>copy(link([t.id]));
 }
