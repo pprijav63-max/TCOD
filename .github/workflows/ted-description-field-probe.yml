@@ -1,0 +1,28 @@
+name: TCOD TED Description Field Probe
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ted-description-field-probe.yml']
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Official TED Search API description-lot
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json
+          url='https://api.ted.europa.eu/v3/notices/search'
+          qs=['ND=701863-2026','publication-number=701863-2026']
+          for q in qs:
+           body={'query':q,'fields':['publication-number','notice-title','description-proc','description-lot','description-part','additional-info-glo'],'limit':5,'scope':'ALL'}
+           try:
+            req=urllib.request.Request(url,json.dumps(body).encode(),headers={'Accept':'application/json','Content-Type':'application/json'},method='POST')
+            with urllib.request.urlopen(req,timeout=30) as r:d=json.load(r)
+            arr=d.get('notices',[])
+            print('QUERY',q,'TOTAL',d.get('totalNoticeCount'),'ITEMS',len(arr),flush=True)
+            for t in arr[:2]:
+             print('DATA',json.dumps(t,ensure_ascii=False)[:2500],flush=True)
+           except Exception as e:print('ERROR',q,type(e).__name__,str(e)[:180],flush=True)
+          PY
