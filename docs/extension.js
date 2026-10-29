@@ -159,7 +159,7 @@ function renderWorld(){
  worldFavStatus();
 }
 async function fetchWorld(){try{let r=await fetch(feed+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let j=await r.json();if(!Array.isArray(j.tenders))throw Error('Neispravan format');world=j}catch(e){world={status:'not_connected',tenders:[],error:String(e)}}renderWorld()}
-function worldDetails(id){let t=(world.tenders||[]).find(x=>x.id===id);if(!t)return;
+function worldDetails(id){let t=(world.tenders||[]).find(x=>String(x.id)===String(id))||worldCache[id];if(!t){window.open('https://ted.europa.eu/en/notice/-/detail/'+encodeURIComponent(id),'_blank','noopener');return;}
  const info=ten(t);$('details').innerHTML='<p class="eyebrow">SVIJET / '+esc(t.source||'TED')+'</p><h2>'+esc(t.title_original||'Međunarodni projekt')+'</h2><p><a target="_blank" rel="noopener" href="'+esc(t.url||'https://ted.europa.eu/en/')+'">Otvori službeni oglas ↗</a></p><div class="field"><dt>HR sažetak — najmanje 10 rečenica</dt><dd>'+esc(info)+'</dd></div><div class="field"><dt>Napomena</dt><dd>Pravo sudjelovanja, dokumenti i rokovi provjeravaju se kod izvornog međunarodnog naručitelja.</dd></div>';$('modal').classList.add('open')}
 function populateSelect(el,selected){let x=allProjects();el.innerHTML=x.map(t=>'<option value="'+esc(t.id)+'">'+esc(t.title_hr||t.title_original||'Projekt')+' ('+esc(t.canton||'CH')+')</option>').join('');if(selected&&x.some(t=>t.id===selected))el.value=selected}
 function renderDocs(){
@@ -175,7 +175,45 @@ function reportText(){const p=getProject();if(!p)return '';let x=checked[p.id]||
 function downloadText(str,name){let url=URL.createObjectURL(new Blob([str],{type:'text/plain;charset=utf-8'}));let a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
 function renderShare(){populateSelect($('shareSelect'),activeDoc)}
 document.querySelectorAll('#tcodTabs [data-switch]').forEach(b=>b.onclick=()=>showTab(b.dataset.switch));
+
 $('worldSearch').oninput=renderWorld;$('worldReload').onclick=fetchWorld;
+$('worldCountry').onchange=renderWorld;$('worldFavOnly').onchange=renderWorld;
+$('worldFavOnly').checked=shareMode;
+$('worldResults').closest('.tcod-box').before($('worldShared'));
+$('worldVerifyAll').onclick=async()=>{
+ $('worldFavStatus').textContent='Ponovno učitavam javni TED feed radi usporedbe svih favorita…';
+ await fetchWorld();
+ worldFavStatus();
+ const fresh=world.last_success&&Date.now()-Date.parse(world.last_success)<36*3600*1000;
+ showMessage(fresh?'Favoriti uspoređeni s posljednjim TED feedom. Za konačnu provjeru otvori službeni oglas svakog projekta.':'Feed nije dostupan ili nije ažuran. Status natječaja nije potvrđen.');
+};
+$('worldShareFavorites').onclick=async()=>{
+ const ids=favSet().slice(0,80);
+ if(!ids.length)return showMessage('Najprije označi barem jedan međunarodni natječaj zvjezdicom.');
+ const link=worldLink(ids);
+ if(navigator.share){
+  try{await navigator.share({title:'TCOD Radar – odabrani međunarodni natječaji',text:'Odabrani natječaji za zajedničku provjeru',url:link});return;}catch(e){if(e.name==='AbortError')return;}
+ }
+ await copy(link,'Kopiran je zajednički link s '+ids.length+' favorita.');
+};
+$('worldCsvFavorites').onclick=()=>{
+ const ids=favSet(),list=world.tenders||[];
+ if(!ids.length)return showMessage('Nema favorita za izvoz.');
+ const rows=[['TED ID','Naziv natječaja','Naručitelj','Država','Rok','Status','Službeni izvor']];
+ for(const id of ids){const t=list.find(x=>String(x.id)===id)||worldCache[id]||{};
+ rows.push([id,t.title_original||'',''+(t.authority||''),t.country||'',t.deadline||'',
+ list.some(x=>String(x.id)===id)?(worldOpen(t)?'Budući rok u feedu':'Rok istekao'):'Nije u posljednjem feedu',
+ t.url||'https://ted.europa.eu/en/notice/-/detail/'+id]);}
+ const csv='\uFEFF'+rows.map(row=>row.map(x=>'"'+String(x||'').replaceAll('"','""')+'"').join(';')).join('\r\n');
+ downloadText(csv,'TCOD_SVIJET_FAVORITI.csv');
+};
+$('worldImport').onclick=()=>{
+ for(const id of sharedIds){worldFav[id]=true;const t=(world.tenders||[]).find(x=>String(x.id)===id);if(t)worldCache[id]={title_original:t.title_original,authority:t.authority,country:t.country,deadline:t.deadline,url:t.url};}
+ storeWorld();shareMode=false;sharedIds=[];$('worldFavOnly').checked=true;
+ const newUrl=new URL(location.href);newUrl.searchParams.delete('favorites');history.replaceState({},'',newUrl);
+ renderWorld();showMessage('Primljeni popis spremljen je u tvoje lokalne favorite.');
+};
+
 $('docSelect').onchange=e=>{activeDoc=e.target.value;renderDocs()};
 $('docShare').onclick=()=>copy(projLink(activeDoc,'docs'),'Kopirana poveznica na odabranu kontrolnu listu. Bilješke se ne dijele.');
 $('docNotes').oninput=e=>{let p=getProject();if(p){notes[p.id]=e.target.value;try{localStorage.setItem('tcod-notes-v1',JSON.stringify(notes))}catch(err){}}};
