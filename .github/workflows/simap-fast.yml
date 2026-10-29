@@ -1,0 +1,27 @@
+name: TCOD Fast SIMAP Test
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/simap-fast.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  quick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m py_compile scripts/sync30.py
+      - name: Partial SIMAP import
+        env:
+          TCOD_MAX_PAGES: '6'
+          TCOD_MAX_DETAILS: '100'
+        run: python3 scripts/sync30.py
+      - name: Save results
+        run: |
+          git config user.name tcod-radar
+          git config user.email actions@users.noreply.github.com
+          git add docs/data/tenders.json
+          git diff --cached --quiet || (git commit -m "Verified SIMAP partial data" && git pull --rebase && git push)
