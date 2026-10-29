@@ -2,7 +2,10 @@ name: TCOD Global UI Smoke Test
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/world-ui-test.yml']
+    paths:
+      - '.github/workflows/world-ui-test.yml'
+      - 'docs/index.html'
+      - 'tests/world_ui_smoke.cjs'
   workflow_dispatch:
 permissions:
   contents: read
