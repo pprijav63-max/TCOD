@@ -35,7 +35,7 @@ UA_HERITAGE=re.compile(
  r"музей|музею|історико.культурн|монастир|костел|фортец|катедр|собор|"
  r"фотограмметр|лазерн.{0,20}скануван.{0,80}(?:пам.?ят|спадщин|музе)|"
  r"документац.{0,40}(?:пам.?ят|спадщин)",re.I)
-UA_EXCLUDE=re.compile(r"картридж|принтер|тонер|рідина|продуктів харчування|заправк|друкар|непрофільн",re.I)
+UA_EXCLUDE=re.compile(r"картридж|принтер|тонер|рідина|продуктів харчування|заправк|друкар|непрофільн|військов.{0,15}містечк",re.I)
 TED_HERITAGE=re.compile(
  r"heritage|denkmal|denkmalschutz|monument historique|historical monument|"
  r"cultural monument|patrimoine (?:bâti|culturel)|patrimonio culturale|"
@@ -43,7 +43,7 @@ TED_HERITAGE=re.compile(
  r"arch[aäe]olog|arch[eé]olog|archeolog|muzej|museum|museo|musee|mus[eé]e|"
  r"castle|ch[aâ]teau|church (?:restor|renovat)|historical building|"
  r"povijesn.{0,20}građev|kulturn.{0,10}baštin|kultur(?:erbe|gut)|historic site",re.I)
-TED_EXCLUDE=re.compile(r"biodiversity|environmental restoration|soil remediation|forest restoration|water restoration",re.I)
+TED_EXCLUDE=re.compile(r"biodiversity|environmental restoration|soil remediation|forest restoration|water restoration|ornitološk|ekološk|ornitholog|ecological monitoring|pericolosit.{0,15}idraul|hydraulic flood risk|cyclotouristes|restauration pour le grand public",re.I)
 COUNTRIES={
  "HRV":"Hrvatska","DEU":"Njemačka","FRA":"Francuska","ITA":"Italija","BEL":"Belgija",
  "POL":"Poljska","IRL":"Irska","ESP":"Španjolska","SWE":"Švedska","NOR":"Norveška",
