@@ -156,8 +156,55 @@ def detail(row,now):
  "codeling_status":status,"codeling_reasons":risks,"summary_hr":summary,
  "summary_kind":"Neslužbeni hrvatski sažetak iz metapodataka i opisa",
  "contact":plain(first(oa.get("contactPerson"),office.get("contactPerson")),150),
- "email":email,"procedure":process,"stage":stage,
+ "email":email,"documents_present":d.get("hasProjectDocuments"),"procedure":process,"stage":stage,
  "url":"https://www.simap.ch/de/project-detail/"+str(pid)}
+
+def report_hr(t):
+ """Sastavi >= 10 rečenica na hrvatskom za svaki oglas.
+ Odvoji opis projekta od preporučenih provjera; ne izmišljaj uvjete.
+ """
+ title=plain(t.get("title_hr") or t.get("title_original"),350).rstrip(".")
+ authority=plain(t.get("authority"),200)
+ city=plain(t.get("city"),150)
+ canton=str(t.get("canton") or "nije naveden")
+ pub=plain(t.get("published"),30)
+ stage=str(t.get("stage") or "nije potvrđena")
+ deadline=str(t.get("deadline") or "")
+ kind=str(t.get("deadline_kind") or "rok")
+ groups=t.get("categories") or []
+ scope=[]
+ txt=plain(t.get("title_original"),400)+" "+plain(t.get("description_original"),5000)
+ for rx,label in SCOPE:
+  if re.search(rx,txt,re.I) and label not in scope:scope.append(label)
+ cats={"heritage":"zaštita kulturne baštine","architecture":"arhitektonsko projektiranje","scanning":"3D skeniranje i fotogrametrija","bim":"BIM/HBIM","graphic":"grafički dizajn i komunikacije","web":"web i UX dizajn","video":"video i animacija"}
+ sentences=[
+ "Projekt se u objavi vodi pod nazivom „"+(title or "naziv nije potvrđen")+"”.",
+ ("Kao naručitelj naveden je "+authority+"." if authority else "Naručitelj nije potvrđen u dostupnim javnim podacima."),
+ ("Mjesto provedbe je "+city+" u kantonu ili području "+canton+"." if city else "Točno mjesto provedbe nije potvrđeno u dostupnom prikazu."),
+ ("Zabilježeni datum javne objave jest "+pub+"." if pub else "Datum izvorne objave treba provjeriti na SIMAP-u."),
+ ("Prepoznate aktivnosti u predmetu nabave uključuju "+", ".join(scope[:5])+"." if scope else "Iz dostupnog naslova i opisa nije moguće pouzdano izdvojiti sve planirane usluge ili zahvate."),
+ ("Natječaj se sadržajno povezuje s područjima: "+", ".join(cats.get(x,x) for x in groups[:4])+"." if groups else "U sadržaju natječaja nije potvrđena usklađenost s užim područjima rada Codelinga."),
+ ("Oznaka postupka u dostupnim metapodacima glasi „"+stage+"”." if stage else "Vrstu postupka potrebno je provjeriti u službenom oglasu."),
+ ("Sljedeći zabilježeni termin za „"+kind+"” jest "+deadline+" prema švicarskom vremenu." if deadline else "Točan rok prijave ili ponude nije potvrđen."),
+ ("Objava označava postojanje projektne dokumentacije." if t.get("documents_present") is True else "Prisutnost preuzimljive natječajne dokumentacije nije potvrđena u javnim metapodacima."),
+ "Za pristup dokumentaciji na SIMAP-u u pravilu je potrebno prijaviti se u svoj račun ponuditelja, odabrati tvrtku i registrirati interes.",
+ ("Status moguće prijave za Codeling d.o.o. trenutačno je „"+str(t.get("codeling_status") or "provjeriti")+"”; to nije službena pravna ocjena."),
+ "Prije odluke o ponudi treba provjeriti reference tvrtke, ključne stručnjake, tražena ovlaštenja i osiguranje profesionalne odgovornosti.",
+ "U originalnoj dokumentaciji treba pročitati kriterije sposobnosti i dodjele, način predaje, obrasce, cijene, valutu, potpise te pitanja i odgovore naručitelja.",
+ "Mjerodavni su isključivo službeni SIMAP oglas i njegovi prilozi, a ovaj tekst je neslužbeni hrvatski istraživački sažetak."
+ ]
+ # Uključi sadržajniji prevedeni opis, ako je DeepL aktiviran; bez izmišljanja.
+ translated=plain(t.get("description_hr"),2000)
+ if translated:
+  parts=[v.strip() for v in re.split(r"(?<=[.!?])\s+",translated) if len(v.strip())>28]
+  if parts:
+   rich=[]
+   for p in parts[:3]:
+    p=p.rstrip(" .!?")
+    if p:rich.append("Prevedeni izvorni opis navodi: "+p+".")
+   sentences[5:5]=rich
+ return " ".join(sentences)
+
 def translate(rows):
  key=os.environ.get("DEEPL_API_KEY","").strip()
  if not key:return
@@ -204,6 +251,10 @@ def main():
   if projects and failed==len(projects[:limit]):raise RuntimeError("All SIMAP detail requests failed")
   if len(projects)>=30 and not out:raise RuntimeError("Suspicious zero future deadlines, check API schema")
   translate(out)
+  for t in out:
+   t["summary_hr"]=report_hr(t)
+   t["summary_sentence_minimum"]=14
+   t["summary_kind"]="HR istraživački sažetak (14+ rečenica, uključene obvezne provjere)"
   out.sort(key=lambda t:(t["deadline"],-t["score"]))
   result={"schema_version":6,"status":"live" if complete and failed==0 and not capped else "partial",
     "source":"official simap.ch public API","last_success":now.isoformat(timespec="seconds"),
