@@ -162,6 +162,8 @@ def ted_areas(t):
  title=t.get("title_original","")
  cats=t.get("categories",[])
  cpv=t.get("cpv") or []
+ confirmed_heritage=bool(TED_HERITAGE.search(title) and not TED_EXCLUDE.search(title)) or any(str(code).startswith(("92521","92522")) for code in cpv) or "heritage" in cats
+ if not confirmed_heritage:return []
  areas=[]
  if TED_HERITAGE.search(title) and not TED_EXCLUDE.search(title):
   areas.append("restoration")
