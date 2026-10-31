@@ -1,4 +1,5 @@
 name: TCOD Fast SIMAP Test
+# Bounded public-API check for 31.10.2026, after the 08:00 redistribution threshold.
 on:
   push:
     branches: [main]
@@ -10,7 +11,7 @@ permissions:
 jobs:
   quick:
     runs-on: ubuntu-latest
-    timeout-minutes: 7
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - run: python3 -m py_compile scripts/sync30.py
